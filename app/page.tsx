@@ -5,14 +5,42 @@ import { useState } from "react";
 
 export default function Home() {
   const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState('');
+  const [isError, setIsError] = useState(false);
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
+  const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      // Here you would typically send the email to your backend
-      console.log('Email submitted:', email);
-      alert('Thank you for signing up! We\'ll keep you updated.');
-      setEmail('');
+    
+    if (!email) return;
+    
+    setIsLoading(true);
+    setIsError(false);
+    setMessage('');
+
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage('Thank you for signing up! We\'ll keep you updated.');
+        setEmail('');
+      } else {
+        setIsError(true);
+        setMessage(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setIsError(true);
+      setMessage('Network error. Please check your connection and try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -66,8 +94,8 @@ export default function Home() {
           <Image
             src="/socials/bolt.svg"
             alt="Bolt"
-            width={800}
-            height={800}
+            width={500}
+            height={500}
             className="bolt-icon"
           />
         </div>
@@ -103,11 +131,25 @@ export default function Home() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              disabled={isLoading}
             />
-            <button type="submit" className="submit-button">
-              <Image src="/socials/send.svg" alt="Send" width={20} height={20} />
+            <button 
+              type="submit" 
+              className="submit-button"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <div className="loading-spinner"></div>
+              ) : (
+                <Image src="/socials/send.svg" alt="Send" width={20} height={20} />
+              )}
             </button>
           </div>
+          {message && (
+            <div className={`message ${isError ? 'error' : 'success'}`}>
+              {message}
+            </div>
+          )}
         </form>
       </main>
 
