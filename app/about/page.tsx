@@ -12,7 +12,7 @@ export default function AboutPage() {
                     <p className="font-inter text-md">We're the largest high school hackathon in Canada! EurekaHACKS was founded on passion, catering to all levels and encourages participates to break expectations!</p>
                 </div>
                 <div className="grow w-auto z-2 flex items-center justify-center">
-                    <Image src={Page1} width="500" height="800" alt="EurekaHACKS Comic Page 1" className="h-[80%] w-auto z-5" />
+                    <Image src={Page1} width="200" height="300" alt="EurekaHACKS Comic Page 1" className="h-[80%] w-auto z-5" />
                 </div>
                 <Image src={Skyline} alt="Skyline" className="absolute bottom-0 left-0 w-full h-auto pointer-events-none select-none" />
 
