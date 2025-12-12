@@ -127,13 +127,13 @@ export default function HeroSection() {
       </div>
 
       <div className="light-beam-container">
-        <img src="/landing/beam.png" alt="Light Beam" className="beam-image" />
+        <img src="/landing/beam.webp" alt="Light Beam" className="beam-image" />
       </div>
 
       <div className="CitySkyline" aria-hidden>
         <img
           ref={starsRef}
-          src="/landing/stars.png"
+          src="/landing/stars.webp"
           className="skyline skyline-stars"
         />
         <div className="skyline-layer" style={{ zIndex: 2 }}>
