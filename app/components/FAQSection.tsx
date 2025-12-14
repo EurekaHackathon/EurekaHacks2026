@@ -134,15 +134,34 @@ export default function FAQSection() {
               key={currentIndex}
             >
               {visibleFAQs.map((faq) => (
-                <motion.div
-                  key={faq.id}
-                  className="faq-card"
-                  variants={cardVariants}
-                >
-                  <h3 className="faq-question">{faq.question}</h3>
-                  <p className="faq-answer">{faq.answer}</p>
-                </motion.div>
-              ))}
+  <motion.div
+    key={faq.id}
+    className="faq-card"
+    variants={cardVariants}
+    onMouseMove={(e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      e.currentTarget.style.setProperty("--x", `${x}px`);
+      e.currentTarget.style.setProperty("--y", `${y}px`);
+    }}
+  >
+    <div className="faq-card--blur">
+      <h3 className="faq-question">{faq.question}</h3>
+      <p className="faq-answer">{faq.answer}</p>
+    </div>
+    <div className="faq-card--sharp">
+      <h3 className="faq-question">{faq.question}</h3>
+      <p className="faq-answer">{faq.answer}</p>
+    </div>
+    <div className="faq-card-visible">
+      <h3 className="faq-question">{faq.question}</h3>
+      <p className="faq-answer">{faq.answer}</p>
+    </div>
+  </motion.div>
+))}
+
             </motion.div>
 
             <motion.button
