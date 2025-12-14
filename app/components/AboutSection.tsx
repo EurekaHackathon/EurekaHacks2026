@@ -1,5 +1,7 @@
 "use client";
 
+import FAQSection from "./FAQSection";
+
 export default function AboutSection() {
   return (
     <div className="about-section">
@@ -22,6 +24,10 @@ export default function AboutSection() {
           <p className="section-text">
             Thank you to our amazing sponsors who make this event possible!
           </p>
+        </div>
+
+        <div className="section-block">
+          <FAQSection />
         </div>
       </div>
     </div>
