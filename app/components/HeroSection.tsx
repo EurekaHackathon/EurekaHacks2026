@@ -99,10 +99,10 @@ export default function HeroSection() {
         </div>
       </nav>
 
-      <div className="hero-section">
-        <h1 className="hero-title">EUREKAHACKS</h1>
-        <p className="hero-subtitle">MARCH 30 2026, GEOTAB HQ</p>
-        
+      <div className="absolute z-[60] top-[42%] left-12 -translate-y-1/2 max-w-[1400px]">
+        <h1 className="font-righteous text-[6rem] font-normal text-[#fff081] m-0 leading-none [text-shadow:3px_3px_0px_rgba(0,0,0,0.8),6px_6px_0px_rgba(0,0,0,0.5),0_0_20px_rgba(228,255,26,0.3)] tracking-[0.02em] relative z-[100]">EUREKAHACKS</h1>
+        <p className="font-freeman text-2xl font-normal text-white mt-4 tracking-[0.1em]">MARCH 30 2026, GEOTAB HQ</p>
+
         <form onSubmit={handleEmailSubmit} className="email-signup">
           <input
             type="email"
@@ -126,8 +126,8 @@ export default function HeroSection() {
         )}
       </div>
 
-      <div className="light-beam-container">
-        <img src="/landing/beam.webp" alt="Light Beam" className="beam-image" />
+      <div className="absolute bottom-0 right-[10%] z-[50] w-[60%] h-[85vh] pointer-events-none flex justify-end items-end">
+        <img src="/landing/beam.webp" alt="Light Beam" className="w-full h-[95vh] max-w-[1068px] object-contain [object-position:bottom_right]" />
       </div>
 
       <div className="CitySkyline" aria-hidden>

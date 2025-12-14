@@ -43,7 +43,6 @@ body {
   background: linear-gradient(to bottom, #0a0a1a 0%, #1a1a3a 30%, #0f1a2e 60%, #0a0a0a 100%);
 }
 
-
 .CitySkyline .skyline-layer {
   position: absolute;
   bottom: 0;
@@ -185,40 +184,6 @@ body {
   width: 100%;
 }
 
-.hero-section {
-  position: absolute;
-  z-index: 60;
-  top: 42%;
-  left: 48px;
-  transform: translateY(-50%);
-  max-width: 1400px;
-}
-
-.hero-title {
-  font-family: var(--font-righteous), sans-serif;
-  font-size: 6rem;
-  font-weight: 400;
-  color: #fff081;
-  margin: 0;
-  line-height: 1;
-  text-shadow: 
-    3px 3px 0px rgba(0, 0, 0, 0.8),
-    6px 6px 0px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(228, 255, 26, 0.3);
-  letter-spacing: 0.02em;
-  position: relative;
-  z-index: 100;
-}
-
-.hero-subtitle {
-  font-family: var(--font-freeman), sans-serif;
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: #ffffff;
-  margin: 16px 0 0 0;
-  letter-spacing: 0.1em;
-}
-
 .email-signup {
   display: flex;
   margin-top: 32px;
@@ -294,27 +259,6 @@ body {
 
 .email-message.error {
   color: #ff6b6b;
-}
-
-.light-beam-container {
-  position: absolute;
-  bottom: 0;
-  right: 10%;
-  z-index: 50;
-  width: 60%;
-  height: 85vh;
-  pointer-events: none;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-
-.beam-image {
-  width: 100%;
-  height: 95vh;
-  max-width: 1068px;
-  object-fit: contain;
-  object-position: bottom right;
 }
 
 /* About Section */
@@ -516,7 +460,6 @@ body {
   margin: 0;
 }
 
-/* BOTH layers must stretch and respect padding */
 .faq-card-visible {
   position: relative;
   z-index: 1;
@@ -538,14 +481,12 @@ body {
   box-sizing: border-box;
 }
 
-/* BLURRED BASE */
 .faq-card--blur {
   filter: blur(4px);
   opacity: 0.55;
   pointer-events: none;
 }
 
-/* SHARP SPOTLIGHT */
 .faq-card--sharp {
   pointer-events: none;
   opacity: 0;
@@ -568,7 +509,6 @@ body {
   );
 }
 
-/* Enable spotlight */
 .faq-card:hover .faq-card--sharp {
   opacity: 1;
 }
