@@ -27,7 +27,7 @@ function SponsorCard({ name, image, tier }: { name: string; image: string; tier:
 export default function SponsorsSection() {
   return (
     <section className="flex justify-center items-center py-12 px-4">
-      <div className="bg-gradient-to-b from-[#092434] to-[#0b2b40] border-8 border-white shadow-2xl max-w-6xl w-full p-6">
+      <div className="border-8 border-white shadow-2xl max-w-6xl w-full p-6">
         <div className="py-4 px-32">
           <h2 className="text-8xl font-righteous text-white text-center tracking-wide mb-2">SPONSORS</h2>
           <p className="text-center font-sans text-[#e6f0f6] max-w-2xl mx-auto text-m mb-6">
