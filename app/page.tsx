@@ -2,6 +2,7 @@
 
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
+import SponsorsSection from "./components/SponsorsSection";
 import StatsSection from "./components/StatsSection";
 
 export default function Home() {
@@ -19,6 +20,8 @@ export default function Home() {
       <StatsSection />
       {/* Scrollable Content Section */}
       <AboutSection />
+
+      <SponsorsSection />
     </div>
   );
 }
