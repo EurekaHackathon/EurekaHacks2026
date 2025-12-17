@@ -2,6 +2,7 @@
 
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
+import StatsSection from "./components/StatsSection";
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
         zIndex: 100,
         background: 'linear-gradient(to bottom, transparent 0%, transparent 70%, #0a0a1a 100%)'
       }}></div>
-
+      <StatsSection />
       {/* Scrollable Content Section */}
       <AboutSection />
     </div>

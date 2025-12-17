@@ -24,11 +24,18 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Fira Code', monospace;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 .CitySkyline {
@@ -101,7 +108,13 @@ body {
 
 .content { position: relative; z-index: 10; }
 
-.LandingPage { min-height: 100vh; }
+.LandingPage { 
+  min-height: 100vh;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100%;
+  overflow-x: hidden;
+}
 
 .top-bar {
   position: fixed;
@@ -345,4 +358,63 @@ body {
 
 .section-block {
   margin-top: 60px;
+}
+
+/* Stats Section */
+.stats-section {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.stats-bg-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+}
+
+.stats-bg {
+  width: 90%;
+  max-width: 90%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+}
+
+.stats-char {
+  position: absolute;
+}
+
+.stats-side-eye {
+  z-index: 2;
+}
+
+.stats-smol-boi {
+  z-index: 2;
+}
+
+.stats-flying-boi {
+  z-index: 2;
+}
+
+.stats-punch {
+  z-index: 10;
+}
+
+.stats-mad-boi {
+  z-index: 10;
+}
+
+.w-100 {
+  width: 100%;
 }
