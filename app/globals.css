@@ -18,7 +18,7 @@
   --dark-green: #4CAF50;
 }
 
-/* * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -302,4 +302,5 @@ body {
 
 .section-block {
   margin-top: 60px;
+
 }
