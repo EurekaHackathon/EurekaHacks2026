@@ -5,30 +5,12 @@ import FAQSection from "./FAQSection";
 export default function AboutSection() {
   return (
     <div className="about-section">
-      <div className="about-content">
-        <h2 className="section-title">About the Event</h2>
-        <p className="section-text">
-          Welcome to EurekaHacks 2026! Join us for an exciting hackathon experience at Geotab HQ. 
-          Build innovative projects, meet fellow developers, and compete for amazing prizes.
+            <div className="border-12 border-white shadow-2xl max-w-6xl w-full p-6 about-container">
+        <h2 className="section-title aboutbbbb">About the Event</h2>
+        <p className="section-text aboutaaaa">
+          We’re the largest high school hackathon in Canada! EurekaHACKS was founded on passion, catering to all levels and encourages participates to break expectations!
         </p>
-        
-        <div className="section-block">
-          <h2 className="section-title">Schedule</h2>
-          <p className="section-text">
-            More details coming soon...
-          </p>
-        </div>
-
-        <div className="section-block">
-          <h2 className="section-title">Sponsors</h2>
-          <p className="section-text">
-            Thank you to our amazing sponsors who make this event possible!
-          </p>
-        </div>
-
-        <div className="section-block">
-          <FAQSection />
-        </div>
+        <img src="comics/page1.png" alt="About EurekaHACKS" className="about-image" />
       </div>
     </div>
   );
