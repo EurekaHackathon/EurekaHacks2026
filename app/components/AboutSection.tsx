@@ -1,7 +1,5 @@
 "use client";
 
-import FAQSection from "./FAQSection";
-
 export default function AboutSection() {
   return (
     <div className="about-section">

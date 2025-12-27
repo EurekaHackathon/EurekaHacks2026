@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 
 function SponsorCard({ name, image, tier }: { name: string; image: string; tier: "diamond" | "gold" | "silver" | "bronze"; }) {
   // Tailwind grid col spans for each tier

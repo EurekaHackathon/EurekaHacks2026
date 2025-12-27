@@ -4,6 +4,7 @@ import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
 import SponsorsSection from "./components/SponsorsSection";
 import StatsSection from "./components/StatsSection";
+import FAQSection from "./components/FAQSection";
 
 export default function Home() {
   return (
@@ -20,6 +21,8 @@ export default function Home() {
       <StatsSection />
       {/* Scrollable Content Section */}
       <AboutSection />
+
+      <FAQSection />
 
       <SponsorsSection />
     </div>
