@@ -629,7 +629,7 @@ body {
 
 .faq-container {
   position: relative;
-  max-width: 1280px;
+  max-width: var(--container-6xl);
   margin: 0 auto;
 }
 
