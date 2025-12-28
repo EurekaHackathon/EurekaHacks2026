@@ -51,14 +51,14 @@ body {
 }
 
 /* dont ask */
-.abcdefgh{
-  margin-left:auto;
-  margin-right:auto;
+.abcdefgh {
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 10vh;
 }
 
-.margining{
-  margin-top:2vh;
+.margining {
+  margin-top: 2vh;
   margin-bottom: 2vh;
   height: auto;
 }
@@ -67,75 +67,55 @@ body {
   border: none !important
 }
 
-.diamond{
-  background:radial-gradient(circle,rgba(58, 99, 140, 1) 0%, rgb(46, 126, 146) 50%, rgb(84, 131, 175) 100%);
-  margin-left:2vw;
-  margin-right:2vw;
-  padding-left:2vw;
-  padding-right:2vw;
-  width:auto;
-  border-radius:24px;
+.diamond {
+  background: radial-gradient(circle, rgba(58, 99, 140, 1) 0%, rgb(46, 126, 146) 50%, rgb(84, 131, 175) 100%);
+  margin-left: 2vw;
+  margin-right: 2vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  width: auto;
+  border-radius: 24px;
   box-shadow: 0 0 15px rgba(84, 131, 175, 0.6), 0 0 30px rgba(84, 131, 175, 0.4);
 }
 
 .bronze {
   background: radial-gradient(circle, rgba(205, 127, 50, 1) 0%, rgb(180, 100, 30) 50%, rgb(150, 75, 20) 100%);
-  margin-left:2vw;
-  margin-right:2vw;
-  padding-left:2vw;
-  padding-right:2vw;
-  width:auto;
-  border-radius:24px;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  width: auto;
+  border-radius: 24px;
   box-shadow: 0 0 15px rgba(205, 127, 50, 0.6), 0 0 30px rgba(205, 127, 50, 0.4);
 }
 
 .silver {
   background: radial-gradient(circle, rgba(192, 192, 192, 1) 0%, rgb(160, 160, 160) 50%, rgb(130, 130, 130) 100%);
-  margin-left:2vw;
-  margin-right:2vw;
-    padding-left:2vw;
-  padding-right:2vw;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
 
-  width:auto;
-  border-radius:24px;
+  width: auto;
+  border-radius: 24px;
   box-shadow: 0 0 15px rgba(192, 192, 192, 0.6), 0 0 30px rgba(192, 192, 192, 0.4);
 }
 
-.about-container{
-  margin-left:auto;
-  margin-right: auto;
-  margin-top:5vh;
-  margin-bottom:5vh;
-}
+
 
 .gold {
   background: radial-gradient(circle, rgba(255, 215, 0, 1) 0%, rgb(220, 180, 0) 50%, rgb(180, 140, 0) 100%);
-  margin-left:2vw;
-  margin-right:2vw;
-    padding-left:2vw;
-  padding-right:2vw;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
 
-  width:auto;
-  border-radius:24px;
+  width: auto;
+  border-radius: 24px;
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.4);
 }
 
-.about-image {
-  width:30vw;
-  margin-left:auto;
-  margin-right:3vw;
-  
-}
 
-.aboutbbbb{
-  margin-top:1vh;
-  margin-left:1.5vw;
-}
-
-.aboutaaaa{
-  width:50vw;
-  margin-left:1.5vw;
-}
 
 .CitySkyline .skyline-layer {
   position: absolute;
@@ -192,9 +172,12 @@ body {
   min-height: 40vh;
 }
 
-.content { position: relative; z-index: 10; }
+.content {
+  position: relative;
+  z-index: 10;
+}
 
-.LandingPage { 
+.LandingPage {
   min-height: 100vh;
   padding: 0 !important;
   margin: 0 !important;
@@ -361,36 +344,7 @@ body {
   color: #ff6b6b;
 }
 
-/* About Section */
-.about-section {
-  position: relative;
-  z-index: 100;
-  min-height: 100vh;
-  background: linear-gradient(to bottom, #0a0a1a 0%, #0f1535 30%, #1a1a3a 60%, #0a0a0a 100%);
-}
 
-.about-content {
-  padding: 120px 48px 48px 48px;
-}
-
-.section-title {
-  font-size: 3rem;
-  color: var(--neon-yellow);
-  margin-bottom: 24px;
-  font-family: var(--font-righteous), sans-serif;
-}
-
-.section-text {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  max-width: 800px;
-  color: #ffffff;
-}
-
-.section-block {
-  margin-top: 60px;
-
-}
 
 .faq-section {
   position: relative;
@@ -593,21 +547,17 @@ body {
   opacity: 0;
   transition: opacity 0.25s ease;
 
-  -webkit-mask-image: radial-gradient(
-    circle 70px at var(--x) var(--y),
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0.9) 40%,
-    rgba(0, 0, 0, 0.3) 60%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  -webkit-mask-image: radial-gradient(circle 70px at var(--x) var(--y),
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.9) 40%,
+      rgba(0, 0, 0, 0.3) 60%,
+      rgba(0, 0, 0, 0) 100%);
 
-  mask-image: radial-gradient(
-    circle 70px at var(--x) var(--y),
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0.9) 40%,
-    rgba(0, 0, 0, 0.3) 60%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  mask-image: radial-gradient(circle 70px at var(--x) var(--y),
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.9) 40%,
+      rgba(0, 0, 0, 0.3) 60%,
+      rgba(0, 0, 0, 0) 100%);
 }
 
 .faq-card:hover .faq-card--sharp {

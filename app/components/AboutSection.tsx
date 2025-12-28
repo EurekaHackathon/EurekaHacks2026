@@ -1,14 +1,21 @@
 "use client";
+import Skyline from "@/public/landing/mid.png";
+import Page1 from "@/public/comics/page1.png";
+import Image from "next/image";
 
 export default function AboutSection() {
   return (
-    <div className="about-section">
-            <div className="border-12 border-white shadow-2xl max-w-6xl w-full p-6 about-container">
-        <h2 className="section-title aboutbbbb">About the Event</h2>
-        <p className="section-text aboutaaaa">
-          We’re the largest high school hackathon in Canada! EurekaHACKS was founded on passion, catering to all levels and encourages participates to break expectations!
-        </p>
-        <img src="comics/page1.png" alt="About EurekaHACKS" className="about-image" />
+    <div className="w-screen h-screen !p-12 ">
+      <div className="flex flex-col sm:flex-row border-8 border-white w-full h-full relative bg-[#0a1c29] md:!pr-8">
+        <div className="flex flex-col gap-4 !p-20 z-2 text-xl sm:w-[50%]">
+          <h1 className="font-righteous text-5xl">Who are we?</h1>
+          <p className="font-inter text-md">We're the largest high school hackathon in Canada! EurekaHACKS was founded on passion, catering to all levels and encourages participates to break expectations!</p>
+        </div>
+        <div className="grow w-auto z-2 flex items-center justify-center">
+          <Image src={Page1} width="200" height="300" alt="EurekaHACKS Comic Page 1" className="h-[80%] w-auto z-5" />
+        </div>
+        <Image src={Skyline} alt="Skyline" className="absolute bottom-0 left-0 w-full h-auto pointer-events-none select-none" />
+
       </div>
     </div>
   );
