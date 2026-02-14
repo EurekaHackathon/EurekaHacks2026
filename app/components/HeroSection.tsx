@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 
 export default function HeroSection() {
@@ -53,8 +53,8 @@ export default function HeroSection() {
     const source = params.has("source")
       ? params.get("source")
       : params.has("fbclid") || params.has("brid")
-      ? "instagram"
-      : "unknown";
+        ? "instagram"
+        : "unknown";
 
     try {
       const response = await fetch("/api/waitlist", {
@@ -86,22 +86,36 @@ export default function HeroSection() {
     <>
       <nav className="top-bar">
         <div className="top-bar-content">
-          <a href="/" className="logo">
+          <Link href="/" className="logo">
             <img src="/logo/small.webp" alt="Logo" className="logo-icon" />
-          </a>
+          </Link>
           <div className="nav-links">
-            <a href="#about" className="nav-link">ABOUT</a>
-            <a href="#sponsors" className="nav-link">SPONSORS</a>
-            <a href="#last-year" className="nav-link">LAST YEAR</a>
-            <a href="#contact" className="nav-link">CONTACT</a>
-            <a href="#signup" className="nav-link nav-link-signup">SIGN UP</a>
+            <Link href="#about" className="nav-link">
+              ABOUT
+            </Link>
+            <Link href="#sponsors" className="nav-link">
+              SPONSORS
+            </Link>
+            <Link href="#last-year" className="nav-link">
+              LAST YEAR
+            </Link>
+            <Link href="#contact" className="nav-link">
+              CONTACT
+            </Link>
+            <Link href="#signup" className="nav-link nav-link-signup">
+              SIGN UP
+            </Link>
           </div>
         </div>
       </nav>
 
       <div className="absolute z-[60] top-[42%] left-12 -translate-y-1/2 max-w-[1400px]">
-        <h1 className="font-righteous text-[6rem] font-normal text-[#fff081] m-0 leading-none [text-shadow:3px_3px_0px_rgba(0,0,0,0.8),6px_6px_0px_rgba(0,0,0,0.5),0_0_20px_rgba(228,255,26,0.3)] tracking-[0.02em] relative z-[100]">EUREKAHACKS</h1>
-        <p className="font-freeman text-2xl font-normal text-white mt-4 tracking-[0.1em]">MARCH 30 2026, GEOTAB HQ</p>
+        <h1 className="font-righteous text-[6rem] font-normal text-[#fff081] m-0 leading-none [text-shadow:3px_3px_0px_rgba(0,0,0,0.8),6px_6px_0px_rgba(0,0,0,0.5),0_0_20px_rgba(228,255,26,0.3)] tracking-[0.02em] relative z-[100]">
+          EUREKAHACKS
+        </h1>
+        <p className="font-freeman text-2xl font-normal text-white mt-4 tracking-[0.1em]">
+          MARCH 30 2026, GEOTAB HQ
+        </p>
 
         <form onSubmit={handleEmailSubmit} className="email-signup">
           <input
@@ -113,21 +127,37 @@ export default function HeroSection() {
             disabled={isLoading}
           />
           <button type="submit" className="email-submit" disabled={isLoading}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5 12H19M19 12L12 5M19 12L12 19"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </button>
         </form>
-        
+
         {message && (
-          <p className={`email-message ${isError ? 'error' : 'success'}`}>
+          <p className={`email-message ${isError ? "error" : "success"}`}>
             {message}
           </p>
         )}
       </div>
 
       <div className="absolute bottom-0 right-[10%] z-[50] w-[60%] h-[85vh] pointer-events-none flex justify-end items-end">
-        <img src="/landing/beam.webp" alt="Light Beam" className="w-full h-[95vh] max-w-[1068px] object-contain [object-position:bottom_right]" />
+        <img
+          src="/landing/beam.webp"
+          alt="Light Beam"
+          className="w-full h-[95vh] max-w-[1068px] object-contain [object-position:bottom_right]"
+        />
       </div>
 
       <div className="CitySkyline" aria-hidden>
