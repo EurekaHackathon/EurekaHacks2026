@@ -12,12 +12,12 @@ export default function StatsSection() {
       <div className="stats-bg-container">
         <img src="/stats/bg2.png" alt="" className="stats-bg" />
         <img src="/stats/flying-boi.png" alt="" className="stats-char stats-flying-boi" />
+        <img src="/stats/punch.png" alt="" className="stats-char stats-punch" />
       </div>
       <div className="stats-bg-container">
         <img src="/stats/bg3.png" alt="" className="stats-bg" />
+        <img src="/stats/mad-boi.png" alt="" className="stats-char stats-mad-boi" />
       </div>
-      {/* High z-index characters */}
-      <img src="/stats/mad-boi.png" alt="" className="stats-char stats-mad-boi" />
       {/* Text boxes on top layer */}
       <div className="stats-box-wrapper stats-box-1">
         <img src="/stats/text-box.png" alt="" className="stats-box-bg" />
@@ -40,7 +40,7 @@ export default function StatsSection() {
           <p>OF HACKING</p>
         </div>
       </div>
-      <img src="/stats/punch.png" alt="" className="stats-char stats-punch" />
+      
     </section>
   );
 }
