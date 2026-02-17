@@ -96,9 +96,9 @@ export default function HeroSection() {
             <Link href="#sponsors" className="nav-link">
               SPONSORS
             </Link>
-            <Link href="#last-year" className="nav-link">
+            <a href="https://2025.eurekahacks.ca/" className="nav-link">
               LAST YEAR
-            </Link>
+            </a>
             <Link href="#contact" className="nav-link">
               CONTACT
             </Link>
