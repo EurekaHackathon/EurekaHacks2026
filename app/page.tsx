@@ -16,7 +16,8 @@ export default function Home() {
         height: '100vh', 
         position: 'relative', 
         zIndex: 100,
-        background: 'linear-gradient(to bottom, transparent 0%, transparent 70%, #0a0a1a 100%)'
+        background: 'linear-gradient(to bottom, transparent 0%, transparent 70%, #0a0a1a 100%)',
+        pointerEvents: 'none'
       }}></div>
       <StatsSection />
       {/* Scrollable Content Section */}
