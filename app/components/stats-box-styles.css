@@ -283,9 +283,9 @@
 }
 
 .stats-side-eye {
-    top: 17vw;
+    top: 16.1vw;
     left: 65vw;
-    width: 500px;
+    width: 30vw;
     height: auto;
     z-index: 300 !important;
     opacity: 1 !important;
@@ -302,7 +302,7 @@
 .stats-smol-boi {
     top: 10%;
     right: 8%;
-    width: 60px;
+    width: 7vw;
     height: auto;
     z-index: 15;
     position: absolute;
@@ -318,7 +318,7 @@
 .stats-flying-boi {
     top: 50%;
     left: 8%;
-    width: 120px;
+    width: 10vw;
     height: auto;
     z-index: 15;
     position: absolute;
@@ -332,9 +332,9 @@
 }
 
 .stats-punch {
-    top: 32vw;
+    top: 31.5vw;
     left: 45vw;
-    width: 400px;
+    width: 25vw;
     height: auto;
     z-index: 200;
     position: absolute;
@@ -348,9 +348,9 @@
 }
 
 .stats-mad-boi {
-    top: 20vw;
+    top: 31.3vw;
     left: 80vw;
-    width: 550px;
+    width: 40vw;
     height: auto;
     z-index: 20;
     position: absolute;
@@ -422,7 +422,7 @@
 }
 
 /* Responsive Stats Section */
-@media (max-width: 1440px) {
+/* @media (max-width: 1440px) {
     .stats-side-eye {
         width: 420px;
     }
@@ -599,4 +599,4 @@
     .stats-text p {
         font-size: 0.8rem;
     }
-}
+} */
