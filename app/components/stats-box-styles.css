@@ -403,21 +403,21 @@
 .stats-box-1 {
     top: 0vw;
     left: 25vw;
-    width: 450px;
+    width: 25vw;
     z-index: 100;
 }
 
 .stats-box-2 {
     top: 15vw;
     right: 5vw;
-    width: 450px;
+    width: 25vw;
     z-index: 400;
 }
 
 .stats-box-3 {
     top: 30vw;
     left: 5vw;
-    width: 450px;
+    width: 25vw;
     z-index: 400;
 }
 
