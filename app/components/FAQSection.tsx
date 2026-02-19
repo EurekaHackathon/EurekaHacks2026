@@ -108,9 +108,8 @@ export default function FAQSection() {
   }
 
   return (
-    <div className="faq-section">
-      <div className="faq-container">
-        <div className="faq-wrapper">
+    <div className="w-screen h-screen !p-12">
+      <div className="border-12 border-white shadow-2xl w-full p-6 bg-[#0a1c29]">
           <h2 className="faq-title">FAQ</h2>
 
           <div className="faq-items-container">
@@ -180,7 +179,6 @@ export default function FAQSection() {
           <div className="faq-illustration">
             <img src="/landing/faq.webp" alt="FAQ Illustration" />
           </div>
-        </div>
       </div>
     </div>
   );
