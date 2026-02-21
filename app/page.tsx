@@ -25,7 +25,7 @@ export default function Home() {
 
       <FAQSection />
 
-      {/* <SponsorsSection /> */}
+      <SponsorsSection />
     </div>
   );
 }
