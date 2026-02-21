@@ -108,8 +108,8 @@ export default function FAQSection() {
   }
 
   return (
-    <div className="w-screen h-screen !p-12">
-      <div id="faq" className="border-12 border-white shadow-2xl w-full p-6 bg-[#0a1c29]">
+    <div className="flex justify-center items-center px-12 w-screen py-4">
+      <div id="faq" className="border-12 border-white shadow-2xl max-w-7xl p-6 bg-[#0a1c29]">
           <h2 className="faq-title">FAQ</h2>
 
           <div className="faq-items-container">

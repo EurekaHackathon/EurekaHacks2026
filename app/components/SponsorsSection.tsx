@@ -36,8 +36,8 @@ function SponsorCard({
 //TODO: Use real sponsor info when available
 export default function SponsorsSection() {
   return (
-    <section id="sponsors" className="flex justify-center items-center px-12 w-screen">
-      <div className="border-12 border-white shadow-2xl w-full p-4 bg-[#0a1c29]">
+    <section id="sponsors" className="flex justify-center items-center px-12 w-screen py-4">
+      <div className="border-12 border-white shadow-2xl max-w-7xl w-full p-4 bg-[#0a1c29]">
         <div className="py-4 px-32">
           <h2 className="text-6xl font-righteous text-white text-center tracking-wide mb-2 margining">
             SPONSORS
