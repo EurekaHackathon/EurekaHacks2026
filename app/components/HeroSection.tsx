@@ -93,6 +93,9 @@ export default function HeroSection() {
             <Link href="#about" className="nav-link">
               ABOUT
             </Link>
+            <Link href="#faq" className="nav-link">
+              FAQ
+            </Link>
             <Link href="#sponsors" className="nav-link">
               SPONSORS
             </Link>
