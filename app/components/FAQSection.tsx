@@ -177,7 +177,7 @@ export default function FAQSection() {
           </div>
 
           <div className="faq-illustration">
-            <img src="/landing/faq.webp" alt="FAQ Illustration" />
+            <img src="/mascots/minions_frame1.png" alt="FAQ Illustration" />
           </div>
       </div>
     </div>

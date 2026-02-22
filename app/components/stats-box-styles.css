@@ -389,13 +389,13 @@
 }
 
 .stats-text h3 {
-    font-size: 3rem;
+    font-size: 3vw;
     margin-bottom: 0.5rem;
     line-height: 1;
 }
 
 .stats-text p {
-    font-size: 1.5rem;
+    font-size: 1.5vw;
     font-family: var(--font-freeman), sans-serif;
     text-transform: uppercase;
 }

@@ -15,13 +15,11 @@ export default function AboutSection() {
             participates to break expectations!
           </p>
         </div>
-        <div className="grow w-auto z-2 flex items-center justify-center">
+        <div className="grow z-2 flex items-center justify-center">
           <Image
             src={Page1}
-            width="200"
-            height="300"
             alt="EurekaHACKS Comic Page 1"
-            className="h-[80%] w-auto z-5"
+            className="w-auto max-h-[80%]"
           />
         </div>
         <Image
