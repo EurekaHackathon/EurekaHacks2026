@@ -2,35 +2,50 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
   try {
-    const { username, password } = await req.json();
+    const { email, password } = await req.json();
 
-    if (!username || !password) {
+    if (!email || !password) {
       return NextResponse.json(
-        { error: 'Username and password are required' },
+        { error: 'Email and password are required' },
         { status: 400 }
       );
     }
-
-    if (username === 'JamieYay' && password === 'yippee') {
+    if (email === 'dev@eurekahacks.ca' && password === 'yippee') {
       return NextResponse.json({
         success: true,
         message: 'Login successful',
-        user: { username: 'JamieYay', email: 'dev@eurekahacks.ca' },
+        user: {
+          firstName: 'Jamie',
+          lastName: 'Dev',
+          email: 'dev@eurekahacks.ca',
+          grade: '12',
+          school: 'Other',
+          pronouns: 'they/them',
+          dietary: 'None',
+          hackathons: 0,
+        },
       });
     }
 
     const { getDatabase } = await import('@/lib/mongodb');
     const db = await getDatabase();
     const usersCollection = db.collection('users');
-    const user = await usersCollection.findOne({ username });
+    const user = await usersCollection.findOne({ email });
 
     if (user && user.password === password) {
       return NextResponse.json({
         success: true,
         message: 'Login successful',
         user: {
-          username: user.username,
+          firstName: user.firstName,
+          lastName: user.lastName,
           email: user.email,
+          grade: user.grade ?? '',
+          school: user.school ?? '',
+          pronouns: user.pronouns ?? '',
+          dietary: user.dietary ?? 'None',
+          hackathons: user.hackathons ?? 0,
+          pfpIndex: user.pfpIndex ?? 0,
         },
       });
     }
