@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function AboutSection() {
   return (
-    <div className="w-screen h-screen !p-12 ">
-      <div className="flex flex-col sm:flex-row border-8 border-white w-full h-full relative bg-[#0a1c29] md:!pr-8">
+    <div className="w-screen h-screen !p-12" id="about">
+      <div className="flex flex-col sm:flex-row border-12 border-white w-full h-full relative bg-[#0a1c29] md:!pr-8">
         <div className="flex flex-col gap-4 !p-20 z-2 text-xl sm:w-[50%]">
           <h1 className="font-righteous text-5xl">Who are we?</h1>
           <p className="font-inter text-md">
@@ -15,13 +15,11 @@ export default function AboutSection() {
             participates to break expectations!
           </p>
         </div>
-        <div className="grow w-auto z-2 flex items-center justify-center">
+        <div className="grow z-2 flex items-center justify-center">
           <Image
             src={Page1}
-            width="200"
-            height="300"
             alt="EurekaHACKS Comic Page 1"
-            className="h-[80%] w-auto z-5"
+            className="w-auto max-h-[80%]"
           />
         </div>
         <Image

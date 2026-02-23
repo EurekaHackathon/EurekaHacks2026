@@ -25,6 +25,7 @@ export default function Home() {
 
       <FAQSection />
 
+      {/* re-add when sponsor info is available */}
       {/* <SponsorsSection /> */}
     </div>
   );
