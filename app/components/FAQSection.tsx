@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, Variants } from "framer-motion";
+import "./faq-styles.css"
 
 interface FAQItem {
   question: string;
