@@ -117,10 +117,13 @@ export default function HeroSection() {
           EUREKAHACKS
         </h1>
         <p className="font-freeman text-2xl font-normal text-white mt-4 tracking-[0.1em]">
-          MARCH 30 2026, APHS
+          MARCH 28 2026, APHS
         </p>
 
-        <form onSubmit={handleEmailSubmit} className="email-signup relative z-[100] pointer-events-auto">
+        <form
+          onSubmit={handleEmailSubmit}
+          className="email-signup relative z-[100] pointer-events-auto"
+        >
           <input
             type="email"
             value={email}
