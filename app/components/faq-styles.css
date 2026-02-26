@@ -126,6 +126,16 @@
   .faq-illustration img {
     max-width: 300px;
   }
+
+  .faq-card--sharp {
+    opacity: 1 !important;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+  }
+
+  .faq-card--blur {
+    opacity: 0 !important;
+  }
 }
 
 .faq-card-visible {
