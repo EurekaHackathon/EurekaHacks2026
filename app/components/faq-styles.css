@@ -149,10 +149,15 @@
   box-sizing: border-box;
 }
 
-.faq-card--blur {
+.faq-card--blur > .faq-answer {
   filter: blur(4px);
   opacity: 0.55;
   pointer-events: none;
+}
+
+.faq-card--blur > .faq-question {
+    filter: blur(1px);
+    opacity: 0.55;
 }
 
 .faq-card--sharp {
