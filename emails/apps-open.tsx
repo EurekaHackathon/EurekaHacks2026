@@ -1,3 +1,5 @@
+import * as React from "react";
+import Link from "next/link";
 import {
     Body,
     Button,
@@ -10,8 +12,7 @@ import {
     Section,
     Text,
 } from "@react-email/components";
-import * as React from "react";
-import Link from "next/link";
+import * as styles from "./styles";
 
 interface ApplicationsOpenTemplateProps {
     applicationLink: string;
@@ -26,48 +27,48 @@ export const ApplicationsOpenTemplate = ({
         <Preview>
             EurekaHACKS 2025 Applications are Now Open! 🚀
         </Preview>
-        <Body style={main}>
-            <Container style={container}>
+        <Body style={styles.main}>
+            <Container style={styles.container}>
                 <Img
                     src={`https://eurekahacks.ca/logo-small.png`}
                     width="50"
                     height="50"
                     alt="EurekaHACKS logo"
-                    style={logo}
+                    style={styles.logo}
                 />
-                <Text style={paragraph}>Hey!</Text>
-                <Text style={paragraph}>
+                <Text style={styles.paragraph}>Hey!</Text>
+                <Text style={styles.paragraph}>
                     We're excited to announce that applications for EurekaHACKS 2025 are now open!
                     Join us on April 5th, 2025 at Abbey Park High School for an unforgettable day of
                     innovation, learning, and fun.
                 </Text>
-                <Section style={highlightBox}>
-                    <Text style={highlightText}>
+                <Section style={styles.highlightBox}>
+                    <Text style={styles.highlightText}>
                         📍 Location: Abbey Park High School<br/>
                         📅 Date: April 5th, 2025<br/>
                         ⏰ Duration: 12 hours<br/>
                         💻 Open to all high school students
                     </Text>
                 </Section>
-                <Section style={btnContainer}>
-                    <Button style={button} href={applicationLink}>
+                <Section style={styles.btnContainerWithMargin}>
+                    <Button style={styles.buttonLarge} href={applicationLink}>
                         Apply Now
                     </Button>
                 </Section>
-                <Text style={paragraph}>
+                <Text style={styles.paragraph}>
                     Questions? Feel free to reach out to us at <Link href="mailto:hello@eurekahacks.ca">
                     hello@eurekahacks.ca
                 </Link>!
                 </Text>
-                <Text style={paragraph}>
+                <Text style={styles.paragraph}>
                     Can't wait to see what you'll create!
                     <br/>
                     Best,
                     <br/>
                     The EurekaHACKS Team
                 </Text>
-                <Hr style={hr}/>
-                <Text style={footer}>
+                <Hr style={styles.hr}/>
+                <Text style={styles.footer}>
                     Copyright © EurekaHACKS 2025, All rights reserved. | <Link target="_blank"
                                                                                href={unsubscribeLink}>Unsubscribe</Link>
                 </Text>
@@ -83,64 +84,3 @@ ApplicationsOpenTemplate.PreviewProps = {
 } as ApplicationsOpenTemplateProps;
 
 export default ApplicationsOpenTemplate;
-
-const main = {
-    backgroundColor: "#ffffff",
-    fontFamily:
-        "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif",
-};
-
-const container = {
-    margin: "0 auto",
-    padding: "20px 0 48px",
-};
-
-const logo = {
-    margin: "0 auto",
-};
-
-const paragraph = {
-    fontSize: "16px",
-    lineHeight: "26px",
-};
-
-const highlightBox = {
-    backgroundColor: "#f8f9fa",
-    borderRadius: "8px",
-    padding: "20px",
-    margin: "20px 0",
-};
-
-const highlightText = {
-    fontSize: "16px",
-    lineHeight: "26px",
-    margin: "0",
-};
-
-const btnContainer = {
-    textAlign: "center" as const,
-    margin: "32px 0",
-};
-
-const button = {
-    backgroundColor: "#6d46e1",
-    borderRadius: "8px",
-    color: "#fff",
-    fontSize: "16px",
-    textDecoration: "none",
-    textAlign: "center" as const,
-    display: "block",
-    padding: "16px 24px",
-    cursor: "pointer",
-    fontWeight: "500",
-};
-
-const hr = {
-    borderColor: "#cccccc",
-    margin: "20px 0",
-};
-
-const footer = {
-    color: "#8898aa",
-    fontSize: "12px",
-};
