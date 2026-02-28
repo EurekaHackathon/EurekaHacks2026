@@ -40,7 +40,10 @@ export default function StatsSection() {
       }, 150);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    if (window.innerWidth > 600) {
+      // Looks weird on mobile
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    }
 
     return () => {
       window.removeEventListener('scroll', handleScroll);

@@ -389,13 +389,13 @@
 }
 
 .stats-text h3 {
-    font-size: 3vw;
+    font-size: max(1.5em, 3vw);
     margin-bottom: 0.5rem;
     line-height: 1;
 }
 
 .stats-text p {
-    font-size: 1.5vw;
+    font-size: max(0.7em, 1.5vw);
     font-family: var(--font-freeman), sans-serif;
     text-transform: uppercase;
 }
@@ -403,21 +403,21 @@
 .stats-box-1 {
     top: 0vw;
     left: 25vw;
-    width: 25vw;
+    width: max(120px, 25vw);
     z-index: 100;
 }
 
 .stats-box-2 {
     top: 15vw;
     right: 5vw;
-    width: 25vw;
+    width: max(120px, 25vw);;
     z-index: 400;
 }
 
 .stats-box-3 {
     top: 30vw;
     left: 5vw;
-    width: 25vw;
+    width: max(120px, 25vw);;
     z-index: 400;
 }
 
