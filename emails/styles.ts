@@ -22,7 +22,7 @@ export const header = {
     fontSize: "20px",
     lineHeight: "30px",
     fontWeight: "bold",
-    color: "#6d46e1",
+    color: "#f8a93f",
 };
 
 export const hr = {
@@ -45,7 +45,7 @@ export const btnContainerWithMargin = {
 };
 
 export const button = {
-    backgroundColor: "#6d46e1",
+    backgroundColor: "#fcc972",
     borderRadius: "3px",
     color: "#fff",
     fontSize: "16px",
@@ -74,4 +74,8 @@ export const highlightText = {
     fontSize: "16px",
     lineHeight: "26px",
     margin: "0",
+};
+
+export const link = {
+    color: "#ffd500"
 };
