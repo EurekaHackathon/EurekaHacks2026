@@ -6,10 +6,12 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "email:dev": "email dev"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^16.0.10",
+    "@react-email/components": "^1.0.8",
     "framer-motion": "^12.23.22",
     "lucide-react": "^0.561.0",
     "mongodb": "^6.20.0",
@@ -20,12 +22,14 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@react-email/preview-server": "^5.2.9",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
+    "react-email": "^5.2.9",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
