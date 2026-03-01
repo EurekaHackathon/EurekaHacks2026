@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, Variants } from "framer-motion";
+import "./faq-styles.css"
 
 interface FAQItem {
   question: string;
@@ -177,7 +178,11 @@ export default function FAQSection() {
           </div>
 
           <div className="faq-illustration">
-            <img src="/mascots/minions_frame1.png" alt="FAQ Illustration" />
+            {/* show one image at a time, switching when arrows change currentIndex */}
+            <img
+              src={`/mascots/minions_frame${(currentIndex % 2) + 1}.png`}
+              alt="FAQ Illustration"
+            />
           </div>
       </div>
     </div>
