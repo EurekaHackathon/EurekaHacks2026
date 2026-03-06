@@ -89,7 +89,7 @@ export default function DashboardHome() {
                             You haven't started your application yet. Click the button below to start your application.
                         </p>
                         <Link href="/dashboard/application"
-                              className="bg-secondary-600 text-xl py-2 px-4 rounded-lg text-gray-100 font-medium hover:bg-[#815eeb] duration-200">
+                              className="bg-secondary-600 text-xl py-2 px-4 rounded-lg text-gray-100 font-medium hover:bg-[#1435a0] duration-200">
                             Open application
                         </Link>
                     </>
@@ -119,14 +119,14 @@ export default function DashboardHome() {
                         </p>
                         {rsvpStatus &&
                             <button onClick={cancelRsvp} disabled={rsvpLoading}
-                                    className="flex justify-center items-center bg-secondary-600 text-xl py-2 px-4 h-12 w-40 rounded-lg text-gray-100 font-medium hover:bg-[#815eeb] duration-200">
+                                    className="flex justify-center items-center bg-secondary-600 text-xl py-2 px-4 h-12 w-40 rounded-lg text-gray-100 font-medium hover:bg-[#1435a0] duration-200">
                                 {!rsvpLoading && "Cancel RSVP"}
                                 {rsvpLoading && <Icon icon="eos-icons:loading" className="text-2xl animate-spin"/>}
                             </button>
                         }
                         {!rsvpStatus &&
                             <button onClick={rsvp} disabled={rsvpLoading}
-                                    className="flex justify-center items-center bg-secondary-600 text-xl py-2 px-4 h-12 w-40 rounded-lg text-gray-100 font-medium hover:bg-[#815eeb] duration-200">
+                                    className="flex justify-center items-center bg-secondary-600 text-xl py-2 px-4 h-12 w-40 rounded-lg text-gray-100 font-medium hover:bg-[#1435a0] duration-200">
                                 {!rsvpLoading && "RSVP"}
                                 {rsvpLoading && <Icon icon="eos-icons:loading" className="text-2xl animate-spin"/>}
                             </button>
@@ -174,14 +174,14 @@ export default function DashboardHome() {
                     </p>
                     {applicationStatus?.status === "accepted" &&
                         <a href="https://discord.gg/ApEmE7g7GB" target="_blank" rel="noopener noreferrer"
-                           className="bg-secondary-600 text-xl py-2 px-4 rounded-lg text-gray-100 font-medium hover:bg-[#815eeb] duration-200">
+                           className="bg-secondary-600 text-xl py-2 px-4 rounded-lg text-gray-100 font-medium hover:bg-[#1435a0] duration-200">
                             Discord
                         </a>
                     }
                     {applicationStatus?.status !== "accepted" &&
                         <a href="https://discord.gg/ApEmE7g7GB" target="_blank" rel="noopener noreferrer"
                            aria-disabled="true" tabIndex={-1}
-                           className="pointer-events-none bg-secondary-300 text-xl py-2 px-4 rounded-lg text-gray-100 font-medium hover:bg-[#815eeb] duration-200">
+                           className="pointer-events-none bg-secondary-300 text-xl py-2 px-4 rounded-lg text-gray-100 font-medium hover:bg-[#1435a0] duration-200">
                             Coming soon
                         </a>
                     }
@@ -197,14 +197,14 @@ export default function DashboardHome() {
                     </p>
                     {applicationStatus?.status === "accepted" &&
                         <Link
-                            className="bg-secondary-600 text-xl py-2 px-4 rounded-lg text-gray-100 font-medium hover:bg-[#815eeb] duration-200"
+                            className="bg-secondary-600 text-xl py-2 px-4 rounded-lg text-gray-100 font-medium hover:bg-[#1435a0] duration-200"
                             href="/hacker-package.pdf" target="_blank" rel="noopener noreferrer">
                             View
                         </Link>
                     }
                     {applicationStatus?.status !== "accepted" &&
                         <Link href="/dashboard" aria-disabled="true" tabIndex={-1}
-                              className="pointer-events-none bg-secondary-300 text-xl py-2 px-4 rounded-lg text-gray-100 font-medium hover:bg-[#815eeb] duration-200">
+                              className="pointer-events-none bg-secondary-300 text-xl py-2 px-4 rounded-lg text-gray-100 font-medium hover:bg-[#1435a0] duration-200">
                             Coming soon
                         </Link>
                     }

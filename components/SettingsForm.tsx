@@ -45,7 +45,7 @@ export default function SettingsForm({ currentFirstName, currentLastName, loginM
                        className="border-gray-300 border hover:border-secondary-300 focus:outline-none rounded-lg w-full py-2 px-4 mt-2"/>
 
                 <button type="submit"
-                        className="bg-secondary-600 text-gray-100 font-medium py-2 px-4 rounded-lg mt-8 hover:bg-[#815eeb] duration-200">Save
+                        className="bg-secondary-600 text-gray-100 font-medium py-2 px-4 rounded-lg mt-8 hover:bg-[#1435a0] duration-200">Save
                     changes
                 </button>
             </form>
@@ -72,7 +72,7 @@ export default function SettingsForm({ currentFirstName, currentLastName, loginM
                            className="border-gray-300 border hover:border-secondary-300 focus:outline-none rounded-lg w-full py-2 px-4 mt-2"/>
 
                     <button type="submit"
-                            className="bg-secondary-600 text-gray-100 font-medium py-2 px-4 rounded-lg mt-8 hover:bg-[#815eeb] duration-200">Change
+                            className="bg-secondary-600 text-gray-100 font-medium py-2 px-4 rounded-lg mt-8 hover:bg-[#1435a0] duration-200">Change
                       password
                     </button>
                   </form>

@@ -81,7 +81,7 @@ export default function ApplicationCountGraph({applicationCountData}: {
                 <CartesianGrid strokeDasharray="12 12" stroke="#ccc"/>
                 <Area name="Cumulative count" type="linear" dataKey="cumulativeCount" fill="#38bdf8" stroke="#38bdf8"
                       strokeWidth={2}/>
-                <Area name="Count" type="linear" dataKey="count" fill="#6d46e1" stroke="#6d46e1"/>
+                <Area name="Count" type="linear" dataKey="count" fill="#1a42c8" stroke="#1a42c8"/>
                 <XAxis dataKey="date" type="number" className="text-xs lg:text-sm" tickFormatter={formatDate}
                        tickMargin={4}
                        domain={["dataMin", "dataMax"]} scale={"time"} interval={interval}

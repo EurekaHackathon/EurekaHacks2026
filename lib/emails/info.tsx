@@ -178,7 +178,7 @@ const header = {
         fontSize: "20px",
         lineHeight: "30px",
         fontWeight: "bold",
-        color: "#6d46e1",
+        color: "#1a42c8",
     }
 ;
 
@@ -187,7 +187,7 @@ const btnContainer = {
 };
 
 const button = {
-    backgroundColor: "#6d46e1",
+    backgroundColor: "#1a42c8",
     borderRadius: "3px",
     color: "#fff",
     fontSize: "16px",
