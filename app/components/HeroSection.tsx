@@ -105,8 +105,8 @@ export default function HeroSection() {
             <Link href="mailto:hello@eurekahacks.ca" className="nav-link">
               CONTACT
             </Link>
-            <Link href="#signup" className="nav-link nav-link-signup">
-              SIGN UP
+            <Link href="/dashboard" className="nav-link nav-link-signup">
+              APPLY
             </Link>
           </div>
         </div>
@@ -121,36 +121,11 @@ export default function HeroSection() {
           May 1st-2nd, Waterloo Accelerator Center
         </p>
 
-        <form
-          onSubmit={handleEmailSubmit}
-          className="email-signup relative z-[100] pointer-events-auto"
-        >
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email for updates"
-            className="email-input"
-            disabled={isLoading}
-          />
-          <button type="submit" className="email-submit" disabled={isLoading}>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5 12H19M19 12L12 5M19 12L12 19"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+        <Link href="/dashboard" className="cursor-pointer">
+          <button className="mt-8 px-8 py-3 bg-[#fff081] text-secondary-950 rounded-xl font-freeman text-xl tracking-wider transition-all duration-300 hover:scale-105 hover:bg-[#f5ffad] hover:shadow-[0_0_20px_rgba(255,240,129,0.4)] active:scale-95 cursor-pointer">
+            APPLY NOW
           </button>
-        </form>
+        </Link>
 
         {message && (
           <p className={`email-message ${isError ? "error" : "success"}`}>
