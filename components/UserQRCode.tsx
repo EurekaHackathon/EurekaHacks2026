@@ -27,7 +27,7 @@ export default async function UserQRCode() {
     return (
         <div className="flex p-12 justify-center items-center min-h-screen">
             <div
-                className="flex flex-col items-center bg-gray-50 border border-gray-300 p-8 md:p-10 lg:p-12 rounded-xl">
+                className="flex flex-col items-center bg-[#151c2b] border border-gray-300 p-8 md:p-10 lg:p-12 rounded-xl">
                 <div>
                     <h1 className="text-4xl md:text-5xl lg:text-6xl text-secondary-600 font-bold">QR Code</h1>
                     <p className="md:text-lg text-gray-500 mt-1">Use this QR code to check in and receive food.</p>

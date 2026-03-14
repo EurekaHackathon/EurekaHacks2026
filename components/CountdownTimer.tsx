@@ -31,7 +31,7 @@ export function CountdownTimer() {
     }, []);
 
     return (
-        <div className="flex gap-2 text-secondary-600 font-bold text-3xl md:text-5xl pt-6 flex-wrap">
+        <div className="flex gap-2 text-[#f0c24f] font-bold text-3xl md:text-5xl pt-6 flex-wrap">
             <h1>Event is over</h1>
         </div>
     );

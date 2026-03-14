@@ -39,7 +39,7 @@ export function DeadlineCountdown() {
     }, []);
 
     return (
-        <h1 className="text-secondary-600 font-bold text-5xl pt-6">
+        <h1 className="text-[#f0c24f] font-bold text-5xl pt-6">
             {timeLeft.value} {timeLeft.unit}{timeLeft.value !== 1 && timeLeft.value !== "" ? "s" : ""}
         </h1>
     );

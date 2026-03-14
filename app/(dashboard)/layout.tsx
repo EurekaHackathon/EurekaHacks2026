@@ -25,9 +25,9 @@ export default async function Layout({
     return (
         <>
             <DashboardProvider value={{user, applicationStatus, rsvpStatus: rsvpStatus !== null}}>
-                <div className="min-h-screen flex flex-row w-full">
+                <div className="h-screen flex flex-row w-full">
                     <DashboardNav/>
-                    <div className="overflow-hidden w-full lg:px-20">
+                    <div className="overflow-y-auto w-full lg:px-20">
                         {children}
                     </div>
                 </div>
