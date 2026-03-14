@@ -2,6 +2,7 @@ import RegistrationForm from "@/components/RegistrationForm";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { validateSessionToken } from "@/lib/sessions";
+import { StarField } from "@/components/StarField";
 
 export default async function SignUpPage() {
     const cookieStore = await cookies();
@@ -14,8 +15,11 @@ export default async function SignUpPage() {
     }
 
     return (
-        <div className="bg-secondary-950 flex items-center justify-center py-32 flex-grow min-h-screen">
-            <RegistrationForm/>
+        <div className="bg-[#03060f] flex items-center justify-center py-32 flex-grow min-h-screen relative">
+            <StarField/>
+            <div className="relative z-10">
+                <RegistrationForm/>
+            </div>
         </div>
     );
 }

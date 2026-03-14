@@ -233,10 +233,9 @@ export default function ApplicationForm() {
                     If aliens landed tomorrow and asked you to show them one piece of human culture, what would you show them? <span className="text-error-600">*</span>
                 </label>
                 <p className="text-gray-400 text-sm mb-2">200 words max</p>
-                <CharacterLimiter
-                    label="Short answer"
+                <WordLimiter
                     name="short-answer"
-                    maxChars={1200}
+                    maxWords={200}
                     defaultValue={state.payload?.get("short-answer")}
                 />
             </div>
@@ -282,20 +281,19 @@ function PhoneInput({ label, ...props }: any) {
     );
 }
 
-function CharacterLimiter({ maxChars, defaultValue, name }: {
-    maxChars: number,
-    label: string,
+function WordLimiter({ maxWords, defaultValue, name }: {
+    maxWords: number,
     name: string,
     defaultValue: undefined | null | FormDataEntryValue
 }) {
     const [value, setValue] = useState(defaultValue as (string | undefined) ?? "");
-    const [remainingChars, setRemainingChars] = useState(maxChars);
+
+    const countWords = (text: string) => text.trim().split(/\s+/).filter(Boolean).length;
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         const inputValue = e.target.value;
-        if (inputValue.length <= maxChars) {
+        if (countWords(inputValue) <= maxWords || inputValue.length < value.length) {
             setValue(inputValue);
-            setRemainingChars(maxChars - inputValue.length);
         }
     };
 
@@ -308,9 +306,6 @@ function CharacterLimiter({ maxChars, defaultValue, name }: {
                 onChange={handleChange}
                 className="resize-none h-40 border-secondary-700 border hover:border-secondary-500 focus:outline-none rounded-lg w-full py-2 px-4 mt-2 bg-[#030712] text-gray-100 placeholder-gray-500"
             />
-            <div className="text-right text-sm text-gray-400">
-                {remainingChars} characters remaining
-            </div>
         </div>
     );
 }
