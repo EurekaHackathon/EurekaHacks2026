@@ -47,7 +47,7 @@ export default function RootLayout({
     <html lang="en">
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${freeman.variable} ${righteous.variable} ${inter.variable} ${roboto.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${freeman.variable} ${righteous.variable} ${inter.variable} ${roboto.variable} antialiased flex flex-col min-h-screen`}
       >
         {children}
       </body>
