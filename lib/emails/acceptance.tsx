@@ -20,7 +20,7 @@ export const AcceptanceEmailTemplate = ({firstName}: ApplicationsOpenTemplatePro
     <Html>
         <Head/>
         <Preview>
-            Congratulations 🎉, See You At EurekaHACKS 2025!
+            Congratulations 🎉, See You At EurekaHACKS 2026!
         </Preview>
         <Body style={main}>
             <Container style={container}>
@@ -33,9 +33,8 @@ export const AcceptanceEmailTemplate = ({firstName}: ApplicationsOpenTemplatePro
                 />
                 <Text style={paragraph}>Hey {firstName}!</Text>
                 <Text style={paragraph}>
-                    We’re excited to have you as a hacker for EurekaHACKS 2025, our third hackathon iteration! (You are
-                    one step closer to the Bambu). Join us from 8:00 AM to 9:30 PM on April 5th 2025 at 1455 Glen
-                    Abbey Gate, Oakville to take part in a memorable day filled with fun workshops, exciting activities
+                    We’re excited to have you as a hacker for EurekaHACKS 2026, our third hackathon iteration! (You are
+                    one step closer to the Bambu). Join us from 5:00 PM on May 1st to 10:00 PM on May 2nd 2026 to take part in a memorable day filled with fun workshops, exciting activities
                     and free food!
                 </Text>
                 <Text style={paragraph}>
@@ -56,7 +55,7 @@ export const AcceptanceEmailTemplate = ({firstName}: ApplicationsOpenTemplatePro
                 </Text>
                 <Text style={paragraph}>
                     <strong>
-                        Please RSVP to confirm your spot at EurekaHACKS 2025 if you have not already! We’ll be sending
+                        Please RSVP to confirm your spot at EurekaHACKS 2026 if you have not already! We’ll be sending
                         you more details about the event
                         in the following days, so stay tuned!
                     </strong>
@@ -75,7 +74,7 @@ export const AcceptanceEmailTemplate = ({firstName}: ApplicationsOpenTemplatePro
                 </Text>
                 <Hr style={hr}/>
                 <Text style={footer}>
-                    Copyright © EurekaHACKS 2025, All rights reserved.
+                    Copyright © EurekaHACKS 2026, All rights reserved.
                 </Text>
             </Container>
         </Body>

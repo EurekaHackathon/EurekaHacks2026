@@ -141,7 +141,7 @@ export const InfoEmailTemplate = ({firstName}: InfoTemplateProps) => (
                 </Text>
                 <Hr style={hr}/>
                 <Text style={footer}>
-                    Copyright © EurekaHACKS 2025, All rights reserved.
+                    Copyright © EurekaHACKS 2026, All rights reserved.
                 </Text>
             </Container>
         </Body>

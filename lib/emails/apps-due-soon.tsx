@@ -20,7 +20,7 @@ export const ApplicationsDueTemplate = ({firstName}: ApplicationsOpenTemplatePro
     <Html>
         <Head/>
         <Preview>
-            🚨 EurekaHACKS 2025 applications are due tomorrow! 🚨
+            🚨 EurekaHACKS 2026 applications are due tomorrow! 🚨
         </Preview>
         <Body style={main}>
             <Container style={container}>
@@ -34,7 +34,7 @@ export const ApplicationsDueTemplate = ({firstName}: ApplicationsOpenTemplatePro
                 <Text style={paragraph}>Hey {firstName}!</Text>
                 <Text style={paragraph}>
                     We saw that you created a EurekaHACKS account but haven’t submitted an application yet! Applications
-                    are due on Saturday, March 22, 2025 at 11:59 PM EST. Applying only takes <strong>3</strong> minutes—no short answer
+                    are due on April 30th at 11:59 PM EST. Applying only takes <strong>3</strong> minutes—no short answer
                     responses required. Don't miss out on free food, $11,000 in prizes
                     (including four 3D printers), and a ton of fun!
                 </Text>
@@ -52,7 +52,7 @@ export const ApplicationsDueTemplate = ({firstName}: ApplicationsOpenTemplatePro
                 </Text>
                 <Hr style={hr}/>
                 <Text style={footer}>
-                    Copyright © EurekaHACKS 2025, All rights reserved.
+                    Copyright © EurekaHACKS 2026, All rights reserved.
                 </Text>
             </Container>
         </Body>

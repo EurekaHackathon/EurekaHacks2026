@@ -24,7 +24,7 @@ export const ApplicationsOpenTemplate = ({
     <Html>
         <Head/>
         <Preview>
-            EurekaHACKS 2025 Applications are Now Open! 🚀
+            EurekaHACKS 2026 Applications are Now Open! 🚀
         </Preview>
         <Body style={main}>
             <Container style={container}>
@@ -37,15 +37,13 @@ export const ApplicationsOpenTemplate = ({
                 />
                 <Text style={paragraph}>Hey!</Text>
                 <Text style={paragraph}>
-                    We're excited to announce that applications for EurekaHACKS 2025 are now open!
-                    Join us on April 5th, 2025 at Abbey Park High School for an unforgettable day of
-                    innovation, learning, and fun.
+                    We're excited to announce that applications for EurekaHACKS 2026 are now open!
                 </Text>
                 <Section style={highlightBox}>
                     <Text style={highlightText}>
                         📍 Location: Abbey Park High School<br/>
-                        📅 Date: April 5th, 2025<br/>
-                        ⏰ Duration: 12 hours<br/>
+                        📅 Date: May 1st - May 2nd, 2026<br/>
+                        ⏰ Duration: 29 hours<br/>
                         💻 Open to all high school students
                     </Text>
                 </Section>
@@ -68,7 +66,7 @@ export const ApplicationsOpenTemplate = ({
                 </Text>
                 <Hr style={hr}/>
                 <Text style={footer}>
-                    Copyright © EurekaHACKS 2025, All rights reserved. | <Link target="_blank"
+                    Copyright © EurekaHACKS 2026, All rights reserved. | <Link target="_blank"
                                                                                href={unsubscribeLink}>Unsubscribe</Link>
                 </Text>
             </Container>

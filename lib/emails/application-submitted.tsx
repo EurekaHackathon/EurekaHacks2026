@@ -35,7 +35,7 @@ export const ApplicationSubmittedTemplate = ({
                 />
                 <Text style={paragraph}>Hey {userFirstname}!</Text>
                 <Text style={paragraph}>
-                    Thanks for applying to EurekaHACKS 2025! Your hacker application has been successfully submitted.
+                    Thanks for applying to EurekaHACKS 2026! Your hacker application has been successfully submitted.
                     We will review your application and get back to you soon. If you have any questions or concerns,
                     please contact <a href="mailto:hello@eurekahacks.ca">hello@eurekahacks.ca</a>.
                 </Text>

@@ -19,7 +19,7 @@ const initialState = {
 
 export default function ApplicationForm() {
     const [state, formAction, pending] = useActionState(apply, initialState);
-    const defaultYears = ["2025", "2026", "2027", "2028", "other"];
+    const defaultYears = ["2025", "2026", "2027", "2028", "2029", "other"];
     const [graduationYear, setGraduationYear] = useState(
         defaultYears.includes(
             state.payload?.get("graduation-year") as (string | undefined) ?? "") ?
@@ -115,6 +115,7 @@ export default function ApplicationForm() {
                                 <SelectItem value="2026">2026</SelectItem>
                                 <SelectItem value="2027">2027</SelectItem>
                                 <SelectItem value="2028">2028</SelectItem>
+                                <SelectItem value="2029">2029</SelectItem>
                                 <SelectItem value="other">Other</SelectItem>
                             </SelectGroup>
                         </SelectContent>
