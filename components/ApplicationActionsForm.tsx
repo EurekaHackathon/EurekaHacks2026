@@ -71,7 +71,7 @@ export function ApplicationActionsForm({ id }: { id: number }) {
                     Accept
                 </button>
                 <button onClick={() => updateStatus("submitted", 3)}
-                        className="py-2 border-secondary-600 border rounded-lg text-secondary-600 flex items-center gap-2 justify-center duration-200 ease-in-out hover:scale-105">
+                        className="py-2 border-secondary-50 border rounded-lg text-secondary-50 flex items-center gap-2 justify-center duration-200 ease-in-out hover:scale-105">
                     {isLoading[3] ? <Icon icon="eos-icons:loading" className="text-2xl animate-spin"/> :
                         <Icon icon="fluent:arrow-reset-20-filled" className="text-2xl"/>}
                     Reset status

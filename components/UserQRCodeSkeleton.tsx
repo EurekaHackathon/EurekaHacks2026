@@ -20,7 +20,7 @@ export default function UserQRCodeSkeleton() {
             <div
                 className="flex flex-col items-center bg-[#151c2b] border border-gray-300 p-8 md:p-10 lg:p-12 rounded-xl">
                 <div>
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl text-secondary-600 font-bold">QR Code</h1>
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl text-secondary-50 font-bold">QR Code</h1>
                     <p className="md:text-lg text-gray-500 mt-1">Use this QR code to check in and receive food.</p>
                 </div>
                 <Image
@@ -30,10 +30,10 @@ export default function UserQRCodeSkeleton() {
                     alt="qrcode"/>
                 <div className="flex flex-row w-full justify-end mt-4 md:mt-6 gap-4">
                     <Skeleton
-                        className="bg-secondary-300 text-white min-h-9 min-w-9 px-2 py-2 rounded-md">
+                        className="bg-secondary-50 text-white min-h-9 min-w-9 px-2 py-2 rounded-md">
                     </Skeleton>
                     <Skeleton
-                        className="bg-secondary-300 text-white min-h-9 min-w-9 px-2 py-2 rounded-md">
+                        className="bg-secondary-50 text-white min-h-9 min-w-9 px-2 py-2 rounded-md">
                     </Skeleton>
                 </div>
             </div>

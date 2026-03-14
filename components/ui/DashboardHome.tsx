@@ -79,17 +79,17 @@ export default function DashboardHome() {
             </h1>
             <div className="border border-gray-300 mt-12 rounded-lg bg-[#151c2b] py-8 px-12">
                 <div className="flex justify-between">
-                    <h2 className="text-secondary-600 font-semibold text-2xl">Application status</h2>
-                    <Icon icon="fluent:form-multiple-48-filled" className="text-secondary-600 text-4xl"/>
+                    <h2 className="text-secondary-50 font-semibold text-2xl">Application status</h2>
+                    <Icon icon="fluent:form-multiple-48-filled" className="text-secondary-50 text-4xl"/>
                 </div>
                 {(applicationStatus?.status === "unsubmitted" || !applicationStatus) &&
                     <>
                         <h1 className="text-[#f0c24f] font-bold text-4xl md:text-5xl pt-6">Not submitted</h1>
-                        <p className="text-secondary-600 text-lg pt-2 pb-8 font-medium">
+                        <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
                             You haven't started your application yet. Click the button below to start your application.
                         </p>
                         <Link href="/dashboard/application"
-                              className="bg-secondary-600 text-xl py-2 px-4 rounded-lg text-gray-100 font-medium hover:bg-[#1435a0] duration-200">
+                              className="bg-secondary-50 text-xl py-2 px-4 rounded-lg text-secondary-900 font-medium hover:bg-secondary-200 duration-200">
                             Open application
                         </Link>
                     </>
@@ -97,7 +97,7 @@ export default function DashboardHome() {
                 {applicationStatus?.status === "submitted" &&
                     <>
                         <h1 className="text-[#f0c24f] font-bold text-4xl md:text-5xl pt-6">Submitted</h1>
-                        <p className="text-secondary-600 text-lg pt-2 pb-8 font-medium">
+                        <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
                             Your application has been submitted. We will review your application and get back to you
                             soon.
                         </p>
@@ -113,20 +113,20 @@ export default function DashboardHome() {
                                 </div>
                             </>
                         }
-                        <p className="text-secondary-600 text-lg pt-2 pb-8 font-medium">
+                        <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
                             Congratulations! Your application has been
                             accepted. {rsvpStatus ? "You have RSVP'd and your spot is confirmed." : "Please RSVP to confirm your spot."}
                         </p>
                         {rsvpStatus &&
                             <button onClick={cancelRsvp} disabled={rsvpLoading}
-                                    className="flex justify-center items-center bg-secondary-600 text-xl py-2 px-4 h-12 w-40 rounded-lg text-gray-100 font-medium hover:bg-[#1435a0] duration-200">
+                                    className="flex justify-center items-center bg-secondary-50 text-xl py-2 px-4 h-12 w-40 rounded-lg text-secondary-900 font-medium hover:bg-secondary-200 duration-200">
                                 {!rsvpLoading && "Cancel RSVP"}
                                 {rsvpLoading && <Icon icon="eos-icons:loading" className="text-2xl animate-spin"/>}
                             </button>
                         }
                         {!rsvpStatus &&
                             <button onClick={rsvp} disabled={rsvpLoading}
-                                    className="flex justify-center items-center bg-secondary-600 text-xl py-2 px-4 h-12 w-40 rounded-lg text-gray-100 font-medium hover:bg-[#1435a0] duration-200">
+                                    className="flex justify-center items-center bg-secondary-50 text-xl py-2 px-4 h-12 w-40 rounded-lg text-secondary-900 font-medium hover:bg-secondary-200 duration-200">
                                 {!rsvpLoading && "RSVP"}
                                 {rsvpLoading && <Icon icon="eos-icons:loading" className="text-2xl animate-spin"/>}
                             </button>
@@ -136,7 +136,7 @@ export default function DashboardHome() {
                 {applicationStatus?.status === "rejected" &&
                     <>
                         <h1 className="text-[#f0c24f] font-bold text-4xl md:text-5xl pt-6">Rejected</h1>
-                        <p className="text-secondary-600 text-lg pt-2 pb-8 font-medium">
+                        <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
                             We're sorry, but your application has been rejected.
                         </p>
                     </>
@@ -145,19 +145,19 @@ export default function DashboardHome() {
             <div className="flex 2xl:flex-row flex-col gap-8 mt-8">
                 <div className="border border-gray-300 rounded-lg bg-[#151c2b] py-8 px-12 flex-1 overflow-hidden">
                     <div className="flex justify-between">
-                        <h2 className="text-secondary-600 font-semibold text-2xl">Time until application deadline</h2>
-                        <Icon icon="fluent:clock-12-filled" className="text-secondary-600 text-4xl"/>
+                        <h2 className="text-secondary-50 font-semibold text-2xl">Time until application deadline</h2>
+                        <Icon icon="fluent:clock-12-filled" className="text-secondary-50 text-4xl"/>
                     </div>
                     <DeadlineCountdown/>
-                    <p className="text-secondary-600 text-lg pt-2 pb-8 font-medium">
+                    <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
                         Applications will remain open until the day of the hackathon.<br/>They are due on April 30th,
                         2026 at 11:59 PM EST.
                     </p>
                 </div>
                 <div className="border border-gray-300 rounded-lg bg-[#151c2b] py-8 px-12 flex-1 overflow-hidden">
                     <div className="flex justify-between">
-                        <h2 className="text-secondary-600 font-semibold text-2xl">Time until Hackathon</h2>
-                        <Icon icon="fluent:hourglass-half-16-regular" className="text-secondary-600 text-4xl"/>
+                        <h2 className="text-secondary-50 font-semibold text-2xl">Time until Hackathon</h2>
+                        <Icon icon="fluent:hourglass-half-16-regular" className="text-secondary-50 text-4xl"/>
                     </div>
                     <CountdownTimer/>
                 </div>
@@ -165,45 +165,45 @@ export default function DashboardHome() {
             <div className="flex flex-col md:flex-row gap-8 mt-8">
                 <div className="border border-gray-300 rounded-lg bg-[#151c2b] py-8 px-12 flex-1 overflow-hidden">
                     <div className="flex justify-between">
-                        <h2 className="text-secondary-600 font-semibold text-2xl">Discord server</h2>
-                        <Icon icon="ic:baseline-discord" className="text-secondary-600 text-4xl"/>
+                        <h2 className="text-secondary-50 font-semibold text-2xl">Discord server</h2>
+                        <Icon icon="ic:baseline-discord" className="text-secondary-50 text-4xl"/>
                     </div>
                     <h1 className="text-[#f0c24f] font-bold text-5xl pt-6">Our Discord server</h1>
-                    <p className="text-secondary-600 text-lg pt-2 pb-8 font-medium">
+                    <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
                         Join our Discord to connect with hackers and receive important announcements.
                     </p>
                     {applicationStatus?.status === "accepted" &&
                         <a href="https://discord.gg/GCheXYbSeY" target="_blank" rel="noopener noreferrer"
-                           className="bg-secondary-600 text-xl py-2 px-4 rounded-lg text-gray-100 font-medium hover:bg-[#1435a0] duration-200">
+                           className="bg-secondary-50 text-xl py-2 px-4 rounded-lg text-secondary-900 font-medium hover:bg-secondary-200 duration-200">
                             Discord
                         </a>
                     }
                     {applicationStatus?.status !== "accepted" &&
                         <a href="https://discord.gg/GCheXYbSeY" target="_blank" rel="noopener noreferrer"
-                           className="bg-secondary-600 text-xl py-2 px-4 rounded-lg text-gray-100 font-medium hover:bg-[#1435a0] duration-200">
+                           className="bg-secondary-50 text-xl py-2 px-4 rounded-lg text-secondary-900 font-medium hover:bg-secondary-200 duration-200">
                             Discord
                         </a>
                     }
                 </div>
                 <div className="border border-gray-300 rounded-lg bg-[#151c2b] py-8 px-12 flex-1 overflow-hidden">
                     <div className="flex justify-between">
-                        <h2 className="text-secondary-600 font-semibold text-2xl">Hacker package</h2>
-                        <Icon icon="fluent:book-information-20-filled" className="text-secondary-600 text-4xl"/>
+                        <h2 className="text-secondary-50 font-semibold text-2xl">Hacker package</h2>
+                        <Icon icon="fluent:book-information-20-filled" className="text-secondary-50 text-4xl"/>
                     </div>
                     <h1 className="text-[#f0c24f] font-bold text-5xl pt-6">View hacker package</h1>
-                    <p className="text-secondary-600 text-lg pt-2 pb-8 font-medium">
+                    <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
                         View the hacker package, complete with event info and schedules for EurekaHACKS 2026.
                     </p>
                     {applicationStatus?.status === "accepted" &&
                         <Link
-                            className="bg-secondary-600 text-xl py-2 px-4 rounded-lg text-gray-100 font-medium hover:bg-[#1435a0] duration-200"
+                            className="bg-secondary-50 text-xl py-2 px-4 rounded-lg text-secondary-900 font-medium hover:bg-secondary-200 duration-200"
                             href="/hacker-package.pdf" target="_blank" rel="noopener noreferrer">
                             View
                         </Link>
                     }
                     {applicationStatus?.status !== "accepted" &&
                         <Link href="/dashboard" aria-disabled="true" tabIndex={-1}
-                              className="pointer-events-none bg-secondary-300 text-xl py-2 px-4 rounded-lg text-gray-100 font-medium hover:bg-[#1435a0] duration-200">
+                               className="pointer-events-none bg-secondary-200 bg-opacity-50 text-xl py-2 px-4 rounded-lg text-gray-400 font-medium">
                             Coming soon
                         </Link>
                     }

@@ -34,7 +34,7 @@ export function DashboardNav() {
 
     return (
         <>
-            <nav className="lg:hidden fixed flex items-center bg-[#151c2b] text-secondary-600 py-3 px-5 w-screen border-b">
+            <nav className="lg:hidden fixed flex items-center bg-[#151c2b] text-secondary-50 py-3 px-5 w-screen border-b">
                 <button onClick={() => setOpen(!open)}>
                     <Icon icon="fluent:navigation-16-filled" className={cn(
                         "text-3xl md:text-4xl",
@@ -46,7 +46,7 @@ export function DashboardNav() {
                 "top-0 fixed lg:relative w-full lg:w-[25%] max-w-sm z-10 bg-[#151c2b] h-screen flex justify-between flex-col border-r border-gray-600 border-opacity-20 transition",
                 !open && "translate-x-[-100%] lg:translate-x-0"
             )}>
-                <div className="text-secondary-600 px-8 pt-10 flex justify-between lg:justify-center gap-2">
+                <div className="text-secondary-50 px-8 pt-10 flex justify-between lg:justify-center gap-2">
                     <Link href="/" className="flex items-center gap-2">
                         <Image className="w-12 md:w-16 lg:w-10 h-auto" src={logo} alt="EurekaHACKS Logo"/>
                         <div className="text-[#f0c24f] text-2xl md:text-3xl lg:text-xl font-bold pr-10">
@@ -68,10 +68,10 @@ export function DashboardNav() {
                         <DashboardNavItem icon="fluent:people-16-filled" text="Admin" route="/dashboard/admin"/>}
                 </div>
                 <div className="pb-12">
-                    <div className="flex items-center text-secondary-600 gap-3 justify-center pt-32">
+                    <div className="flex items-center text-secondary-50 gap-3 justify-center pt-32">
                         <div
                             className="flex items-center justify-center h-10 w-10 bg-[#151c2b] rounded-full border-gray-300 border">
-                            <h1 className="font-bold text-secondary-600">
+                            <h1 className="font-bold text-secondary-50">
                                 {initials}
                             </h1>
                         </div>
