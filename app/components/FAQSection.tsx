@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, Variants } from "framer-motion";
+import "./faq-styles.css"
 
 interface FAQItem {
   question: string;
@@ -90,15 +91,21 @@ export default function FAQSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? faqData.length - 1 : prev - 1
-    );
+    const step =
+      typeof window !== "undefined" &&
+      window.matchMedia("(max-width: 640px)").matches
+        ? 3
+        : 1;
+    setCurrentIndex((prev) => (prev - step + faqData.length) % faqData.length);
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) =>
-      prev === faqData.length - 1 ? 0 : prev + 1
-    );
+    const step =
+      typeof window !== "undefined" &&
+      window.matchMedia("(max-width: 640px)").matches
+        ? 3
+        : 1;
+    setCurrentIndex((prev) => (prev + step) % faqData.length);
   };
 
   const visibleFAQs = [];
@@ -108,7 +115,7 @@ export default function FAQSection() {
   }
 
   return (
-    <div className="w-screen h-screen !p-12">
+    <div className="w-screen p-12 max-sm:p-4">
       <div id="faq" className="border-12 border-white shadow-2xl w-full p-6 bg-[#0a1c29]">
           <h2 className="faq-title">FAQ</h2>
 
@@ -177,7 +184,11 @@ export default function FAQSection() {
           </div>
 
           <div className="faq-illustration">
-            <img src="/mascots/minions_frame1.png" alt="FAQ Illustration" />
+            {/* show one image at a time, switching when arrows change currentIndex */}
+            <img
+              src={`/mascots/minions_frame${(currentIndex % 2) + 1}.png`}
+              alt="FAQ Illustration"
+            />
           </div>
       </div>
     </div>

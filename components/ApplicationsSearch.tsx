@@ -10,7 +10,7 @@ export default function ApplicationsSearch({query}: { query: string, page: numbe
     const [searchQuery, setSearchQuery] = useState(query);
     const [debouncedQuery, setDebouncedQuery] = useState(searchQuery);
     const [rsvpParam, setRsvpParam] = useState(useSearchParams().get("rsvp") === "true");
-    let [changed, setChanged] = useState(false);
+    const [changed, setChanged] = useState(false);
 
     useEffect(() => {
         const handler = setTimeout(() => {
