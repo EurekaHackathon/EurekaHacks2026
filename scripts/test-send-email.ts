@@ -7,8 +7,8 @@ const transporter = NodeMailer.createTransport({
   port: 587, // Port for TLS, use 465 for SSL
   secure: false, // Use TLS (false for port 587)
   auth: {
-    user: "hello@eurekahacks.ca", // Your Privatemail address
-    pass: process.env.SMTP_PASS, // Your Privatemail password
+    user: process.env.SMTP_USER, // Your Privatemail address
+    pass: process.env.SMTP_PASSWORD, // Your Privatemail password
   },
   tls: {
     rejectUnauthorized: false, // Ignore self-signed certificate issues (if any)
