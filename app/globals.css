@@ -129,25 +129,29 @@ body {
 }
 
 .diamond {
-  background: radial-gradient(circle, rgba(58, 99, 140, 1) 0%, rgb(46, 126, 146) 50%, rgb(84, 131, 175) 100%);
-  box-shadow: 0 0 15px rgba(84, 131, 175, 0.6), 0 0 30px rgba(84, 131, 175, 0.4);
+  background: linear-gradient(135deg, rgba(185, 207, 254, 0.8) 0%, rgba(185, 207, 254, 0.95) 100%);
+  border: 2px solid rgba(185, 207, 254, 0.9);
+  box-shadow: 0 4px 15px rgba(185, 207, 254, 0.3);
 }
 
 .bronze {
-  background: radial-gradient(circle, rgba(205, 127, 50, 1) 0%, rgb(180, 100, 30) 50%, rgb(150, 75, 20) 100%);
-  box-shadow: 0 0 15px rgba(205, 127, 50, 0.6), 0 0 30px rgba(205, 127, 50, 0.4);
+  background: linear-gradient(135deg, rgba(205, 127, 50, 0.8) 0%, rgba(205, 127, 50, 0.95) 100%);
+  border: 2px solid rgba(205, 127, 50, 0.9);
+  box-shadow: 0 4px 15px rgba(205, 127, 50, 0.3);
 }
 
 .silver {
-  background: radial-gradient(circle, rgba(192, 192, 192, 1) 0%, rgb(160, 160, 160) 50%, rgb(130, 130, 130) 100%);
-  box-shadow: 0 0 15px rgba(192, 192, 192, 0.6), 0 0 30px rgba(192, 192, 192, 0.4);
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.8) 0%, rgba(192, 192, 192, 0.95) 100%);
+  border: 2px solid rgba(192, 192, 192, 0.9);
+  box-shadow: 0 4px 15px rgba(192, 192, 192, 0.3);
 }
 
 
 
 .gold {
-  background: radial-gradient(circle, rgba(255, 215, 0, 1) 0%, rgb(220, 180, 0) 50%, rgb(180, 140, 0) 100%);
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.4);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.8) 0%, rgba(255, 215, 0, 0.95) 100%);
+  border: 2px solid rgba(255, 215, 0, 0.9);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 }
 
 
