@@ -50,7 +50,7 @@ export const InfoEmailTemplate = ({firstName}: InfoTemplateProps) => (
                     Registration will be open from 7:30 AM to 8:00 AM, at the front entrance of the school. Please have
                     your <a href="https://eurekahacks.ca/dashboard/qrcode" target="_blank">QR code</a> ready to be
                     scanned. If you cannot make it to registration, please reach out to us through our <a
-                    href="https://discord.gg/ApEmE7g7GB" target="_blank">Discord server</a> or email us at <a
+                    href="https://discord.gg/GCheXYbSeY" target="_blank">Discord server</a> or email us at <a
                     href="mailto:hello@eurekahacks.ca">hello@eurekahacks.ca</a>.
                 </Text>
                 <br/>
@@ -61,7 +61,7 @@ export const InfoEmailTemplate = ({firstName}: InfoTemplateProps) => (
                 <Text style={paragraph}>
                     Discord will be our main way of communicating during the event. We will be send out important
                     updates through the event, so please make sure to join if you haven't already! You can join using
-                    this link: <a href="https://discord.gg/ApEmE7g7GB" target="_blank">https://discord.gg/ApEmE7g7GB</a>.
+                    this link: <a href="https://discord.gg/GCheXYbSeY" target="_blank">https://discord.gg/GCheXYbSeY</a>.
                 </Text>
                 <br/>
                 <Hr style={hr}/>

@@ -60,6 +60,20 @@
   }
 }
 
+@keyframes starTwinkle {
+  0%   { opacity: 0.25; }
+  100% { opacity: 1; }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #030712 inset !important;
+  -webkit-text-fill-color: #f3f4f6 !important;
+  caret-color: #f3f4f6;
+}
+
 .skeleton-pulse {
   animation: skeleton-pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

@@ -37,14 +37,14 @@ export default function LoginForm() {
     const [state, formAction, pending] = useActionState(loginWithEmail, initialState);
     return (
         <div
-            className="bg-gray-50 p-8 md:p-12 lg:p-16 rounded-2xl text-gray-700 min-w-[40vw] max-w-[90vw] lg:w-[750px]">
+            className="bg-[#151c2b] p-8 md:p-12 lg:p-16 rounded-2xl text-gray-100 min-w-[40vw] max-w-[90vw] lg:w-[750px]">
             <h1 className="text-2xl md:text-4xl font-bold">Log in to your account</h1>
             <h2 className="md:text-xl font-medium pt-2">Log in to apply to EurekaHACKS</h2>
             <form className="pt-12" action={formAction}>
                 <label className="flex flex-col md:text-lg">
                     Email
                     <input
-                        className="mt-2 rounded-xl py-4 px-6 border-gray-300 border hover:border-secondary-300 focus:outline-none"
+                        className="mt-2 rounded-xl py-4 px-6 bg-[#030712] border-secondary-700 border hover:border-secondary-500 focus:outline-none text-gray-100 placeholder-gray-500"
                         type="email"
                         required
                         name="email" placeholder="hello@eurekahacks.ca"/>
@@ -53,7 +53,7 @@ export default function LoginForm() {
                     Password
                     <div className="flex mt-2 items-center">
                         <input
-                            className="rounded-xl py-4 px-6 border-gray-300 border hover:border-secondary-200 focus:outline-none w-full"
+                            className="rounded-xl py-4 px-6 bg-[#030712] border-secondary-700 border hover:border-secondary-500 focus:outline-none text-gray-100 placeholder-gray-500 w-full"
                             type={passwordVisible ? "text" : "password"}
                             required
                             name="password" placeholder="••••••••••••"/>
@@ -71,7 +71,7 @@ export default function LoginForm() {
                     {!pending && state?.error}
                 </p>
                 <button
-                    className="mt-2 flex justify-center bg-secondary-500 text-gray-50 font-semibold md:text-xl w-full py-4 rounded-xl hover:bg-[#1a42c8] duration-200"
+                    className="mt-2 flex justify-center bg-[#f0c24f] text-gray-900 font-semibold md:text-xl w-full py-4 rounded-xl hover:bg-[#e5b73e] duration-200"
                     type="submit" disabled={pending}>
                     {!pending && "Log in"}
                     {pending && "​"}
@@ -79,7 +79,7 @@ export default function LoginForm() {
                 </button>
             </form>
             <button onClick={loginWithGithub}
-                className="flex items-center justify-center gap-2 border font-semibold border-gray-300 md:text-xl mt-4 w-full py-4 rounded-xl hover:border-secondary-500 duration-200">
+                className="flex items-center justify-center gap-2 border font-semibold border-secondary-700 text-gray-100 md:text-xl mt-4 w-full py-4 rounded-xl hover:border-secondary-500 hover:bg-secondary-950 duration-200">
                 <div className="min-w-6 md:min-w-8">
                     <Icon icon="logos:github-icon" className="text-xl md:text-2xl"/>
                 </div>

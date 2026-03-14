@@ -39,7 +39,7 @@ export const apply = async (_prevState: any, formData: FormData) => {
         city = formData.get("city-other");
     }
     const numberHackathonsAttended = formData.get("number-hackathons-attended");
-    const shortAnswer = "none";
+    const shortAnswer = formData.get("short-answer");
     const dietaryRestrictions: Record<string, FormDataEntryValue | null> = {};
     for (const restriction of dietaryRestrictionsList) {
         dietaryRestrictions[restriction] = formData.get(restriction);
@@ -63,7 +63,7 @@ export const apply = async (_prevState: any, formData: FormData) => {
         graduationYear: safeParseNumber(graduationYear),
         city,
         numberHackathonsAttended: safeParseNumber(numberHackathonsAttended),
-        shortAnswer,
+        shortAnswer: shortAnswer?.toString() ?? "",
         lactoseIntolerant: dietaryRestrictions["Lactose Intolerant"] === "on",
         halal: dietaryRestrictions["Halal"] === "on",
         vegetarian: dietaryRestrictions["Vegetarian"] === "on",
@@ -169,7 +169,7 @@ export const apply = async (_prevState: any, formData: FormData) => {
     const emailText = `
                 Hey ${user.firstName ?? "Hacker"}!
         
-                Thanks for applying to EurekaHACKS 2025! Your hacker application has been successfully submitted. We will review your application and get back to you soon. If you have any questions or concerns, please contact hello@eurekahacks.ca.
+                Thanks for applying to EurekaHACKS 2026! Your hacker application has been successfully submitted. We will review your application and get back to you soon. If you have any questions or concerns, please contact hello@eurekahacks.ca.
                 
                 Best,
                 The EurekaHACKS Team

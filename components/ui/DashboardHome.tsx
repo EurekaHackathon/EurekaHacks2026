@@ -173,16 +173,15 @@ export default function DashboardHome() {
                         Join our Discord to connect with hackers and receive important announcements.
                     </p>
                     {applicationStatus?.status === "accepted" &&
-                        <a href="https://discord.gg/ApEmE7g7GB" target="_blank" rel="noopener noreferrer"
+                        <a href="https://discord.gg/GCheXYbSeY" target="_blank" rel="noopener noreferrer"
                            className="bg-secondary-600 text-xl py-2 px-4 rounded-lg text-gray-100 font-medium hover:bg-[#1435a0] duration-200">
                             Discord
                         </a>
                     }
                     {applicationStatus?.status !== "accepted" &&
-                        <a href="https://discord.gg/ApEmE7g7GB" target="_blank" rel="noopener noreferrer"
-                           aria-disabled="true" tabIndex={-1}
-                           className="pointer-events-none bg-secondary-300 text-xl py-2 px-4 rounded-lg text-gray-100 font-medium hover:bg-[#1435a0] duration-200">
-                            Coming soon
+                        <a href="https://discord.gg/GCheXYbSeY" target="_blank" rel="noopener noreferrer"
+                           className="bg-secondary-600 text-xl py-2 px-4 rounded-lg text-gray-100 font-medium hover:bg-[#1435a0] duration-200">
+                            Discord
                         </a>
                     }
                 </div>

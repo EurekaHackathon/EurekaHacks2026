@@ -19,7 +19,7 @@ const initialState = {
 
 export default function ApplicationForm() {
     const [state, formAction, pending] = useActionState(apply, initialState);
-    const defaultYears = ["2025", "2026", "2027", "2028", "2029", "other"];
+    const defaultYears = ["2026", "2027", "2028", "2029", "other"];
     const [graduationYear, setGraduationYear] = useState(
         defaultYears.includes(
             state.payload?.get("graduation-year") as (string | undefined) ?? "") ?
@@ -54,7 +54,7 @@ export default function ApplicationForm() {
         <form className="mt-8" action={formAction}>
 
             <div className="mb-6">
-                <h2 className="text-3xl font-semibold mt-8">Personal information</h2>
+                <h2 className="text-3xl font-semibold mt-8 text-[#f0c24f]">Personal information</h2>
             </div>
 
             <div className="grid gap-4 mb-4">
@@ -111,7 +111,6 @@ export default function ApplicationForm() {
                         </SelectTrigger>
                         <SelectContent>
                             <SelectGroup>
-                                <SelectItem value="2025">2025</SelectItem>
                                 <SelectItem value="2026">2026</SelectItem>
                                 <SelectItem value="2027">2027</SelectItem>
                                 <SelectItem value="2028">2028</SelectItem>
@@ -138,11 +137,11 @@ export default function ApplicationForm() {
                            name="number-hackathons-attended" placeholder={0}/>
                 </div>
                 <div>
-                    <h2 className="text-3xl font-semibold mt-8">Dietary Restrictions</h2>
-                    <h3 className="font-medium text-gray-500">Select all that apply</h3>
+                    <h2 className="text-3xl font-semibold mt-8 text-[#f0c24f]">Dietary Restrictions</h2>
+                    <h3 className="font-medium text-gray-400">Select all that apply</h3>
                 </div>
 
-                <div className="border rounded-md border-gray-300 py-4 px-6 grid gap-2">
+                <div className="border rounded-md border-secondary-700 py-4 px-6 grid gap-2">
                     {dietaryRestrictionsList.map((name, key) =>
                         <div key={key} className="flex items-center gap-4">
                             <Checkbox defaultChecked={dietaryRestrictions[name]}
@@ -169,8 +168,8 @@ export default function ApplicationForm() {
                 </div>
 
                 <div>
-                    <h2 className="text-3xl font-semibold mt-8">Socials</h2>
-                    <h3 className="font-medium text-gray-500">(Optional)</h3>
+                    <h2 className="text-3xl font-semibold mt-8 text-[#f0c24f]">Socials</h2>
+                    <h3 className="font-medium text-gray-400">(Optional)</h3>
                 </div>
 
                 <Input
@@ -206,8 +205,8 @@ export default function ApplicationForm() {
                 />
 
                 <div className="mb-6">
-                    <h2 className="text-3xl font-semibold mt-8">Emergency Contact Information</h2>
-                    <h3 className="font-medium text-gray-500">Include your parent/guardian's information here</h3>
+                    <h2 className="text-3xl font-semibold mt-8 text-[#f0c24f]">Emergency Contact Information</h2>
+                    <h3 className="font-medium text-gray-400">Include your parent/guardian's information here</h3>
                 </div>
 
                 <div className="flex flex-col lg:flex-row gap-4">
@@ -228,6 +227,20 @@ export default function ApplicationForm() {
                 </div>
             </div>
 
+            <div className="mb-4">
+                <h2 className="text-3xl font-semibold mt-8 mb-4 text-[#f0c24f]">Short Answer</h2>
+                <label className="block text-lg font-medium text-gray-100 mb-1">
+                    If aliens landed tomorrow and asked you to show them one piece of human culture, what would you show them? <span className="text-error-600">*</span>
+                </label>
+                <p className="text-gray-400 text-sm mb-2">200 words max</p>
+                <CharacterLimiter
+                    label="Short answer"
+                    name="short-answer"
+                    maxChars={1200}
+                    defaultValue={state.payload?.get("short-answer")}
+                />
+            </div>
+
             <button
                 className="bg-secondary-600 text-gray-100 font-medium py-2 px-4 rounded-lg mt-8 hover:bg-[#1435a0] duration-200 relative"
                 type="submit" disabled={pending}>
@@ -245,12 +258,12 @@ function PhoneInput({ label, ...props }: any) {
 
     return (
         <div className="flex-1">
-            <label className="block text-lg font-medium">
+            <label className="block text-lg font-medium text-gray-100">
                 {label} {props.required && <span className="text-error-600">*</span>}
             </label>
             <input {...props}
                    type="tel"
-                   className="border-gray-300 border hover:border-secondary-300 focus:outline-none rounded-lg w-full py-2 px-4 mt-2"
+                   className="border-secondary-700 border hover:border-secondary-500 focus:outline-none rounded-lg w-full py-2 px-4 mt-2 bg-[#030712] text-gray-100 placeholder-gray-500"
                    placeholder="(555) 555-555"
                    value={value}
                    onChange={e => {
@@ -293,9 +306,9 @@ function CharacterLimiter({ maxChars, defaultValue, name }: {
                 name={name}
                 value={value}
                 onChange={handleChange}
-                className="resize-none h-32 border-gray-300 border hover:border-secondary-300 focus:outline-none rounded-lg w-full py-2 px-4 mt-2"
+                className="resize-none h-40 border-secondary-700 border hover:border-secondary-500 focus:outline-none rounded-lg w-full py-2 px-4 mt-2 bg-[#030712] text-gray-100 placeholder-gray-500"
             />
-            <div className="text-right text-sm text-gray-500">
+            <div className="text-right text-sm text-gray-400">
                 {remainingChars} characters remaining
             </div>
         </div>

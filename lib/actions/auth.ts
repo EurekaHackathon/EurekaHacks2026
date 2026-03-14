@@ -182,15 +182,32 @@ export const signUpWithEmail = async (prevState: any, formData: FormData) => {
             return {error: "Internal server error, please try again later", payload: formData};
         }
 
-        await sendVerificationEmail({
-            emailVerificationToken: emailVerificationToken,
-            firstName: firstName,
-            email: email,
-        });
+        if (process.env.DEV === "true") {
+            // In dev mode, auto-verify email and skip sending
+            await db`UPDATE public.app_users SET email_verified = true WHERE id = ${user.id}`;
+            const sessionToken = await generateSessionToken();
+            await createSession(sessionToken, user.id);
+            const cookieStore = await cookies();
+            cookieStore.set("session", sessionToken, {
+                httpOnly: true,
+                secure: false,
+                sameSite: "lax",
+                expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+            });
+        } else {
+            await sendVerificationEmail({
+                emailVerificationToken: emailVerificationToken,
+                firstName: firstName,
+                email: email,
+            });
+        }
 
     } catch (error) {
         console.error(error);
         return {error: "Internal server error, please try again later", payload: formData};
+    }
+    if (process.env.DEV === "true") {
+        redirect("/dashboard");
     }
     redirect(`/verify-email-prompt?id=${emailVerificationTokenRecord.id}`);
 };

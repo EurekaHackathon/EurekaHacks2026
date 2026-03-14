@@ -5,6 +5,7 @@ import { DashboardNav } from "@/components/DashboardNav";
 import { Toaster } from "@/components/Toaster";
 import { getApplicationStatus, getRsvpStatus } from "@/lib/sqlc/application_sql";
 import { db } from "@/lib/database";
+import { StarField } from "@/components/StarField";
 
 export default async function Layout({
                                          children,
@@ -25,6 +26,7 @@ export default async function Layout({
     return (
         <>
             <DashboardProvider value={{user, applicationStatus, rsvpStatus: rsvpStatus !== null}}>
+                <StarField />
                 <div className="h-screen flex flex-row w-full">
                     <DashboardNav/>
                     <div className="overflow-y-auto w-full lg:px-20">

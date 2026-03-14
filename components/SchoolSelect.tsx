@@ -46,7 +46,7 @@ export function SchoolSelect({ payload }: { payload: FormData | undefined }) {
                     <button
                         role="combobox"
                         aria-expanded={open}
-                        className="w-full border font-medium flex items-center py-2 px-4 rounded-lg border-gray-300 justify-between"
+                        className="w-full border font-medium flex items-center py-2 px-4 rounded-lg border-secondary-700 hover:border-secondary-500 justify-between bg-[#030712] text-gray-100 mt-2"
                     >
                         {value
                             ? data.find((school) => school.value === value)?.label

@@ -29,7 +29,7 @@ export default function RegistrationForm() {
 
     return (
         <div
-            className="bg-gray-50 p-8 md:p-12 lg:p-16 rounded-2xl text-gray-700 min-w-[40vw] max-w-[90vw] lg:w-[750px]">
+            className="bg-[#151c2b] p-8 md:p-12 lg:p-16 rounded-2xl text-gray-100 min-w-[40vw] max-w-[90vw] lg:w-[750px]">
             <h1 className="text-2xl md:text-4xl font-bold">Create an account</h1>
             <h2 className="md:text-xl font-medium pt-2">Register to apply to EurekaHACKS</h2>
             <form className="pt-12" action={formAction}>
@@ -37,7 +37,7 @@ export default function RegistrationForm() {
                     <label className="flex flex-col md:text-lg w-full">
                         First Name
                         <input
-                            className="mt-2 rounded-xl py-4 px-6 border-gray-300 border hover:border-secondary-300 focus:outline-none"
+                            className="mt-2 rounded-xl py-4 px-6 bg-[#030712] border-secondary-700 border hover:border-secondary-500 focus:outline-none text-gray-100 placeholder-gray-500"
                             type="text"
                             required
                             defaultValue={state.payload.get("first-name") as string || undefined}
@@ -46,7 +46,7 @@ export default function RegistrationForm() {
                     <label className="flex flex-col md:text-lg w-full">
                         Last Name
                         <input
-                            className="mt-2 rounded-xl py-4 px-6 border-gray-300 border hover:border-secondary-300 focus:outline-none"
+                            className="mt-2 rounded-xl py-4 px-6 bg-[#030712] border-secondary-700 border hover:border-secondary-500 focus:outline-none text-gray-100 placeholder-gray-500"
                             type="text"
                             required
                             defaultValue={state.payload.get("last-name") as string || undefined}
@@ -56,7 +56,7 @@ export default function RegistrationForm() {
                 <label className="pt-4 lg:pt-6 flex flex-col md:text-lg">
                     Email
                     <input
-                        className="mt-2 rounded-xl py-4 px-6 border-gray-300 border hover:border-secondary-300 focus:outline-none"
+                        className="mt-2 rounded-xl py-4 px-6 bg-[#030712] border-secondary-700 border hover:border-secondary-500 focus:outline-none text-gray-100 placeholder-gray-500"
                         type="email"
                         required
                         defaultValue={state.payload.get("email") as string || undefined}
@@ -68,7 +68,7 @@ export default function RegistrationForm() {
                         <div className="flex mt-2 items-center">
                             <input
                                 required
-                                className="rounded-xl py-4 px-6 border-gray-300 border hover:border-secondary-200 focus:outline-none w-full"
+                                className="rounded-xl py-4 px-6 bg-[#030712] border-secondary-700 border hover:border-secondary-500 focus:outline-none text-gray-100 placeholder-gray-500 w-full"
                                 type={passwordVisible ? "text" : "password"}
                                 defaultValue={state.payload.get("password") as string || undefined}
                                 name="password" placeholder="••••••••••••"/>
@@ -84,7 +84,7 @@ export default function RegistrationForm() {
                         <div className="flex mt-2 items-center">
                             <input
                                 required
-                                className="rounded-xl py-4 px-6 border-gray-300 border hover:border-secondary-200 focus:outline-none w-full"
+                                className="rounded-xl py-4 px-6 bg-[#030712] border-secondary-700 border hover:border-secondary-500 focus:outline-none text-gray-100 placeholder-gray-500 w-full"
                                 type={confirmPasswordVisible ? "text" : "password"}
                                 defaultValue={state.payload.get("confirm-password") as string || undefined}
                                 name="confirm-password" placeholder="••••••••••••"/>
@@ -100,7 +100,7 @@ export default function RegistrationForm() {
                     {!pending && state?.error}
                 </p>
                 <button
-                    className="mt-2 flex justify-center bg-secondary-500 text-gray-50 font-semibold md:text-xl w-full py-4 rounded-xl hover:bg-[#1a42c8] duration-200"
+                    className="mt-2 flex justify-center bg-[#f0c24f] text-gray-900 font-semibold md:text-xl w-full py-4 rounded-xl hover:bg-[#e5b73e] duration-200"
                     type="submit" disabled={pending}>
                     {!pending && "Sign up"}
                     {pending && "​"}
@@ -109,7 +109,7 @@ export default function RegistrationForm() {
             </form>
             <button
                 onClick={signUpWithGithub}
-                className="flex items-center justify-center gap-2 border font-semibold border-gray-300 md:text-xl mt-4 w-full py-4 rounded-xl hover:border-secondary-500 duration-200">
+                className="flex items-center justify-center gap-2 border font-semibold border-secondary-700 text-gray-100 md:text-xl mt-4 w-full py-4 rounded-xl hover:border-secondary-500 hover:bg-secondary-950 duration-200">
                 <div className="min-w-6 md:min-w-8">
                     <Icon icon="logos:github-icon" className="text-xl md:text-2xl"/>
                 </div>
