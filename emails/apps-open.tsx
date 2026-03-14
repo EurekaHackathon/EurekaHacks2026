@@ -9,17 +9,16 @@ interface ApplicationsOpenTemplateProps {
 export const ApplicationsOpenTemplate = ({
     applicationLink, unsubscribeLink
 }: ApplicationsOpenTemplateProps) => (
-    <Email previewText="EurekaHACKS 2025 Applications are Now Open! 🚀" unsubscribeLink={unsubscribeLink}>
+    <Email previewText="EurekaHACKS 2026 Applications are Now Open! 🚀" unsubscribeLink={unsubscribeLink}>
         <Paragraph>Hey!</Paragraph>
         <Paragraph>
-            We're excited to announce that applications for EurekaHACKS 2025 are now open!
-            Join us on April 5th, 2025 at Abbey Park High School for an unforgettable day of
+            We're excited to announce that applications for EurekaHACKS 2026 are now open!
+            Join us from May 1st-2nd at Waterloo Accelerator Center for an unforgettable day of
             innovation, learning, and fun.
         </Paragraph>
         <HighlightSection>
-            📍 Location: Abbey Park High School<br/>
-            📅 Date: April 5th, 2025<br/>
-            ⏰ Duration: 12 hours<br/>
+            📍 Location: Waterloo Accelerator Center (295 Hagey Blvd, Waterloo)<br/>
+            📅 Date: May 1st 5pm - May 2nd 10pm
             💻 Open to all high school students
         </HighlightSection>
         <LinkButton url={applicationLink} text="Apply Now"/>
