@@ -30,9 +30,14 @@ export function CountdownTimer() {
         return () => clearInterval(timer);
     }, []);
 
+    const { days, hours, minutes, seconds } = timeLeft;
+
     return (
         <div className="flex gap-2 text-[#f0c24f] font-bold text-3xl md:text-5xl pt-6 flex-wrap">
-            <h1>Event is over</h1>
+            {days > 0 && <h1>{days}d</h1>}
+            {(days > 0 || hours > 0) && <h1>{hours}h</h1>}
+            {(days > 0 || hours > 0 || minutes > 0) && <h1>{minutes}m</h1>}
+            <h1>{seconds}s</h1>
         </div>
     );
 }
