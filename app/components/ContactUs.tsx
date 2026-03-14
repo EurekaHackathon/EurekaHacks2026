@@ -13,7 +13,7 @@ interface TeamMember {
 }
 
 const TEAM: TeamMember[] = [
-    { name: "John Doe", role: "Co-Founder", description: "Passionate about building the next generation of hackers.", image: undefined },
+    { name: "Daniel Zhu", role: "Sponsorship", description: "When I was a kid, I used to stare at cars. Now, I sit in a car and stare at kids", image: "/team/DanielZhu.png" },
     { name: "Jane Smith", role: "Tech Lead", description: "Architecture and performance wizard.", image: undefined },
     { name: "Alice Wang", role: "Product Designer", description: "Making things pretty and functional.", image: undefined },
     { name: "Bob Lee", role: "Backend Guru", description: "Scalability and reliability expert.", image: undefined },
@@ -224,7 +224,7 @@ export default function ContactUs() {
             </div>
 
             {/* BOTTOM SECTION */}
-            <div style={{ position: "relative", marginTop: 40 }}>
+            <div style={{ position: "relative", marginTop: -40 }}>
                 {/* SVG Border logic */}
                 <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none" }} viewBox="0 0 1000 600" preserveAspectRatio="none">
                     <polygon points="0,160 1043,0 1000,0 1000,600 0,600" stroke="#FFFEF5" strokeWidth="10" fill="none" vectorEffect="non-scaling-stroke" />
