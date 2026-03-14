@@ -4,7 +4,6 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { useActionState, useState } from "react";
 import { loginWithEmail } from "@/lib/actions/auth";
-import { redirect } from "next/navigation";
 
 const initialState = {
     error: ""
@@ -18,7 +17,7 @@ const loginWithGithub = async () => {
         throw new Error("Failed to sign up with Github");
     }
     const { url } = await res.json();
-    redirect(url);
+    window.location.href = url;
 };
 
 const loginWithGoogle = async () => {
@@ -29,7 +28,7 @@ const loginWithGoogle = async () => {
         throw new Error("Failed to sign up with Google");
     }
     const { url } = await res.json();
-    redirect(url);
+    window.location.href = url;
 };
 
 export default function LoginForm() {

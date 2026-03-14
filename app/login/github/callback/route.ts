@@ -67,7 +67,7 @@ export async function GET(request: Request): Promise<Response> {
     const cookieStore = await cookies();
     cookieStore.set("session", sessionToken, {
       httpOnly: true,
-      secure: process.env.DEV !== "true",
+      secure: true,
       sameSite: "lax",
       // 30 days
       expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
@@ -99,7 +99,7 @@ export async function GET(request: Request): Promise<Response> {
   const cookieStore = await cookies();
   cookieStore.set("session", sessionToken, {
     httpOnly: true,
-    secure: process.env.DEV !== "true",
+    secure: true,
     sameSite: "lax",
     // 30 days
     expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),

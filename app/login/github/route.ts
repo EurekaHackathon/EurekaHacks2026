@@ -8,7 +8,7 @@ export async function POST(): Promise<Response> {
 
   (await cookies()).set("github_oauth_state", state, {
     path: "/",
-    secure: process.env.DEV !== "true",
+    secure: true,
     httpOnly: true,
     maxAge: 60 * 10,
     sameSite: "lax",
