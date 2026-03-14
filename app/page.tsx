@@ -5,6 +5,7 @@ import AboutSection from "./components/AboutSection";
 import SponsorsSection from "./components/SponsorsSection";
 import StatsSection from "./components/StatsSection";
 import FAQSection from "./components/FAQSection";
+import ContactUs from "./components/ContactUs";
 
 export default function Home() {
   return (
@@ -24,6 +25,8 @@ export default function Home() {
       <AboutSection />
 
       <FAQSection />
+
+      <ContactUs />
 
       {/* re-add when sponsor info is available */}
       {/* <SponsorsSection /> */}
