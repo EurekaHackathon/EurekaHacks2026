@@ -4,7 +4,6 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { useActionState, useState } from "react";
 import { signUpWithEmail } from "@/lib/actions/auth";
-import { redirect } from "next/navigation";
 
 const initialState = {
     error: "",
@@ -19,7 +18,7 @@ const signUpWithGithub = async () => {
         throw new Error("Failed to sign up with Github");
     }
     const { url } = await res.json();
-    redirect(url);
+    window.location.href = url;
 };
 
 export default function RegistrationForm() {
@@ -100,7 +99,7 @@ export default function RegistrationForm() {
                     {!pending && state?.error}
                 </p>
                 <button
-                    className="mt-2 flex justify-center bg-[#f0c24f] text-gray-900 font-semibold md:text-xl w-full py-4 rounded-xl hover:bg-[#e5b73e] duration-200"
+                    className="mt-2 flex justify-center bg-[var(--neon-yellow)] text-gray-900 font-semibold md:text-xl w-full py-4 rounded-xl hover:bg-[var(--neon-yellow-dark)] duration-200"
                     type="submit" disabled={pending}>
                     {!pending && "Sign up"}
                     {pending && "​"}

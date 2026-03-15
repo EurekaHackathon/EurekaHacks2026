@@ -27,7 +27,6 @@ export async function GET(request: Request): Promise<Response> {
   try {
     tokens = await github.validateAuthorizationCode(code);
   } catch {
-    // Invalid code or client credentials
     return new Response("Please restart the process.", {
       status: 400,
     });
@@ -67,9 +66,8 @@ export async function GET(request: Request): Promise<Response> {
     const cookieStore = await cookies();
     cookieStore.set("session", sessionToken, {
       httpOnly: true,
-      secure: process.env.DEV !== "true",
+      secure: process.env.NODE_ENV !== "development",
       sameSite: "lax",
-      // 30 days
       expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
     });
 
@@ -99,9 +97,8 @@ export async function GET(request: Request): Promise<Response> {
   const cookieStore = await cookies();
   cookieStore.set("session", sessionToken, {
     httpOnly: true,
-    secure: process.env.DEV !== "true",
+    secure: process.env.NODE_ENV !== "development",
     sameSite: "lax",
-    // 30 days
     expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
   });
 

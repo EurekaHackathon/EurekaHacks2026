@@ -82,22 +82,6 @@ export async function createSession(token: string, userId: number): Promise<Sess
 }
 
 export async function authorizeSession(sessionToken: string | undefined) {
-    if (process.env.DEV === "true" && sessionToken === "dev-session") {
-        return {
-            id: 1,
-            firstName: "Dev",
-            lastName: "User",
-            email: "dev@eurekahacks.ca",
-            password: null,
-            emailVerified: true,
-            accountType: "email",
-            oauthId: null,
-            isAdmin: true,
-            createdAt: new Date(),
-            updatedAt: new Date(),
-        };
-    }
-
     if (!sessionToken) {
         redirect("/login");
     }

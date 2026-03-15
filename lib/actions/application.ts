@@ -181,7 +181,7 @@ export const apply = async (_prevState: any, formData: FormData) => {
 
     const mailOptions = {
         to: email as string,
-        from: `"EurekaHACKS" hello@eurekahacks.ca`,
+        from: `"EurekaHACKS" <hello@eurekahacks.ca>`,
         subject: "Thanks for applying!",
         text: emailText,
         html: emailHTML,

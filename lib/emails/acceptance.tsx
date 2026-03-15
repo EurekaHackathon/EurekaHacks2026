@@ -25,7 +25,7 @@ export const AcceptanceEmailTemplate = ({firstName}: ApplicationsOpenTemplatePro
         <Body style={main}>
             <Container style={container}>
                 <Img
-                    src={`https://eurekahacks.ca/logo-small.png`}
+                    src={`https://eurekahacks.ca/logo/bigComic.webp`}
                     width="50"
                     height="50"
                     alt="EurekaHACKS logo"

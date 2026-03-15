@@ -38,6 +38,7 @@ export const logout = async (prevState: any, formData: FormData) => {
         }
         cookieStore.delete("session");
     }
+    cookieStore.delete("pink_theme");
 
     redirect("/login");
 };
@@ -104,7 +105,7 @@ export const loginWithEmail = async (prevState: any, formData: FormData) => {
             const cookieStore = await cookies();
             cookieStore.set("session", sessionToken, {
                 httpOnly: true,
-                secure: process.env.DEV !== "true",
+                secure: process.env.NODE_ENV !== "development",
                 sameSite: "lax",
                 expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
             });
@@ -182,42 +183,25 @@ export const signUpWithEmail = async (prevState: any, formData: FormData) => {
             return {error: "Internal server error, please try again later", payload: formData};
         }
 
-        if (process.env.DEV === "true") {
-            // In dev mode, auto-verify email and skip sending
-            await db`UPDATE public.app_users SET email_verified = true WHERE id = ${user.id}`;
-            const sessionToken = await generateSessionToken();
-            await createSession(sessionToken, user.id);
-            const cookieStore = await cookies();
-            cookieStore.set("session", sessionToken, {
-                httpOnly: true,
-                secure: false,
-                sameSite: "lax",
-                expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-            });
-        } else {
-            await sendVerificationEmail({
+        await sendVerificationEmail({
                 emailVerificationToken: emailVerificationToken,
                 firstName: firstName,
                 email: email,
             });
-        }
 
     } catch (error) {
         console.error(error);
         return {error: "Internal server error, please try again later", payload: formData};
     }
-    if (process.env.DEV === "true") {
-        redirect("/dashboard");
-    }
     redirect(`/verify-email-prompt?id=${emailVerificationTokenRecord.id}`);
 };
 
-export const resendEmailVerificationLink = async (prevState: any, formData: FormData) => {
+export const resendEmailVerificationLink = async (prevState: any, formData: FormData): Promise<{ error: string; success: boolean }> => {
     try {
         const email = formData.get("email");
 
         if (!email || typeof email !== "string") {
-            return {error: "Internal server error, please try again later."};
+            return {error: "Internal server error, please try again later.", success: false};
         }
 
         const user = await getUserByEmail(db, {
@@ -225,16 +209,16 @@ export const resendEmailVerificationLink = async (prevState: any, formData: Form
         });
 
         if (!user) {
-            return {error: "Internal server error, please try again later."};
+            return {error: "Internal server error, please try again later.", success: false};
         }
 
         const id = formData.get("id");
         if (!id || typeof id !== "string") {
-            return {error: "Internal server error, please try again later."};
+            return {error: "Internal server error, please try again later.", success: false};
         }
 
         if (user.emailVerified) {
-            return {error: "Email is already verified"};
+            return {error: "Email is already verified", success: false};
         }
 
         await deleteAllEmailVerificationTokensByUserID(db, {
@@ -251,7 +235,7 @@ export const resendEmailVerificationLink = async (prevState: any, formData: Form
         });
 
         if (!newToken) {
-            return {error: "Internal server error, please try again later."};
+            return {error: "Internal server error, please try again later.", success: false};
         }
 
         await sendVerificationEmail({
@@ -260,10 +244,10 @@ export const resendEmailVerificationLink = async (prevState: any, formData: Form
             email: email,
         });
 
-        return {success: true};
+        return {error: "", success: true};
     } catch (error) {
         console.error(error);
-        return {error: "Internal server error, please try again later."};
+        return {error: "Internal server error, please try again later.", success: false};
     }
 };
 
@@ -301,9 +285,8 @@ const sendVerificationEmail = async ({emailVerificationToken, firstName, email}:
 
     const headersList = await headers();
     const domain = headersList.get("host");
-    const isHttp = process.env.DEV === "true";
     const emailHTML = await render(VerifyEmailTemplate({
-        verificationLink: `${isHttp ? "http" : "https"}://${domain}/verify-email?token=${emailVerificationToken}`,
+        verificationLink: `${process.env.NODE_ENV === "development" ? "http" : "https"}://${domain}/verify-email?token=${emailVerificationToken}`,
         userFirstname: firstName,
     }));
 
@@ -374,9 +357,8 @@ export const requestPasswordReset = async (prevState: any, formData: FormData) =
 
         const headersList = await headers();
         const domain = headersList.get("host");
-        const isHttp = process.env.DEV === "true";
         const emailHTML = await render(ResetPasswordTemplate({
-            resetLink: `${isHttp ? "http" : "https"}://${domain}/reset-password?token=${resetToken}`,
+            resetLink: `${process.env.NODE_ENV === "development" ? "http" : "https"}://${domain}/reset-password?token=${resetToken}`,
             userFirstname: user.firstName ?? "hacker",
         }));
 

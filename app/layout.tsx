@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Freeman, Righteous, Inter, Roboto } from "next/font/google";
+import { cookies } from "next/headers";
+import { validateSessionToken } from "@/lib/sessions";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -38,13 +40,20 @@ export const metadata: Metadata = {
   description: "EUREKAHACKS - March 2026 Hackathon",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const sessionCookie = cookieStore.get("session");
+  let pinkTheme = false;
+  if (sessionCookie && cookieStore.get("pink_theme")?.value === "1") {
+    const { session } = await validateSessionToken(sessionCookie.value);
+    pinkTheme = !!session;
+  }
   return (
-    <html lang="en">
+    <html lang="en" className={pinkTheme ? "pink-theme" : ""}>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${freeman.variable} ${righteous.variable} ${inter.variable} ${roboto.variable} antialiased flex flex-col min-h-screen`}
