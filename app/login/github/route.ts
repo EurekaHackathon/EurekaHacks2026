@@ -8,12 +8,11 @@ export async function POST(): Promise<Response> {
 
   (await cookies()).set("github_oauth_state", state, {
     path: "/",
-    secure: true,
+    secure: process.env.NODE_ENV !== "development",
     httpOnly: true,
     maxAge: 60 * 10,
     sameSite: "lax",
   });
 
-  // Return url to redirect to
   return Response.json({ url });
 }

@@ -49,7 +49,7 @@ export function DashboardNav() {
                 <div className="text-secondary-50 px-8 pt-10 flex justify-between lg:justify-center gap-2">
                     <Link href="/" className="flex items-center gap-2">
                         <Image className="w-12 md:w-16 lg:w-10 h-auto" src={logo} alt="EurekaHACKS Logo"/>
-                        <div className="text-[#f0c24f] text-2xl md:text-3xl lg:text-xl font-bold pr-10">
+                        <div className="text-[var(--neon-yellow)] text-2xl md:text-3xl lg:text-xl font-bold pr-10">
                             <span>EurekaHACKS</span>
                         </div>
                     </Link>

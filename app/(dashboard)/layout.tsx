@@ -16,11 +16,10 @@ export default async function Layout({
     const sessionCookie = cookieStore.get("session");
     const user = await authorizeSession(sessionCookie?.value);
 
-    const isDevBypass = process.env.DEV === "true" && sessionCookie?.value === "dev-session";
-    const applicationStatus = isDevBypass ? null : await getApplicationStatus(db, {
+    const applicationStatus = await getApplicationStatus(db, {
         userId: user.id
     });
-    const rsvpStatus = isDevBypass ? null : await getRsvpStatus(db, {
+    const rsvpStatus = await getRsvpStatus(db, {
         userId: user.id
     });
     return (

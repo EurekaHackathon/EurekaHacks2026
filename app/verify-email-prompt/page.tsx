@@ -29,7 +29,7 @@ export default async function VerifyEmailPromptPage({
             <StarField />
             <div className="relative z-10 bg-[#151c2b] p-8 md:p-12 lg:p-16 rounded-2xl text-gray-100 max-w-[90vw] lg:w-[600px]">
                 <div className="flex justify-center mb-6">
-                    <Icon icon="mdi:email-outline" className="text-6xl text-[#f0c24f]" />
+                    <Icon icon="mdi:email-outline" className="text-6xl text-[var(--neon-yellow)]" />
                 </div>
                 <h1 className="text-2xl md:text-4xl font-bold text-center">Check your email</h1>
                 <p className="md:text-lg text-gray-300 text-center mt-4">

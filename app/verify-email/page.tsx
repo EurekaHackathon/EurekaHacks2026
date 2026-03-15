@@ -34,7 +34,7 @@ export default async function VerifyEmailPage({
                     </p>
                     <Link
                         href="/login"
-                        className="inline-block mt-8 bg-[#f0c24f] text-gray-900 font-semibold md:text-xl px-8 py-4 rounded-xl hover:bg-[#e5b73e] duration-200"
+                        className="inline-block mt-8 bg-[var(--neon-yellow)] text-gray-900 font-semibold md:text-xl px-8 py-4 rounded-xl hover:bg-[var(--neon-yellow-dark)] duration-200"
                     >
                         Go to login
                     </Link>
@@ -55,7 +55,7 @@ export default async function VerifyEmailPage({
                     </p>
                     <Link
                         href="/register"
-                        className="inline-block mt-8 bg-[#f0c24f] text-gray-900 font-semibold md:text-xl px-8 py-4 rounded-xl hover:bg-[#e5b73e] duration-200"
+                        className="inline-block mt-8 bg-[var(--neon-yellow)] text-gray-900 font-semibold md:text-xl px-8 py-4 rounded-xl hover:bg-[var(--neon-yellow-dark)] duration-200"
                     >
                         Sign up again
                     </Link>
@@ -78,7 +78,7 @@ export default async function VerifyEmailPage({
                 </p>
                 <Link
                     href="/login"
-                    className="inline-block mt-8 bg-[#f0c24f] text-gray-900 font-semibold md:text-xl px-8 py-4 rounded-xl hover:bg-[#e5b73e] duration-200"
+                    className="inline-block mt-8 bg-[var(--neon-yellow)] text-gray-900 font-semibold md:text-xl px-8 py-4 rounded-xl hover:bg-[var(--neon-yellow-dark)] duration-200"
                 >
                     Log in
                 </Link>

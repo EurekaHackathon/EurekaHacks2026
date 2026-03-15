@@ -3,7 +3,7 @@
 import { useActionState } from "react";
 import { resendEmailVerificationLink } from "@/lib/actions/auth";
 
-const initialState = { error: "", success: false };
+const initialState: { error: string; success: boolean } = { error: "", success: false };
 
 export default function ResendVerificationButton({
     email,

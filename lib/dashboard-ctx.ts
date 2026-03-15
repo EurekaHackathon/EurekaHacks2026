@@ -1,8 +1,8 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import { authorizeSession } from "./sessions";
-import { getApplicationStatus } from "@/lib/sqlc/application_sql";
+import type { authorizeSession } from "./sessions";
+import type { getApplicationStatus } from "@/lib/sqlc/application_sql";
 
 export type DashboardCtxType = {
     user: Awaited<ReturnType<typeof authorizeSession>> | null,

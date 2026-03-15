@@ -70,7 +70,7 @@ export default function LoginForm() {
                     {!pending && state?.error}
                 </p>
                 <button
-                    className="mt-2 flex justify-center bg-[#f0c24f] text-gray-900 font-semibold md:text-xl w-full py-4 rounded-xl hover:bg-[#e5b73e] duration-200"
+                    className="mt-2 flex justify-center bg-[var(--neon-yellow)] text-gray-900 font-semibold md:text-xl w-full py-4 rounded-xl hover:bg-[var(--neon-yellow-dark)] duration-200"
                     type="submit" disabled={pending}>
                     {!pending && "Log in"}
                     {pending && "​"}

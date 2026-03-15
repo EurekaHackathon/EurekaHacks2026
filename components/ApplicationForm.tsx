@@ -54,7 +54,7 @@ export default function ApplicationForm() {
         <form className="mt-8" action={formAction}>
 
             <div className="mb-6">
-                <h2 className="text-3xl font-semibold mt-8 text-[#f0c24f]">Personal information</h2>
+                <h2 className="text-3xl font-semibold mt-8 text-[var(--neon-yellow)]">Personal information</h2>
             </div>
 
             <div className="grid gap-4 mb-4">
@@ -137,7 +137,7 @@ export default function ApplicationForm() {
                            name="number-hackathons-attended" placeholder={0}/>
                 </div>
                 <div>
-                    <h2 className="text-3xl font-semibold mt-8 text-[#f0c24f]">Dietary Restrictions</h2>
+                    <h2 className="text-3xl font-semibold mt-8 text-[var(--neon-yellow)]">Dietary Restrictions</h2>
                     <h3 className="font-medium text-gray-400">Select all that apply</h3>
                 </div>
 
@@ -168,7 +168,7 @@ export default function ApplicationForm() {
                 </div>
 
                 <div>
-                    <h2 className="text-3xl font-semibold mt-8 text-[#f0c24f]">Socials</h2>
+                    <h2 className="text-3xl font-semibold mt-8 text-[var(--neon-yellow)]">Socials</h2>
                     <h3 className="font-medium text-gray-400">(Optional)</h3>
                 </div>
 
@@ -205,7 +205,7 @@ export default function ApplicationForm() {
                 />
 
                 <div className="mb-6">
-                    <h2 className="text-3xl font-semibold mt-8 text-[#f0c24f]">Emergency Contact Information</h2>
+                    <h2 className="text-3xl font-semibold mt-8 text-[var(--neon-yellow)]">Emergency Contact Information</h2>
                     <h3 className="font-medium text-gray-400">Include your parent/guardian's information here</h3>
                 </div>
 
@@ -228,7 +228,7 @@ export default function ApplicationForm() {
             </div>
 
             <div className="mb-4">
-                <h2 className="text-3xl font-semibold mt-8 mb-4 text-[#f0c24f]">Short Answer</h2>
+                <h2 className="text-3xl font-semibold mt-8 mb-4 text-[var(--neon-yellow)]">Short Answer</h2>
                 <label className="block text-lg font-medium text-gray-100 mb-1">
                     If aliens landed tomorrow and asked you to show them one piece of human culture, what would you show them? <span className="text-error-600">*</span>
                 </label>

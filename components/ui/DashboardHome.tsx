@@ -75,7 +75,7 @@ export default function DashboardHome() {
         <div className="flex flex-col items-stretch py-[10vh] px-8 xl:px-16">
             <h1 className="text-5xl font-bold text-secondary-600">
                 Welcome,&nbsp;
-                <span className="block md:inline text-[#f0c24f]">{firstName}</span>
+                <span className="block md:inline text-[var(--neon-yellow)]">{firstName}</span>
             </h1>
             <div className="border border-gray-300 mt-12 rounded-lg bg-[#151c2b] py-8 px-12">
                 <div className="flex justify-between">
@@ -84,7 +84,7 @@ export default function DashboardHome() {
                 </div>
                 {(applicationStatus?.status === "unsubmitted" || !applicationStatus) &&
                     <>
-                        <h1 className="text-[#f0c24f] font-bold text-4xl md:text-5xl pt-6">Not submitted</h1>
+                        <h1 className="text-[var(--neon-yellow)] font-bold text-4xl md:text-5xl pt-6">Not submitted</h1>
                         <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
                             You haven't started your application yet. Click the button below to start your application.
                         </p>
@@ -96,7 +96,7 @@ export default function DashboardHome() {
                 }
                 {applicationStatus?.status === "submitted" &&
                     <>
-                        <h1 className="text-[#f0c24f] font-bold text-4xl md:text-5xl pt-6">Submitted</h1>
+                        <h1 className="text-[var(--neon-yellow)] font-bold text-4xl md:text-5xl pt-6">Submitted</h1>
                         <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
                             Your application has been submitted. We will review your application and get back to you
                             soon.
@@ -105,7 +105,7 @@ export default function DashboardHome() {
                 }
                 {applicationStatus?.status === "accepted" &&
                     <>
-                        <h1 className="text-[#f0c24f] font-bold text-4xl md:text-5xl pt-6">Accepted</h1>
+                        <h1 className="text-[var(--neon-yellow)] font-bold text-4xl md:text-5xl pt-6">Accepted</h1>
                         {!initialRsvpStatus && playConfetti &&
                             <>
                                 <div className="flex justify-center w-40">
@@ -135,7 +135,7 @@ export default function DashboardHome() {
                 }
                 {applicationStatus?.status === "rejected" &&
                     <>
-                        <h1 className="text-[#f0c24f] font-bold text-4xl md:text-5xl pt-6">Rejected</h1>
+                        <h1 className="text-[var(--neon-yellow)] font-bold text-4xl md:text-5xl pt-6">Rejected</h1>
                         <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
                             We're sorry, but your application has been rejected.
                         </p>
@@ -168,7 +168,7 @@ export default function DashboardHome() {
                         <h2 className="text-secondary-50 font-semibold text-2xl">Discord server</h2>
                         <Icon icon="ic:baseline-discord" className="text-secondary-50 text-4xl"/>
                     </div>
-                    <h1 className="text-[#f0c24f] font-bold text-5xl pt-6">Our Discord server</h1>
+                    <h1 className="text-[var(--neon-yellow)] font-bold text-5xl pt-6">Our Discord server</h1>
                     <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
                         Join our Discord to connect with hackers and receive important announcements.
                     </p>
@@ -190,7 +190,7 @@ export default function DashboardHome() {
                         <h2 className="text-secondary-50 font-semibold text-2xl">Hacker package</h2>
                         <Icon icon="fluent:book-information-20-filled" className="text-secondary-50 text-4xl"/>
                     </div>
-                    <h1 className="text-[#f0c24f] font-bold text-5xl pt-6">View hacker package</h1>
+                    <h1 className="text-[var(--neon-yellow)] font-bold text-5xl pt-6">View hacker package</h1>
                     <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
                         View the hacker package, complete with event info and schedules for EurekaHACKS 2026.
                     </p>

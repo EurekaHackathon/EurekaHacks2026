@@ -20,9 +20,10 @@ const calculateTimeLeft = (eventDate: number) => {
 
 export function CountdownTimer() {
     const eventDate = new Date("2026-05-01T08:00:00-05:00").getTime();
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(eventDate));
+    const [timeLeft, setTimeLeft] = useState<ReturnType<typeof calculateTimeLeft> | null>(null);
 
     useEffect(() => {
+        setTimeLeft(calculateTimeLeft(eventDate));
         const timer = setInterval(() => {
             setTimeLeft(calculateTimeLeft(eventDate));
         }, 1000);
@@ -30,10 +31,12 @@ export function CountdownTimer() {
         return () => clearInterval(timer);
     }, []);
 
+    if (!timeLeft) return null;
+
     const { days, hours, minutes, seconds } = timeLeft;
 
     return (
-        <div className="flex gap-2 text-[#f0c24f] font-bold text-3xl md:text-5xl pt-6 flex-wrap">
+        <div className="flex gap-2 text-[var(--neon-yellow)] font-bold text-3xl md:text-5xl pt-6 flex-wrap">
             {days > 0 && <h1>{days}d</h1>}
             {(days > 0 || hours > 0) && <h1>{hours}h</h1>}
             {(days > 0 || hours > 0 || minutes > 0) && <h1>{minutes}m</h1>}

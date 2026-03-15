@@ -4,14 +4,14 @@ import { useState, useEffect } from "react";
 
 export function DeadlineCountdown() {
     const deadline = new Date("2026-04-30T23:59:59-05:00").getTime();
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+    const [timeLeft, setTimeLeft] = useState<ReturnType<typeof calculateTimeLeft> | null>(null);
 
     function calculateTimeLeft() {
         const now = new Date().getTime();
         const difference = deadline - now;
 
         if (difference <= 0) {
-            return { unit: "Deadline has passed", value: "" };
+            return { unit: "Deadline has passed", value: "" as string | number };
         }
 
         const days = Math.max(Math.floor(difference / (1000 * 60 * 60 * 24)), 0);
@@ -31,15 +31,18 @@ export function DeadlineCountdown() {
     }
 
     useEffect(() => {
+        setTimeLeft(calculateTimeLeft());
         const timer = setInterval(() => {
             setTimeLeft(calculateTimeLeft());
         }, 1000);
 
-        return () => clearInterval(timer); // Cleanup on unmount
+        return () => clearInterval(timer);
     }, []);
 
+    if (!timeLeft) return null;
+
     return (
-        <h1 className="text-[#f0c24f] font-bold text-5xl pt-6">
+        <h1 className="text-[var(--neon-yellow)] font-bold text-5xl pt-6">
             {timeLeft.value} {timeLeft.unit}{timeLeft.value !== 1 && timeLeft.value !== "" ? "s" : ""}
         </h1>
     );
