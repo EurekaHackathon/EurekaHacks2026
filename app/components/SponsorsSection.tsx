@@ -56,8 +56,8 @@ export default function SponsorsSection() {
             {/* Gold sponsors: 2 per row capacity, centered */}
             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
               <SponsorCard
-                name="Bolt.new"
-                image="https://sfruby.com/sponsor_boltnew.png"
+                name="Waterloo Accelerator Center"
+                image="https://www.acceleratorcentre.com/wp-content/uploads/2025/09/logo-fc.svg"
                 tier="gold"
               />
             </div>
@@ -65,13 +65,8 @@ export default function SponsorsSection() {
             {/* Silver sponsors: 3 per row capacity, centered */}
             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
               <SponsorCard
-                name="Jane Street"
-                image="https://2025.eurekahacks.ca/sponsors/jane-street.png"
-                tier="silver"
-              />
-              <SponsorCard
-                name="Ultimate Coders"
-                image="https://2025.eurekahacks.ca/sponsors/ultimate-coders.png"
+                name="CodeCrafters"
+                image="/sponsors/CodeCrafters.svg"
                 tier="silver"
               />
               <SponsorCard
@@ -84,13 +79,18 @@ export default function SponsorsSection() {
                 image="https://2025.eurekahacks.ca/sponsors/dorahacks.png"
                 tier="silver"
               />
+              <SponsorCard
+                name="Bolt.new"
+                image="https://sfruby.com/sponsor_boltnew.png"
+                tier="silver"
+              />
             </div>
 
             {/* Bronze sponsors: 4 per row capacity, centered */}
             <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8">
               <SponsorCard
                 name="Sobeys"
-                image="https://foodhero-dev.s3.amazonaws.com/banners/yc3w9DoDA_1684948675.png"
+                image="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Sobeys_logo.svg/3840px-Sobeys_logo.svg.png"
                 tier="bronze"
               />
               <SponsorCard
