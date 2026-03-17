@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Freeman, Righteous, Inter, Roboto } from "next/font/google";
 import { cookies } from "next/headers";
 import { validateSessionToken } from "@/lib/sessions";
-import Footer from "@/components/Footer";
+import { GlobalFooter } from "@/components/GlobalFooter";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -62,7 +62,7 @@ export default async function RootLayout({
         <div className="flex-1 flex flex-col">
           {children}
         </div>
-        <Footer />
+        <GlobalFooter />
       </body>
     </html>
   );

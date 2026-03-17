@@ -14,94 +14,94 @@ function Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivElement>)
 export default function ApplicationSkeleton() {
     return (
         <div className="self-center flex flex-col items-stretch py-[10vh] px-8 xl:px-16">
-            <Skeleton className="h-12 w-full md:w-96"/>
-            <Skeleton className="h-8 mt-10 md:w-96"/>
+            <Skeleton className="h-12 w-full md:w-96" />
+            <Skeleton className="h-8 mt-10 md:w-96" />
             <div className="grid gap-4 mt-6 mb-4">
                 <div className="flex flex-col lg:flex-row gap-4">
                     <div className="w-full">
-                        <Skeleton className="h-5 w-32"/>
-                        <Skeleton className="h-10 mt-2"/>
+                        <Skeleton className="h-5 w-32" />
+                        <Skeleton className="h-10 mt-2" />
                     </div>
                     <div className="w-full">
-                        <Skeleton className="h-5 w-32"/>
-                        <Skeleton className="h-10 mt-2"/>
+                        <Skeleton className="h-5 w-32" />
+                        <Skeleton className="h-10 mt-2" />
                     </div>
                 </div>
                 <div className="mt-4">
-                    <Skeleton className="h-5 w-32"/>
-                    <Skeleton className="h-10 mt-2"/>
+                    <Skeleton className="h-5 w-32" />
+                    <Skeleton className="h-10 mt-2" />
                 </div>
                 <div className="mt-1.5">
-                    <Skeleton className="h-5 w-32"/>
-                    <Skeleton className="h-10 mt-2"/>
+                    <Skeleton className="h-5 w-32" />
+                    <Skeleton className="h-10 mt-2" />
                 </div>
                 <div className="mt-1.5">
-                    <Skeleton className="h-5 w-32"/>
-                    <Skeleton className="h-10 mt-2"/>
+                    <Skeleton className="h-5 w-32" />
+                    <Skeleton className="h-10 mt-2" />
                 </div>
                 <div className="mt-2">
-                    <Skeleton className="h-5 w-32"/>
-                    <Skeleton className="h-10 mt-2"/>
+                    <Skeleton className="h-5 w-32" />
+                    <Skeleton className="h-10 mt-2" />
                 </div>
                 <div className="mt-1.5">
-                    <Skeleton className="h-5 w-32"/>
-                    <Skeleton className="h-10 mt-2"/>
+                    <Skeleton className="h-5 w-32" />
+                    <Skeleton className="h-10 mt-2" />
                 </div>
                 <div className="mt-1.5">
-                    <Skeleton className="h-5 w-32"/>
-                    <Skeleton className="h-10 mt-2"/>
+                    <Skeleton className="h-5 w-32" />
+                    <Skeleton className="h-10 mt-2" />
                 </div>
-                <Skeleton className="h-6 w-72 mt-10"/>
-                <Skeleton className="h-3 w-40"/>
+                <Skeleton className="h-6 w-72 mt-10" />
+                <Skeleton className="h-3 w-40" />
 
                 <div className="border rounded-md border-gray-300 py-4 px-6 grid gap-2">
-                    {[...dietaryRestrictionsList].map(_ => {
+                    {[...dietaryRestrictionsList].map((_, i) => {
                         return (
-                            <div className="flex gap-2 mt-1">
-                                <Skeleton className="h-5 w-5"/>
-                                <Skeleton className="h-4 w-32"/>
+                            <div key={i} className="flex gap-2 mt-1">
+                                <Skeleton className="h-5 w-5" />
+                                <Skeleton className="h-4 w-32" />
                             </div>
                         );
                     })}
                 </div>
 
                 <div className="mt-8">
-                    <Skeleton className="h-8 w-40"/>
-                    <Skeleton className="h-5 w-32 mt-2"/>
+                    <Skeleton className="h-8 w-40" />
+                    <Skeleton className="h-5 w-32 mt-2" />
                 </div>
 
                 <div className="mt-2.5">
-                    <Skeleton className="h-5 w-32"/>
-                    <Skeleton className="h-10 mt-2"/>
+                    <Skeleton className="h-5 w-32" />
+                    <Skeleton className="h-10 mt-2" />
                 </div>
                 <div className="mt-2.5">
-                    <Skeleton className="h-5 w-32"/>
-                    <Skeleton className="h-10 mt-2"/>
+                    <Skeleton className="h-5 w-32" />
+                    <Skeleton className="h-10 mt-2" />
                 </div>
                 <div className="mt-2.5">
-                    <Skeleton className="h-5 w-32"/>
-                    <Skeleton className="h-10 mt-2"/>
+                    <Skeleton className="h-5 w-32" />
+                    <Skeleton className="h-10 mt-2" />
                 </div>
                 <div className="mt-2.5">
-                    <Skeleton className="h-5 w-32"/>
-                    <Skeleton className="h-10 mt-2"/>
+                    <Skeleton className="h-5 w-32" />
+                    <Skeleton className="h-10 mt-2" />
                 </div>
 
-                <Skeleton className="h-8 mt-10 w-80 md:w-96"/>
-                <Skeleton className="h-8 w-64"/>
+                <Skeleton className="h-8 mt-10 w-80 md:w-96" />
+                <Skeleton className="h-8 w-64" />
 
                 <div className="flex flex-col lg:flex-row gap-4 mt-8">
                     <div className="w-full">
-                        <Skeleton className="h-5 w-32"/>
-                        <Skeleton className="h-10 mt-2"/>
+                        <Skeleton className="h-5 w-32" />
+                        <Skeleton className="h-10 mt-2" />
                     </div>
                     <div className="w-full">
-                        <Skeleton className="h-5 w-32"/>
-                        <Skeleton className="h-10 mt-2"/>
+                        <Skeleton className="h-5 w-32" />
+                        <Skeleton className="h-10 mt-2" />
                     </div>
                 </div>
 
-                <Skeleton className="h-10 mt-8 w-20"/>
+                <Skeleton className="h-10 mt-8 w-20" />
             </div>
         </div>
     );
