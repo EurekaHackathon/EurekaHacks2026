@@ -50,9 +50,7 @@ export interface CreateApplicationArgs {
     lastName: string;
     email: string;
     age: number;
-    school: strin
-    
-    g;
+    school: string;
     yearOfGraduation: number;
     city: string;
     dietaryRestrictions: string[] | null;
