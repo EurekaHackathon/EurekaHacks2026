@@ -32,18 +32,18 @@ const SLOTS = [
     { w: 119, h: 136, x: 1033, opacity: 0.16, roleSize: 13, nameSize: 13, avatarSize: 40, descSize: 0 },
 ];
 
-const EXIT_X = -400; 
+const EXIT_X = -400;
 const ENTER_X = 1200;
 
 // ── Avatar Component ──
 function Avatar({ src, size, name }: { src?: string; size: number; name: string }) {
     return (
         <div
-            style={{ 
-                width: size, 
-                height: size, 
-                borderRadius: 8, 
-                flexShrink: 0, 
+            style={{
+                width: size,
+                height: size,
+                borderRadius: 8,
+                flexShrink: 0,
                 transition: "width 0.8s ease, height 0.8s ease",
                 background: src ? "none" : "#d9d9d9",
                 overflow: "hidden"
@@ -74,7 +74,7 @@ function TeamCard({
     targetSpec: CardSpec;
     currentX: number;
 }) {
-    const isMain = targetSpec.w > 300;
+    const isMain = targetSpec.w > 200;
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -167,49 +167,103 @@ function TeamCard({
 
 export default function ContactUs() {
     const [offset, setOffset] = useState(0);
+    const [slots, setSlots] = useState(SLOTS);
+    const [exitX, setExitX] = useState(EXIT_X);
+    const [enterX, setEnterX] = useState(ENTER_X);
+    const [isMobile, setIsMobile] = useState(false);
+    const [isTablet, setIsTablet] = useState(false);
 
     useEffect(() => {
+        const handleResize = () => {
+            const w = window.innerWidth;
+            setIsMobile(w < 768);
+            setIsTablet(w >= 768 && w < 1100);
+
+            if (w < 768) {
+                // Mobile Slots: Use w - 40 as the available width inside outer padding (20px each side)
+                const containerW = w - 40;
+                const cardW = Math.min(containerW - 80, 240); // Further reduced width
+                const cardH = 340; // Further reduced height
+                const centerX = (containerW - cardW) / 2;
+                setSlots([
+                    { w: cardW, h: cardH, x: centerX, opacity: 1, roleSize: 22, nameSize: 18, avatarSize: 70, descSize: 11 },
+                    { w: cardW, h: cardH, x: w + 100, opacity: 0, roleSize: 8, nameSize: 8, avatarSize: 20, descSize: 0 },
+                    { w: cardW, h: cardH, x: w + 200, opacity: 0, roleSize: 8, nameSize: 8, avatarSize: 20, descSize: 0 },
+                    { w: cardW, h: cardH, x: w + 300, opacity: 0, roleSize: 8, nameSize: 8, avatarSize: 20, descSize: 0 },
+                    { w: cardW, h: cardH, x: w + 400, opacity: 0, roleSize: 8, nameSize: 8, avatarSize: 20, descSize: 0 },
+                ]);
+                setExitX(-w);
+                setEnterX(w);
+            } else if (w < 1100) {
+                // Tablet Slots
+                setSlots([
+                    { w: 320, h: 400, x: 0, opacity: 1, roleSize: 36, nameSize: 30, avatarSize: 110, descSize: 15 },
+                    { w: 220, h: 280, x: 340, opacity: 0.8, roleSize: 22, nameSize: 22, avatarSize: 80, descSize: 0 },
+                    { w: 160, h: 200, x: 580, opacity: 0.5, roleSize: 18, nameSize: 18, avatarSize: 60, descSize: 0 },
+                    { w: 120, h: 150, x: 760, opacity: 0, roleSize: 14, nameSize: 14, avatarSize: 45, descSize: 0 },
+                    { w: 120, h: 150, x: 900, opacity: 0, roleSize: 14, nameSize: 14, avatarSize: 45, descSize: 0 },
+                ]);
+                setExitX(-400);
+                setEnterX(1000);
+            } else {
+                // Desktop Slots
+                setSlots(SLOTS);
+                setExitX(EXIT_X);
+                setEnterX(ENTER_X);
+            }
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
         const interval = setInterval(() => {
             setOffset(o => o + 1);
         }, 2000); 
-        return () => clearInterval(interval);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            clearInterval(interval);
+        };
     }, []);
 
+    const slantHeight = isMobile ? 80 : 120;
+
     return (
-        <div style={{ width: "100%", maxWidth: 1440, margin: "0 auto", paddingLeft: 56, paddingRight: 56 }}>
+        <div style={{ width: "100%", maxWidth: 1440, margin: "0 auto", paddingLeft: isMobile ? 20 : 56, paddingRight: isMobile ? 20 : 56, overflow: "hidden", boxSizing: "border-box" }}>
             {/* TOP SECTION */}
-            <div style={{ position: "relative", minHeight: 650 }}>
-                {/* SVG logic */}
+            <div style={{ position: "relative", minHeight: isMobile ? 580 : 650, marginBottom: 40, width: "100%" }}>
+                {/* SVG border matches clipPath below. Logic: slant is ~16% of height (100/600) */}
                 <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none" }} viewBox="0 0 1000 600" preserveAspectRatio="none">
-                    <polygon points="0,0 1000,0 1000,500 1600,440 0,600" stroke="#FFFEF5" strokeWidth="10" fill="none" vectorEffect="non-scaling-stroke" />
+                    <polygon points="5,5 995,5 995,495 5,595" stroke="#FFFEF5" strokeWidth="10" fill="none" vectorEffect="non-scaling-stroke" />
                 </svg>
 
-                <div style={{ position: "relative", zIndex: 1, padding: "48px 48px 180px 48px", clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 160px), 70% calc(100% - 160px), 0 100%)" }}>
-                    <h2 style={{ fontFamily: "var(--font-righteous)", fontSize: 64, color: "#FFFFFF", textTransform: "uppercase", marginBottom: 40 }}>Meet the team</h2>
+                <div style={{ 
+                    position: "relative", 
+                    zIndex: 1, 
+                    padding: isMobile ? "24px 0px 100px 0px" : "48px 48px 180px 48px", 
+                    width: "100%",
+                    clipPath: `polygon(0 0, 100% 0, 100% calc(100% - ${slantHeight}px), 0 100%)` 
+                }}>
+                    <h2 style={{ fontFamily: "var(--font-righteous)", fontSize: isMobile ? 40 : 64, color: "#FFFFFF", textTransform: "uppercase", marginBottom: isMobile ? 24 : 40, paddingLeft: isMobile ? (slots[0]?.x || 20) : 0 }}>Meet the team</h2>
                     
-                    <div style={{ position: "relative", height: 430, width: "100%" }}>
+                    <div style={{ position: "relative", height: isMobile ? 420 : 430, width: "100%", overflow: isMobile ? "hidden" : "visible" }}>
                         {/* Render 7 cards: 1 exiting, 5 visible, 1 entering */}
                         {[...Array(7)].map((_, i) => {
                             const cardIndex = offset + i - 1; 
                             const member = TEAM[((cardIndex % TEAM.length) + TEAM.length) % TEAM.length];
                             
-                            const slotIdx = i - 1; // -1: exit, 0-4: visible, 5: enter
+                            const slotIdx = i - 1; 
 
                             let spec: CardSpec;
                             let x: number;
 
                             if (slotIdx === -1) {
-                                // Exiting Left
-                                spec = { ...SLOTS[0], w: 0, opacity: 0 };
-                                x = EXIT_X;
+                                spec = { ...slots[0], w: 0, opacity: 0 };
+                                x = exitX;
                             } else if (slotIdx >= 0 && slotIdx < 5) {
-                                // Visible Slots
-                                spec = SLOTS[slotIdx];
-                                x = SLOTS[slotIdx].x;
+                                spec = slots[slotIdx];
+                                x = slots[slotIdx].x;
                             } else {
-                                // Entering Right
-                                spec = { ...SLOTS[4], w: 0, opacity: 0 };
-                                x = ENTER_X;
+                                spec = { ...slots[4], w: 0, opacity: 0 };
+                                x = enterX;
                             }
 
                             return (
@@ -225,17 +279,27 @@ export default function ContactUs() {
                 </div>
             </div>
 
-            {/* BOTTOM SECTION */}
-            <div style={{ position: "relative", marginTop: -40 }}>
-                {/* SVG Border logic */}
+            {/* BOTTOM SECTION - Separated by marginBottom on top box */}
+            <div style={{ position: "relative", minHeight: isMobile ? 320 : 320 }}>
+                {/* SVG border matches clipPath below */}
                 <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none" }} viewBox="0 0 1000 600" preserveAspectRatio="none">
-                    <polygon points="0,160 1043,0 1000,0 1000,600 0,600" stroke="#FFFEF5" strokeWidth="10" fill="none" vectorEffect="non-scaling-stroke" />
+                    <polygon points="0,100 1000,0 1000,600 0,600" stroke="#FFFEF5" strokeWidth="10" fill="none" vectorEffect="non-scaling-stroke" />
                 </svg>
-                <div style={{ position: "relative", zIndex: 1, padding: "180px 48px 48px 48px", clipPath: "polygon(0 160px, 70% 0, 100% 0, 100% 100%, 0 100%)", display: "flex", justifyContent: "space-between", alignItems: "flex-end", minHeight: 320 }}>
-                    <h2 style={{ fontFamily: "var(--font-righteous)", fontSize: "clamp(48px, 7vw, 96px)", lineHeight: 1.0, color: "#FFFFFF", textTransform: "uppercase", margin: 0 }}>Contact<br />Us</h2>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 24, alignItems: "flex-end" }}>
-                        <a href="mailto:hello@eurekahacks.ca" style={{ color: "white", textDecoration: "underline", fontSize: 24, fontFamily: "var(--font-righteous)" }}>hello@eurekahacks.ca</a>
-                        <a href="https://instagram.com/eureka_hacks" style={{ color: "white", textDecoration: "underline", fontSize: 24, fontFamily: "var(--font-righteous)" }}>@eureka_hacks</a>
+                <div style={{ 
+                    position: "relative", 
+                    zIndex: 1, 
+                    padding: isMobile ? `${slantHeight + 20}px 12px 48px 12px` : "140px 48px 48px 48px", 
+                    clipPath: `polygon(0 ${slantHeight}px, 100% 0, 100% 100%, 0 100%)`, 
+                    display: "flex", 
+                    flexDirection: isMobile ? "column" : "row", 
+                    justifyContent: "space-between", 
+                    alignItems: isMobile ? "flex-start" : "flex-end",
+                    gap: isMobile ? 32 : 0
+                }}>
+                    <h2 style={{ fontFamily: "var(--font-righteous)", fontSize: isMobile ? 48 : "clamp(48px, 7vw, 96px)", lineHeight: 1.0, color: "#FFFFFF", textTransform: "uppercase", margin: 0 }}>Contact<br />Us</h2>
+                    <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 12 : 24, alignItems: isMobile ? "flex-start" : "flex-end" }}>
+                        <a href="mailto:hello@eurekahacks.ca" style={{ color: "white", textDecoration: "underline", fontSize: isMobile ? 20 : 24, fontFamily: "var(--font-righteous)" }}>hello@eurekahacks.ca</a>
+                        <a href="https://instagram.com/eureka_hacks" style={{ color: "white", textDecoration: "underline", fontSize: isMobile ? 20 : 24, fontFamily: "var(--font-righteous)" }}>@eureka_hacks</a>
                     </div>
                 </div>
             </div>
