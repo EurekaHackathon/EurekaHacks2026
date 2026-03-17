@@ -150,7 +150,7 @@ export default function DashboardHome() {
                     </div>
                     <DeadlineCountdown/>
                     <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
-                        Applications will remain open until the day of the hackathon.<br/>They are due on April 30th,
+                        Applications will remain open until the day of the hackathon.<br/>They are due on April 24th,
                         2026 at 11:59 PM EST.
                     </p>
                 </div>

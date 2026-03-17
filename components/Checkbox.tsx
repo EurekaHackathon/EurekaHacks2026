@@ -1,32 +1,64 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as CheckboxPrimitive from "@radix-ui/react-checkbox"
+import React from "react";
+import { cn } from "@/lib/utils";
 
-import { cn } from "@/lib/utils"
-import { Icon } from "@iconify/react"
+interface CheckboxProps {
+    checked?: boolean;
+    defaultChecked?: boolean;
+    onCheckedChange?: (checked: boolean) => void;
+    name?: string;
+    className?: string;
+}
 
-const Checkbox = React.forwardRef<
-    React.ElementRef<typeof CheckboxPrimitive.Root>,
-    React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
->(({ className, ...props }, ref) => (
-    <CheckboxPrimitive.Root
-        ref={ref}
-        className={cn(
-            "peer h-4 w-4 shrink-0 rounded-sm border border-primary shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
-            className,
-            "size-5 data-[state=checked]:bg-secondary-600 data-[state=checked]:text-white border-secondary-600 border-2"
-        )}
-        {...props}
-    >
-        <CheckboxPrimitive.Indicator
-            className={cn("flex items-center justify-center text-current")}
-        >
-            <Icon icon="fluent:checkmark-12-filled" className="size-4" />
+export function Checkbox({
+    checked: controlledChecked,
+    defaultChecked,
+    onCheckedChange,
+    name,
+    className,
+}: CheckboxProps) {
+    const [internalChecked, setInternalChecked] = React.useState(defaultChecked ?? false);
+    const isControlled = controlledChecked !== undefined;
+    const checked = isControlled ? controlledChecked : internalChecked;
 
-        </CheckboxPrimitive.Indicator>
-    </CheckboxPrimitive.Root>
-))
-Checkbox.displayName = CheckboxPrimitive.Root.displayName
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newChecked = e.target.checked;
+        if (!isControlled) {
+            setInternalChecked(newChecked);
+        }
+        onCheckedChange?.(newChecked);
+    };
 
-export { Checkbox }
+    return (
+        <div className={cn("relative flex items-center justify-center h-5 w-5 shrink-0", className)}>
+            <input
+                type="checkbox"
+                name={name}
+                checked={checked}
+                onChange={handleChange}
+                className="peer absolute inset-0 opacity-0 cursor-pointer z-10"
+            />
+            <div
+                className={cn(
+                    "h-full w-full border-2 border-secondary-700 bg-[#030712] rounded transition-all duration-200 peer-hover:border-secondary-500 peer-focus-visible:border-[var(--neon-yellow)] peer-checked:bg-[var(--neon-yellow)] peer-checked:border-[var(--neon-yellow)] flex items-center justify-center",
+                    checked && "bg-[var(--neon-yellow)] border-[var(--neon-yellow)]"
+                )}
+            >
+                {checked && (
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="w-3.5 h-3.5 text-[#030712]"
+                    >
+                        <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                )}
+            </div>
+        </div>
+    );
+}

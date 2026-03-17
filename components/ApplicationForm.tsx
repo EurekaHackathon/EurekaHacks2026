@@ -141,7 +141,7 @@ export default function ApplicationForm() {
                     <h3 className="font-medium text-gray-400">Select all that apply</h3>
                 </div>
 
-                <div className="border rounded-md border-secondary-700 py-4 px-6 grid gap-2">
+                <div className="border rounded-md border-secondary-700 py-4 px-6 flex flex-col gap-2">
                     {dietaryRestrictionsList.map((name, key) =>
                         <div key={key} className="flex items-center gap-4">
                             <Checkbox defaultChecked={dietaryRestrictions[name]}
