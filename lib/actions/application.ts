@@ -54,6 +54,7 @@ export const apply = async (_prevState: any, formData: FormData) => {
     const resume = formData.get("resume");
     const emergencyContactFullName = formData.get("emergency-contact-full-name");
     const emergencyContactPhone = formData.get("emergency-contact-phone");
+    const tshirtSize = formData.get("tshirt-size");
     const validationResult = applicationSchema.safeParse({
         firstName,
         lastName,
@@ -76,6 +77,7 @@ export const apply = async (_prevState: any, formData: FormData) => {
         resume,
         emergencyContactFullName,
         emergencyContactPhoneNumber: emergencyContactPhone,
+        tshirtSize,
     });
 
     if (!validationResult.success) {
@@ -143,6 +145,7 @@ export const apply = async (_prevState: any, formData: FormData) => {
             linkedinLink: validationResult.data.linkedin,
             portfolioLink: validationResult.data.portfolio,
             resumeLink: validationResult.data.resume,
+            tshirtSize: validationResult.data.tshirtSize,
             status: "submitted"
         });
     } catch (error) {

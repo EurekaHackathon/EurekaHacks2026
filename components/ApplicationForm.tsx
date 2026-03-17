@@ -228,6 +228,30 @@ export default function ApplicationForm() {
             </div>
 
             <div className="mb-4">
+                <h2 className="text-3xl font-semibold mt-8 text-[var(--neon-yellow)]">T-Shirt Size</h2>
+                <h3 className="font-medium text-gray-400 mb-4">Select your preferred t-shirt size</h3>
+                <Select
+                    defaultValue={state.payload?.get("tshirt-size") as string | undefined}
+                    name="tshirt-size"
+                    required
+                >
+                    <SelectTrigger>
+                        <SelectValue placeholder="Select a size" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectGroup>
+                            <SelectItem value="XS">XS</SelectItem>
+                            <SelectItem value="S">S</SelectItem>
+                            <SelectItem value="M">M</SelectItem>
+                            <SelectItem value="L">L</SelectItem>
+                            <SelectItem value="XL">XL</SelectItem>
+                            <SelectItem value="XXL">XXL</SelectItem>
+                        </SelectGroup>
+                    </SelectContent>
+                </Select>
+            </div>
+
+            <div className="mb-4">
                 <h2 className="text-3xl font-semibold mt-8 mb-4 text-[var(--neon-yellow)]">Short Answer</h2>
                 <label className="block text-lg font-medium text-gray-100 mb-1">
                     If aliens landed tomorrow and asked you to show them one piece of human culture, what would you show them? <span className="text-error-600">*</span>

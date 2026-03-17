@@ -19,7 +19,8 @@ insert into hackathon_applications (
     resume_link,
     emergency_contact_full_name,
     emergency_contact_phone_number,
-    short_answer_response
+    short_answer_response,
+    tshirt_size
 ) values (
     $1,
     $2,
@@ -38,8 +39,9 @@ insert into hackathon_applications (
     $15,
     $16,
     $17,
-    $18
-) returning id, user_id, status, first_name, last_name, email, age, school, year_of_graduation, city, dietary_restrictions, number_of_hackathons_attended, github_link, linkedin_link, portfolio_link, resume_link, emergency_contact_full_name, emergency_contact_phone_number, short_answer_response, created_at, updated_at`;
+    $18,
+    $19
+) returning id, user_id, status, first_name, last_name, email, age, school, year_of_graduation, city, dietary_restrictions, number_of_hackathons_attended, github_link, linkedin_link, portfolio_link, resume_link, emergency_contact_full_name, emergency_contact_phone_number, short_answer_response, tshirt_size, created_at, updated_at`;
 
 export interface CreateApplicationArgs {
     userId: number;
@@ -48,7 +50,9 @@ export interface CreateApplicationArgs {
     lastName: string;
     email: string;
     age: number;
-    school: string;
+    school: strin
+    
+    g;
     yearOfGraduation: number;
     city: string;
     dietaryRestrictions: string[] | null;
@@ -60,6 +64,7 @@ export interface CreateApplicationArgs {
     emergencyContactFullName: string;
     emergencyContactPhoneNumber: string;
     shortAnswerResponse: string;
+    tshirtSize: string;
 }
 
 export interface CreateApplicationRow {
@@ -82,12 +87,13 @@ export interface CreateApplicationRow {
     emergencyContactFullName: string;
     emergencyContactPhoneNumber: string;
     shortAnswerResponse: string;
+    tshirtSize: string;
     createdAt: Date;
     updatedAt: Date;
 }
 
 export async function createApplication(sql: Sql, args: CreateApplicationArgs): Promise<void> {
-    await sql.unsafe(createApplicationQuery, [args.userId, args.status, args.firstName, args.lastName, args.email, args.age, args.school, args.yearOfGraduation, args.city, args.dietaryRestrictions, args.numberOfHackathonsAttended, args.githubLink, args.linkedinLink, args.portfolioLink, args.resumeLink, args.emergencyContactFullName, args.emergencyContactPhoneNumber, args.shortAnswerResponse]);
+    await sql.unsafe(createApplicationQuery, [args.userId, args.status, args.firstName, args.lastName, args.email, args.age, args.school, args.yearOfGraduation, args.city, args.dietaryRestrictions, args.numberOfHackathonsAttended, args.githubLink, args.linkedinLink, args.portfolioLink, args.resumeLink, args.emergencyContactFullName, args.emergencyContactPhoneNumber, args.shortAnswerResponse, args.tshirtSize]);
 }
 
 export const getApplicationStatusQuery = `-- name: GetApplicationStatus :one

@@ -82,5 +82,6 @@ export const applicationSchema = z.object({
     emergencyContactPhoneNumber: z.string()
         .min(14, {message: "Please enter a valid phone number."})
         .max(14, {message: "Please enter a valid phone number."}),
+    tshirtSize: z.enum(["XS", "S", "M", "L", "XL", "XXL"], {message: "Please select a t-shirt size."}),
 
 });
