@@ -14,8 +14,8 @@ interface TeamMember {
 
 const TEAM: TeamMember[] = [
     { name: "Daniel Zhu", role: "Sponsorship", description: "When I was a kid, I used to stare at cars. Now, I sit in a car and stare at kids", image: "/team/DanielZhu.png" },
-    { name: "Jane Smith", role: "Tech Lead", description: "Architecture and performance wizard.", image: undefined },
-    { name: "Alice Wang", role: "Product Designer", description: "Making things pretty and functional.", image: undefined },
+    { name: "Yohance Pawani", role: "President", description: "I like pink floyd", image: "/team/Yohance.png" },
+    { name: "Anvi Nambiar", role: "Marketing", description: "I hate spiders", image: "/team/Anvi.png" },
     { name: "Bob Lee", role: "Backend Guru", description: "Scalability and reliability expert.", image: undefined },
     { name: "Charlie Chen", role: "Frontend Dev", description: "React and CSS magic.", image: undefined },
     { name: "Diana Prince", role: "Operations", description: "Keeping everyone on track.", image: undefined },
@@ -120,7 +120,8 @@ function TeamCard({
                     textTransform: "uppercase",
                     width: "100%",
                     margin: 0,
-                    whiteSpace: "nowrap",
+                    whiteSpace: "normal",
+                    overflowWrap: "break-word",
                     transition: "font-size 0.8s ease, line-height 0.8s ease",
                 }}
             >
@@ -137,7 +138,8 @@ function TeamCard({
                         textTransform: "uppercase",
                         margin: 0,
                         flex: 1,
-                        whiteSpace: "nowrap",
+                        whiteSpace: "normal",
+                        overflowWrap: "break-word",
                         transition: "font-size 0.8s ease, line-height 0.8s ease",
                     }}
                 >
@@ -232,8 +234,8 @@ export default function ContactUs() {
                 <div style={{ position: "relative", zIndex: 1, padding: "180px 48px 48px 48px", clipPath: "polygon(0 160px, 70% 0, 100% 0, 100% 100%, 0 100%)", display: "flex", justifyContent: "space-between", alignItems: "flex-end", minHeight: 320 }}>
                     <h2 style={{ fontFamily: "var(--font-righteous)", fontSize: "clamp(48px, 7vw, 96px)", lineHeight: 1.0, color: "#FFFFFF", textTransform: "uppercase", margin: 0 }}>Contact<br />Us</h2>
                     <div style={{ display: "flex", flexDirection: "column", gap: 24, alignItems: "flex-end" }}>
-                        <a href="mailto:hello@eurekahacks.ca" style={{ color: "white", textDecoration: "none", fontSize: 24, fontFamily: "var(--font-righteous)" }}>hello@eurekahacks.ca</a>
-                        <a href="https://instagram.com/eureka_hacks" style={{ color: "white", textDecoration: "none", fontSize: 24, fontFamily: "var(--font-righteous)" }}>@eureka_hacks</a>
+                        <a href="mailto:hello@eurekahacks.ca" style={{ color: "white", textDecoration: "underline", fontSize: 24, fontFamily: "var(--font-righteous)" }}>hello@eurekahacks.ca</a>
+                        <a href="https://instagram.com/eureka_hacks" style={{ color: "white", textDecoration: "underline", fontSize: 24, fontFamily: "var(--font-righteous)" }}>@eureka_hacks</a>
                     </div>
                 </div>
             </div>
