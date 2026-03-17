@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Freeman, Righteous, Inter, Roboto } from "next/font/google";
 import { cookies } from "next/headers";
 import { validateSessionToken } from "@/lib/sessions";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -33,7 +34,7 @@ const inter = Inter({
 
 const roboto = Roboto({
   variable: "--font-roboto"
-}); 
+});
 
 export const metadata: Metadata = {
   title: "EUREKAHACKS 2026",
@@ -54,11 +55,14 @@ export default async function RootLayout({
   }
   return (
     <html lang="en" className={pinkTheme ? "pink-theme" : ""}>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${freeman.variable} ${righteous.variable} ${inter.variable} ${roboto.variable} antialiased flex flex-col min-h-screen`}
       >
-        {children}
+        <div className="flex-1 flex flex-col">
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );
