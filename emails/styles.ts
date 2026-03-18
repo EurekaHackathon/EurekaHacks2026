@@ -45,7 +45,7 @@ export const btnContainerWithMargin = {
 };
 
 export const button = {
-    backgroundColor: "#fcc972",
+    backgroundColor: "#EF9B26",
     borderRadius: "3px",
     color: "#fff",
     fontSize: "16px",
