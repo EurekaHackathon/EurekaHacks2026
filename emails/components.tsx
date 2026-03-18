@@ -72,7 +72,7 @@ export const Email = ({ children, previewText, unsubscribeLink }: EmailProps) =>
         <Body style={styles.main}>
             <Container style={styles.container}>
                 <Img
-                    src={`https://eurekahacks.ca/logo/bigComic.webp`}
+                    src={`https://eurekahacks.ca/logo/bigComic.png`}
                     width="100"
                     height="100"
                     alt="EurekaHACKS logo"
