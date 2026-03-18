@@ -3,22 +3,21 @@ import { Email, Header, HighlightSection, LinkButton, Paragraph } from "./compon
 
 interface ApplicationsOpenTemplateProps {
     applicationLink: string;
-    unsubscribeLink: string;
 }
 
 export const ApplicationsOpenTemplate = ({
-    applicationLink, unsubscribeLink
+    applicationLink
 }: ApplicationsOpenTemplateProps) => (
-    <Email previewText="EurekaHACKS 2026 Applications are Now Open! 🚀" unsubscribeLink={unsubscribeLink}>
+    <Email previewText="Apply now on the hacker dashboard! 🚀">
         <Paragraph>Hey!</Paragraph>
         <Paragraph>
             We're excited to announce that applications for EurekaHACKS 2026 are now open!
-            Join us from May 1st-2nd at Waterloo Accelerator Center for an unforgettable day of
+            Join us from May 1st-2nd at Waterloo Accelerator Center for two unforgettable days of
             innovation, learning, and fun.
         </Paragraph>
         <HighlightSection>
             📍 Location: Waterloo Accelerator Center (295 Hagey Blvd, Waterloo)<br/>
-            📅 Date: May 1st 5pm - May 2nd 10pm
+            📅 Date: May 1st 5pm - May 2nd 10pm<br/>
             💻 Open to all high school students
         </HighlightSection>
         <LinkButton url={applicationLink} text="Apply Now"/>
@@ -36,8 +35,7 @@ export const ApplicationsOpenTemplate = ({
 );
 
 ApplicationsOpenTemplate.PreviewProps = {
-    applicationLink: "http://localhost:3000/dashboard",
-    unsubscribeLink: "http://localhost:3000/unsubscribe?id=abcdefg",
+    applicationLink: "http://eurekahacks.ca/dashboard",
 } as ApplicationsOpenTemplateProps;
 
 export default ApplicationsOpenTemplate;
