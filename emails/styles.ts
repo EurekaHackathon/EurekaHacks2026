@@ -31,7 +31,7 @@ export const hr = {
 };
 
 export const footer = {
-    color: "#8898aa",
+    color: "#89A",
     fontSize: "12px",
 };
 
@@ -77,5 +77,5 @@ export const highlightText = {
 };
 
 export const link = {
-    color: "#ffd500"
+    color: "#0259E3"
 };
