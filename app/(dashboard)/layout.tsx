@@ -28,7 +28,7 @@ export default async function Layout({
                 <StarField />
                 <div className="flex flex-row w-full">
                     <DashboardNav />
-                    <div className="h-screen overflow-y-auto w-full lg:px-20">
+                    <div className="h-screen overflow-y-auto overscroll-contain w-full lg:px-20">
                         {children}
                     </div>
                 </div>
