@@ -18,7 +18,8 @@ export const ApplicationsOpenTemplate = ({
         <HighlightSection>
             📍 Location: Waterloo Accelerator Center (295 Hagey Blvd, Waterloo)<br/>
             📅 Date: May 1st 5pm - May 2nd 10pm<br/>
-            💻 Open to all high school students
+            💻 Open to all high school students<br/>
+            ⏰ Applications Due: April 30, 2026
         </HighlightSection>
         <LinkButton url={applicationLink} text="Apply Now"/>
         <Paragraph>
