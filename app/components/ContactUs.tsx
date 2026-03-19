@@ -23,7 +23,7 @@ const TEAM: TeamMember[] = [
     { name: "Jenny Jin", role: "Marketing Girl", description: "Just do that, no do this, you're doing it wrong...", image: "/team/Jenny.png", superpower: "Straight ace student", supercolor: "#33FFF3" },
     { name: "Naman Sonawane", role: "Frontend Labourer", description: "I'm just here for the free food", image: "/team/Naman.png", superpower: "Can code in his sleep", supercolor: "#FF0000" },
     { name: "Victoria Yep", role: "Design Perfectionist", description: "I'm not bossy, I'm the boss", image: "/team/Victoria.png", superpower: "Drawing ducks", supercolor: "#ffee005b" },
-    { name: "Peony [Last name IDK]", role: "Marketing Girl", description: "Yep! I'll talk to you face to face when I'm not faceplanting", image: "/team/Peony.png", superpower: "I can eat an entire bag of sour patch kids in 5 minutes", supercolor: "#2f00ffff" },
+    { name: "Peony Zuo", role: "Marketing Girl", description: "Yep! I'll talk to you face to face when I'm not faceplanting", image: "/team/Peony.png", superpower: "I can eat an entire bag of sour patch kids in 5 minutes", supercolor: "#2f00ffff" },
 ];
 
 /**
