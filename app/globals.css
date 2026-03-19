@@ -8,14 +8,85 @@
   --font-righteous: var(--font-righteous), cursive;
   --font-fira-code: var(--font-fira-code), monospace;
   --font-roboto: var(--font-roboto), sans-serif;
+
+  --color-secondary-50: #eef3ff;
+  --color-secondary-100: #dce7ff;
+  --color-secondary-200: #b9cffe;
+  --color-secondary-300: #8ab1fd;
+  --color-secondary-400: #5285f7;
+  --color-secondary-500: #2c5de5;
+  --color-secondary-600: #1a42c8;
+  --color-secondary-700: #1435a0;
+  --color-secondary-800: #0f2778;
+  --color-secondary-900: #0a1b55;
+  --color-secondary-950: #060e2e;
+
+  --color-accent-50: #fefce8;
+  --color-accent-100: #fef9c3;
+  --color-accent-200: #fef08a;
+  --color-accent-300: #fde047;
+  --color-accent-400: #facc15;
+  --color-accent-500: #eab308;
+  --color-accent-600: #ca8a04;
+  --color-accent-700: #a16207;
+  --color-accent-800: #854d0e;
+  --color-accent-900: #713f12;
+  --color-accent-950: #422006;
+
+  --color-error-50: #fdf2f7;
+  --color-error-100: #fce7f2;
+  --color-error-200: #fccee6;
+  --color-error-300: #fba6d0;
+  --color-error-400: #f76fb0;
+  --color-error-500: #f04692;
+  --color-error-600: #df236e;
+  --color-error-700: #c21454;
+  --color-error-800: #a01445;
+  --color-error-900: #86153e;
+  --color-error-950: #520520;
 }
 
 :root {
   --background: #0a0a0a;
   --foreground: #ffffff;
-  --neon-yellow: #f5ffad;
+  --neon-yellow: #f0c24f;
+  --neon-yellow-dark: #e5b73e;
   --dark-blue: #1A73E8;
   --dark-green: #4CAF50;
+}
+
+.pink-theme {
+  --neon-yellow: #ff9ecd;
+  --neon-yellow-dark: #f07ab0;
+}
+
+@keyframes skeleton-pulse {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes starTwinkle {
+  0% {
+    opacity: 0.25;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #030712 inset !important;
+  -webkit-text-fill-color: #f3f4f6 !important;
+  caret-color: #f3f4f6;
+}
+
+.skeleton-pulse {
+  animation: skeleton-pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 /* * {
@@ -26,7 +97,7 @@
 
 html {
   overflow-x: hidden;
-  width: 100%;
+  width: 100vw;
   scroll-behavior: smooth;
 }
 
@@ -69,25 +140,29 @@ body {
 }
 
 .diamond {
-  background: radial-gradient(circle, rgba(58, 99, 140, 1) 0%, rgb(46, 126, 146) 50%, rgb(84, 131, 175) 100%);
-  box-shadow: 0 0 15px rgba(84, 131, 175, 0.6), 0 0 30px rgba(84, 131, 175, 0.4);
+  background: linear-gradient(135deg, rgba(185, 207, 254, 0.8) 0%, rgba(185, 207, 254, 0.95) 100%);
+  border: 2px solid rgba(185, 207, 254, 0.9);
+  box-shadow: 0 4px 15px rgba(185, 207, 254, 0.3);
 }
 
 .bronze {
-  background: radial-gradient(circle, rgba(205, 127, 50, 1) 0%, rgb(180, 100, 30) 50%, rgb(150, 75, 20) 100%);
-  box-shadow: 0 0 15px rgba(205, 127, 50, 0.6), 0 0 30px rgba(205, 127, 50, 0.4);
+  background: linear-gradient(135deg, rgba(205, 127, 50, 0.8) 0%, rgba(205, 127, 50, 0.95) 100%);
+  border: 2px solid rgba(205, 127, 50, 0.9);
+  box-shadow: 0 4px 15px rgba(205, 127, 50, 0.3);
 }
 
 .silver {
-  background: radial-gradient(circle, rgba(192, 192, 192, 1) 0%, rgb(160, 160, 160) 50%, rgb(130, 130, 130) 100%);
-  box-shadow: 0 0 15px rgba(192, 192, 192, 0.6), 0 0 30px rgba(192, 192, 192, 0.4);
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.8) 0%, rgba(192, 192, 192, 0.95) 100%);
+  border: 2px solid rgba(192, 192, 192, 0.9);
+  box-shadow: 0 4px 15px rgba(192, 192, 192, 0.3);
 }
 
 
 
 .gold {
-  background: radial-gradient(circle, rgba(255, 215, 0, 1) 0%, rgb(220, 180, 0) 50%, rgb(180, 140, 0) 100%);
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.4);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.8) 0%, rgba(255, 215, 0, 0.95) 100%);
+  border: 2px solid rgba(255, 215, 0, 0.9);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 }
 
 
@@ -174,6 +249,12 @@ body {
   mask-image: linear-gradient(to bottom, black 0%, black 40%, rgba(0, 0, 0, 0.8) 70%, transparent 100%);
 }
 
+@media screen and (max-width: 600px) {
+  .top-bar {
+    display: none;
+  }
+}
+
 .top-bar-content {
   display: flex;
   justify-content: flex-start;
@@ -247,7 +328,6 @@ body {
   margin-top: 32px;
   max-width: 480px;
   position: relative;
-  z-index: 100;
 }
 
 .email-input {
@@ -262,6 +342,16 @@ body {
   color: #ffffff;
   backdrop-filter: blur(20px);
   transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 600px) {
+  .email-signup {
+    margin-right: 24px;
+  }
+
+  .email-input {
+    background: linear-gradient(to right, rgba(100, 100, 120, 0.6) 0%, rgba(80, 80, 100, 0.4) 40%, rgba(60, 60, 80, 0.2) 100%);
+  }
 }
 
 .email-input::placeholder {

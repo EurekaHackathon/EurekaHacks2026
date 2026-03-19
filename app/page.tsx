@@ -10,15 +10,18 @@ export default function Home() {
   return (
     <div className="LandingPage">
       <HeroSection />
-      
+
       {/* Spacer for scrolling */}
-      <div style={{ 
-        height: '100vh', 
-        position: 'relative', 
-        zIndex: 100,
-        background: 'linear-gradient(to bottom, transparent 0%, transparent 70%, #0a0a1a 100%)',
-        pointerEvents: 'none'
-      }}></div>
+      <div
+        style={{
+          height: "100vh",
+          position: "relative",
+          zIndex: 100,
+          background:
+            "linear-gradient(to bottom, transparent 0%, transparent 70%, #0a0a1a 100%)",
+          pointerEvents: "none",
+        }}
+      ></div>
       <StatsSection />
       {/* Scrollable Content Section */}
       <AboutSection />
@@ -26,7 +29,7 @@ export default function Home() {
       <FAQSection />
 
       {/* re-add when sponsor info is available */}
-      {/* <SponsorsSection /> */}
+      <SponsorsSection />
     </div>
   );
 }

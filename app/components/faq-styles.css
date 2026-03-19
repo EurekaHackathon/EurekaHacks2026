@@ -107,16 +107,17 @@
 
   .faq-card {
     max-width: 100%;
-    padding: 32px;
+    padding: 12px;
   }
 
   .faq-question {
     font-size: 1.25rem;
-    margin-bottom: 16px;
+    margin-bottom: 6px;
   }
 
   .faq-answer {
     font-size: 1rem;
+    line-height: 1.5;
   }
 
   .faq-illustration {
