@@ -1,5 +1,5 @@
 import { render } from '@react-email/render';
-import ApplicationsOpenTemplate from '@/emails/apps-open';
+import ApplicationsOpenTemplate from '@/lib/emails/apps-open';
 import NodeMailer from 'nodemailer';
 import { readFile } from 'fs/promises';
 
