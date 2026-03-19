@@ -10,26 +10,30 @@ interface TeamMember {
     role: string;
     description?: string;
     image?: string;
+    superpower?: string;
+    supercolor?: string;
 }
 
 const TEAM: TeamMember[] = [
-    { name: "Daniel Zhu", role: "Sponsorship", description: "When I was a kid, I used to stare at cars. Now, I sit in a car and stare at kids", image: "/team/DanielZhu.png" },
-    { name: "Yohance Pawani", role: "President", description: "I like pink floyd", image: "/team/Yohance.png" },
-    { name: "Anvi Nambiar", role: "Marketing", description: "I hate spiders", image: "/team/Anvi.png" },
-    { name: "Bob Lee", role: "Backend Guru", description: "Scalability and reliability expert.", image: undefined },
-    { name: "Charlie Chen", role: "Frontend Dev", description: "React and CSS magic.", image: undefined },
-    { name: "Diana Prince", role: "Operations", description: "Keeping everyone on track.", image: undefined },
+    { name: "Daniel Zhu", role: "Sponsorship", description: "When I was a kid, I used to stare at cars. Now, I sit in a car and stare at kids", image: "/team/DanielZhu.png", superpower: "Haha no G2", supercolor: "#FF5733" },
+    { name: "Yohance Pawani", role: "President", description: "I like pink floyd", image: "/team/Yohance.png", superpower: "Quantum levitation", supercolor: "#33FF57" },
+    { name: "Anvi Nambiar", role: "Marketing", description: "I hate spiders", image: "/team/Anvi.png", superpower: "Spider whispering", supercolor: "#3357FF" },
+    { name: "Alan Liu", role: "Backend Guru", description: "Thou of much hair must bow before thy of little hair", image: "/team/Alan.png", superpower: "5 cups of coffee a day", supercolor: "#F333FF" },
+    { name: "Eason Huang", role: "President", description: "The best product manager anyone could ask for, except maybe for himself.", image: "/team/Eason.png", superpower: "PR commenting", supercolor: "#E5A212" },
+    { name: "Jenny Jin", role: "Marketing Girl", description: "Just do that, no do this, you're doing it wrong...", image: "/team/Jenny.png", superpower: "Straight ace student", supercolor: "#33FFF3" },
+    { name: "Naman", role: "Frontend Labourer", description: "I'm just here for the free food", image: "/team/Naman.png", superpower: "Can code in his sleep", supercolor: "#FF0000" },
+    { name: "Victoria", role: "Design Perfectionist", description: "I'm not bossy, I'm the boss", image: "/team/Victoria.png", superpower: "Drawing ducks", supercolor: "#ffee00ff" },
 ];
 
 /**
  * Slot properties based on Figma design.
  */
 const SLOTS = [
-    { w: 368, h: 422, x: 0, opacity: 1, roleSize: 40, nameSize: 32, avatarSize: 123, descSize: 16 },
-    { w: 261, h: 299, x: 384, opacity: 0.81, roleSize: 24, nameSize: 24, avatarSize: 87, descSize: 0 },
-    { w: 192, h: 220, x: 661, opacity: 0.58, roleSize: 20, nameSize: 20, avatarSize: 64, descSize: 0 },
-    { w: 148, h: 170, x: 869, opacity: 0.35, roleSize: 15, nameSize: 14, avatarSize: 50, descSize: 0 },
-    { w: 119, h: 136, x: 1033, opacity: 0.16, roleSize: 13, nameSize: 13, avatarSize: 40, descSize: 0 },
+    { w: 368, h: 422, x: 0, opacity: 1, roleSize: 40, nameSize: 32, avatarSize: 123, descSize: 22 },
+    { w: 261, h: 299, x: 384, opacity: 0.81, roleSize: 24, nameSize: 24, avatarSize: 87, descSize: 14 },
+    { w: 192, h: 220, x: 661, opacity: 0.58, roleSize: 20, nameSize: 20, avatarSize: 64, descSize: 11 },
+    { w: 148, h: 170, x: 869, opacity: 0.35, roleSize: 15, nameSize: 14, avatarSize: 50, descSize: 8 },
+    { w: 119, h: 136, x: 1033, opacity: 0.16, roleSize: 13, nameSize: 13, avatarSize: 40, descSize: 6 },
 ];
 
 const EXIT_X = -400;
@@ -146,20 +150,37 @@ function TeamCard({
                     {member.name}
                 </p>
             </div>
-            {isMain && member.description && (
-                <p
-                    style={{
-                        fontFamily: "var(--font-righteous)",
-                        fontSize: targetSpec.descSize || 16,
-                        color: "#000000",
-                        textTransform: "uppercase",
-                        width: "100%",
-                        marginTop: "auto",
-                        transition: "font-size 0.8s ease, opacity 0.8s ease",
-                    }}
-                >
-                    {member.description}
-                </p>
+            {member.description && (
+                <div style={{ marginTop: "auto", display: "flex", flexDirection: "column", gap: 4 }}>
+                    <p
+                        style={{
+                            fontFamily: "var(--font-righteous)",
+                            fontSize: targetSpec.descSize || 22,
+                            color: "#000000",
+                            textTransform: "uppercase",
+                            width: "100%",
+                            margin: 0,
+                            transition: "font-size 0.8s ease, opacity 0.8s ease",
+                        }}
+                    >
+                        {member.description}
+                    </p>
+                    {member.superpower && (
+                        <p
+                            style={{
+                                fontFamily: "var(--font-righteous)",
+                                fontSize: targetSpec.descSize ? Math.max(targetSpec.descSize - 4, 6) : 18,
+                                color: member.supercolor || "#000",
+                                textTransform: "uppercase",
+                                width: "100%",
+                                margin: 0,
+                                transition: "font-size 0.8s ease, opacity 0.8s ease, color 0.8s ease",
+                            }}
+                        >
+                            <span style={{color: '#284062'}}>SUPERPOWER:</span> {member.superpower}
+                        </p>
+                    )}
+                </div>
             )}
         </div>
     );
@@ -186,7 +207,7 @@ export default function ContactUs() {
                 const cardH = 340; // Further reduced height
                 const centerX = (containerW - cardW) / 2;
                 setSlots([
-                    { w: cardW, h: cardH, x: centerX, opacity: 1, roleSize: 22, nameSize: 18, avatarSize: 70, descSize: 11 },
+                    { w: cardW, h: cardH, x: centerX, opacity: 1, roleSize: 22, nameSize: 18, avatarSize: 70, descSize: 15 },
                     { w: cardW, h: cardH, x: w + 100, opacity: 0, roleSize: 8, nameSize: 8, avatarSize: 20, descSize: 0 },
                     { w: cardW, h: cardH, x: w + 200, opacity: 0, roleSize: 8, nameSize: 8, avatarSize: 20, descSize: 0 },
                     { w: cardW, h: cardH, x: w + 300, opacity: 0, roleSize: 8, nameSize: 8, avatarSize: 20, descSize: 0 },
@@ -197,11 +218,11 @@ export default function ContactUs() {
             } else if (w < 1100) {
                 // Tablet Slots
                 setSlots([
-                    { w: 320, h: 400, x: 0, opacity: 1, roleSize: 36, nameSize: 30, avatarSize: 110, descSize: 15 },
-                    { w: 220, h: 280, x: 340, opacity: 0.8, roleSize: 22, nameSize: 22, avatarSize: 80, descSize: 0 },
-                    { w: 160, h: 200, x: 580, opacity: 0.5, roleSize: 18, nameSize: 18, avatarSize: 60, descSize: 0 },
-                    { w: 120, h: 150, x: 760, opacity: 0, roleSize: 14, nameSize: 14, avatarSize: 45, descSize: 0 },
-                    { w: 120, h: 150, x: 900, opacity: 0, roleSize: 14, nameSize: 14, avatarSize: 45, descSize: 0 },
+                    { w: 320, h: 400, x: 0, opacity: 1, roleSize: 36, nameSize: 30, avatarSize: 110, descSize: 18 },
+                    { w: 220, h: 280, x: 340, opacity: 0.8, roleSize: 22, nameSize: 22, avatarSize: 80, descSize: 12 },
+                    { w: 160, h: 200, x: 580, opacity: 0.5, roleSize: 18, nameSize: 18, avatarSize: 60, descSize: 10 },
+                    { w: 120, h: 150, x: 760, opacity: 0, roleSize: 14, nameSize: 14, avatarSize: 45, descSize: 8 },
+                    { w: 120, h: 150, x: 900, opacity: 0, roleSize: 14, nameSize: 14, avatarSize: 45, descSize: 6 },
                 ]);
                 setExitX(-400);
                 setEnterX(1000);
@@ -224,23 +245,16 @@ export default function ContactUs() {
         };
     }, []);
 
-    const slantHeight = isMobile ? 80 : 120;
 
     return (
         <div style={{ width: "100%", maxWidth: 1440, margin: "0 auto", paddingLeft: isMobile ? 20 : 56, paddingRight: isMobile ? 20 : 56, overflow: "hidden", boxSizing: "border-box" }}>
             {/* TOP SECTION */}
-            <div style={{ position: "relative", minHeight: isMobile ? 580 : 650, marginBottom: 40, width: "100%" }}>
-                {/* SVG border matches clipPath below. Logic: slant is ~16% of height (100/600) */}
-                <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none" }} viewBox="0 0 1000 600" preserveAspectRatio="none">
-                    <polygon points="5,5 995,5 995,495 5,595" stroke="#FFFEF5" strokeWidth="10" fill="none" vectorEffect="non-scaling-stroke" />
-                </svg>
-
+            <div style={{ position: "relative", marginBottom: 40, width: "100%", border: "10px solid #FFFEF5", borderRadius: 16 }}>
                 <div style={{ 
                     position: "relative", 
                     zIndex: 1, 
-                    padding: isMobile ? "24px 0px 100px 0px" : "48px 48px 180px 48px", 
+                    padding: isMobile ? "32px 0px" : "48px", 
                     width: "100%",
-                    clipPath: `polygon(0 0, 100% 0, 100% calc(100% - ${slantHeight}px), 0 100%)` 
                 }}>
                     <h2 style={{ fontFamily: "var(--font-righteous)", fontSize: isMobile ? 40 : 64, color: "#FFFFFF", textTransform: "uppercase", marginBottom: isMobile ? 24 : 40, paddingLeft: isMobile ? (slots[0]?.x || 20) : 0 }}>Meet the team</h2>
                     
@@ -280,21 +294,16 @@ export default function ContactUs() {
             </div>
 
             {/* BOTTOM SECTION - Separated by marginBottom on top box */}
-            <div style={{ position: "relative", minHeight: isMobile ? 320 : 320 }}>
-                {/* SVG border matches clipPath below */}
-                <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none" }} viewBox="0 0 1000 600" preserveAspectRatio="none">
-                    <polygon points="0,100 1000,0 1000,600 0,600" stroke="#FFFEF5" strokeWidth="10" fill="none" vectorEffect="non-scaling-stroke" />
-                </svg>
+            <div style={{ position: "relative", border: "10px solid #FFFEF5", borderRadius: 16 }}>
                 <div style={{ 
                     position: "relative", 
                     zIndex: 1, 
-                    padding: isMobile ? `${slantHeight + 20}px 12px 48px 12px` : "140px 48px 48px 48px", 
-                    clipPath: `polygon(0 ${slantHeight}px, 100% 0, 100% 100%, 0 100%)`, 
+                    padding: isMobile ? "32px 20px" : "64px 48px", 
                     display: "flex", 
                     flexDirection: isMobile ? "column" : "row", 
                     justifyContent: "space-between", 
-                    alignItems: isMobile ? "flex-start" : "flex-end",
-                    gap: isMobile ? 32 : 0
+                    alignItems: isMobile ? "flex-start" : "center",
+                    gap: isMobile ? 24 : 0
                 }}>
                     <h2 style={{ fontFamily: "var(--font-righteous)", fontSize: isMobile ? 48 : "clamp(48px, 7vw, 96px)", lineHeight: 1.0, color: "#FFFFFF", textTransform: "uppercase", margin: 0 }}>Contact<br />Us</h2>
                     <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 12 : 24, alignItems: isMobile ? "flex-start" : "flex-end" }}>
