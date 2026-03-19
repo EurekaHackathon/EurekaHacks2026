@@ -1,11 +1,7 @@
 import * as React from "react";
-import { Email, Header, Paragraph, A } from "./components";
+import { Email, Header, Paragraph, A, PersonalizedEmailProps } from "./components";
 
-interface InfoTemplateProps {
-    firstName: string;
-}
-
-export const InfoEmailTemplate = ({firstName}: InfoTemplateProps) => (
+export const InfoEmailTemplate = ({firstName}: PersonalizedEmailProps) => (
     <Email previewText="EurekaHACKS is tomorrow!">
         <Paragraph>Hey {firstName}!</Paragraph>
         <Paragraph>
@@ -84,6 +80,6 @@ export const InfoEmailTemplate = ({firstName}: InfoTemplateProps) => (
 
 InfoEmailTemplate.PreviewProps = {
     firstName: "John",
-} as InfoTemplateProps;
+} as PersonalizedEmailProps;
 
 export default InfoEmailTemplate;

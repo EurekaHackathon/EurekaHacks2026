@@ -1,16 +1,16 @@
 import * as React from "react";
-import { Email, LinkButton, Paragraph } from "./components";
+import { Email, LinkButton, Paragraph, PersonalizedEmailProps } from "./components";
 
-interface VerifyEmailTemplateProps {
+interface VerifyEmailTemplateProps extends PersonalizedEmailProps {
     userFirstname: string;
     verificationLink: string;
 }
 
 export const VerifyEmailTemplate = ({
-    userFirstname, verificationLink
+    firstName, verificationLink
 }: VerifyEmailTemplateProps) => (
     <Email previewText="Verify your email">
-        <Paragraph>Hi {userFirstname},</Paragraph>
+        <Paragraph>Hi {firstName},</Paragraph>
         <Paragraph>
             Thank you for creating a EurekaHACKS account! To get started, please verify your email address by
             clicking the button below.

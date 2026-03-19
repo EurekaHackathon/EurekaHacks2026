@@ -1,11 +1,7 @@
 import * as React from "react";
-import { Email, LinkButton, Paragraph } from "./components";
+import { Email, LinkButton, Paragraph, PersonalizedEmailProps } from "./components";
 
-interface ApplicationsOpenTemplateProps {
-    firstName: string;
-}
-
-export const ApplicationsDueTemplate = ({firstName}: ApplicationsOpenTemplateProps) => (
+export const ApplicationsDueTemplate = ({firstName}: PersonalizedEmailProps) => (
     <Email previewText="🚨 EurekaHACKS 2025 applications are due tomorrow! 🚨">
         <Paragraph>Hey {firstName}!</Paragraph>
         <Paragraph>
@@ -27,6 +23,6 @@ export const ApplicationsDueTemplate = ({firstName}: ApplicationsOpenTemplatePro
 
 ApplicationsDueTemplate.PreviewProps = {
     firstName: "John",
-} as ApplicationsOpenTemplateProps;
+} as PersonalizedEmailProps;
 
 export default ApplicationsDueTemplate;

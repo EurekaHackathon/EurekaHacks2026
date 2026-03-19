@@ -1,16 +1,15 @@
 import * as React from "react";
-import { Email, LinkButton, Paragraph } from "./components";
+import { Email, LinkButton, Paragraph, PersonalizedEmailProps } from "./components";
 
-interface VerifyEmailTemplateProps {
-    userFirstname: string;
+interface VerifyEmailTemplateProps extends PersonalizedEmailProps {
     resetLink: string;
 }
 
 export const ResetPasswordTemplate = ({
-    userFirstname, resetLink
+    firstName, resetLink
 }: VerifyEmailTemplateProps) => (
     <Email previewText="Reset your password">
-        <Paragraph>Hi {userFirstname},</Paragraph>
+        <Paragraph>Hi {firstName},</Paragraph>
         <Paragraph>
             You have requested to reset your password. Please click the button below to reset it.
             If you did not request this, please ignore this email.
@@ -20,7 +19,7 @@ export const ResetPasswordTemplate = ({
 );
 
 ResetPasswordTemplate.PreviewProps = {
-    userFirstname: "John",
+    firstName: "John",
     resetLink: "https://example.com",
 } as VerifyEmailTemplateProps;
 

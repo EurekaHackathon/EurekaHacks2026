@@ -14,6 +14,10 @@ import {
 import type { ComponentProps, ReactNode } from "react";
 import * as styles from "./styles";
 
+export interface PersonalizedEmailProps {
+    firstName: string;
+}
+
 type TextProps = ComponentProps<typeof Text>;
 
 export const Paragraph = ({ style, ...props }: TextProps) => (

@@ -1,11 +1,7 @@
 import * as React from "react";
-import { Email, LinkButton, Paragraph } from "./components";
+import { Email, LinkButton, Paragraph, PersonalizedEmailProps } from "./components";
 
-interface PersonalizedEmail {
-    firstName: string;
-}
-
-export const AcceptanceEmailTemplate = ({firstName}: PersonalizedEmail) => (
+export const AcceptanceEmailTemplate = ({firstName}: PersonalizedEmailProps) => (
     <Email previewText="Congratulations 🎉, See You At EurekaHACKS 2025!">
         <Paragraph>Hey {firstName}!</Paragraph>
         <Paragraph>
@@ -50,6 +46,6 @@ export const AcceptanceEmailTemplate = ({firstName}: PersonalizedEmail) => (
 
 AcceptanceEmailTemplate.PreviewProps = {
     firstName: "John",
-} as PersonalizedEmail;
+} as PersonalizedEmailProps;
 
 export default AcceptanceEmailTemplate;
