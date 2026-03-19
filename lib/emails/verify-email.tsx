@@ -2,7 +2,6 @@ import * as React from "react";
 import { Email, LinkButton, Paragraph, PersonalizedEmailProps } from "./components";
 
 interface VerifyEmailTemplateProps extends PersonalizedEmailProps {
-    userFirstname: string;
     verificationLink: string;
 }
 
@@ -26,7 +25,7 @@ export const VerifyEmailTemplate = ({
 );
 
 VerifyEmailTemplate.PreviewProps = {
-    userFirstname: "John",
+    firstName: "John",
     verificationLink: "https://example.com",
 } as VerifyEmailTemplateProps;
 
