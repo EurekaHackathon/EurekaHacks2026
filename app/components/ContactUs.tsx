@@ -209,58 +209,45 @@ export default function ContactUs() {
                 const cardW = Math.min(containerW - 80, 240); 
                 const cardH = 340; 
                 const centerX = (containerW - cardW) / 2;
-                const mobileSlots = [{ w: cardW, h: cardH, x: centerX, opacity: 1, roleSize: 22, nameSize: 18, avatarSize: 70, descSize: 15 }];
-                for (let i = 1; i < TEAM.length; i++) {
-                    mobileSlots.push({ w: cardW, h: cardH, x: w + 100 * i, opacity: 0, roleSize: 8, nameSize: 8, avatarSize: 20, descSize: 0 });
-                }
-                setSlots(mobileSlots);
+                setSlots([
+                    { w: cardW, h: cardH, x: centerX, opacity: 1, roleSize: 22, nameSize: 18, avatarSize: 70, descSize: 15 },
+                    { w: cardW, h: cardH, x: w + 100, opacity: 0, roleSize: 8, nameSize: 8, avatarSize: 20, descSize: 0 },
+                    { w: cardW, h: cardH, x: w + 200, opacity: 0, roleSize: 8, nameSize: 8, avatarSize: 20, descSize: 0 },
+                    { w: cardW, h: cardH, x: w + 300, opacity: 0, roleSize: 8, nameSize: 8, avatarSize: 20, descSize: 0 },
+                    { w: cardW, h: cardH, x: w + 400, opacity: 0, roleSize: 8, nameSize: 8, avatarSize: 20, descSize: 0 },
+                ]);
                 setExitX(-w);
                 setEnterX(w * 2);
             } else if (w < 1100) {
                 // Tablet Slots
-                const baseTabletSlots = [
+                setSlots([
                     { w: 320, h: 400, x: 0, opacity: 1, roleSize: 36, nameSize: 30, avatarSize: 110, descSize: 18 },
                     { w: 220, h: 280, x: 340, opacity: 0.8, roleSize: 22, nameSize: 22, avatarSize: 80, descSize: 12 },
                     { w: 160, h: 200, x: 580, opacity: 0.5, roleSize: 18, nameSize: 18, avatarSize: 60, descSize: 10 },
                     { w: 120, h: 150, x: 760, opacity: 0.2, roleSize: 14, nameSize: 14, avatarSize: 45, descSize: 8 },
                     { w: 120, h: 150, x: 900, opacity: 0.1, roleSize: 14, nameSize: 14, avatarSize: 45, descSize: 6 },
-                ];
-                const tabletSlots = [...baseTabletSlots];
-                for (let i = tabletSlots.length; i < TEAM.length; i++) {
-                    const prev = tabletSlots[i - 1];
-                    tabletSlots.push({
-                        w: Math.max(prev.w * 0.75, 20),
-                        h: Math.max(prev.h * 0.75, 20),
-                        x: prev.x + prev.w + 16,
-                        opacity: Math.max(prev.opacity * 0.7, 0.01),
-                        roleSize: Math.max(prev.roleSize * 0.8, 6),
-                        nameSize: Math.max(prev.nameSize * 0.8, 6),
-                        avatarSize: Math.max(prev.avatarSize * 0.75, 10),
-                        descSize: Math.max(prev.descSize * 0.8, 4),
-                    });
-                }
-                setSlots(tabletSlots);
+                ]);
                 setExitX(-400);
                 setEnterX(1500);
             } else {
-                // Desktop Slots
-                const desktopSlots = [...SLOTS];
-                for (let i = desktopSlots.length; i < TEAM.length; i++) {
-                    const prev = desktopSlots[i - 1];
-                    desktopSlots.push({
-                        w: Math.max(prev.w * 0.75, 20),
-                        h: Math.max(prev.h * 0.75, 20),
-                        x: prev.x + prev.w + 16,
-                        opacity: Math.max(prev.opacity * 0.7, 0.01),
-                        roleSize: Math.max(prev.roleSize * 0.8, 6),
-                        nameSize: Math.max(prev.nameSize * 0.8, 6),
-                        avatarSize: Math.max(prev.avatarSize * 0.75, 10),
-                        descSize: Math.max(prev.descSize * 0.8, 4),
-                    });
-                }
+                // Desktop Slots - Scale up proportionally based on available width!
+                const containerW = Math.min(w, 1920);
+                const scale = Math.max(1, containerW / 1440);
+                
+                const desktopSlots = SLOTS.map(slot => ({
+                    ...slot,
+                    w: slot.w * scale,
+                    h: slot.h * scale,
+                    x: slot.x * scale,
+                    roleSize: slot.roleSize * scale,
+                    nameSize: slot.nameSize * scale,
+                    avatarSize: slot.avatarSize * scale,
+                    descSize: slot.descSize * scale,
+                }));
+                
                 setSlots(desktopSlots);
-                setExitX(EXIT_X);
-                setEnterX(desktopSlots[desktopSlots.length - 1].x + 300);
+                setExitX(EXIT_X * scale);
+                setEnterX(desktopSlots[4].x + desktopSlots[4].w + 100 * scale);
             }
         };
 
@@ -277,7 +264,7 @@ export default function ContactUs() {
 
 
     return (
-        <div style={{ width: "100%", maxWidth: 1440, margin: "0 auto", paddingLeft: isMobile ? 20 : 56, paddingRight: isMobile ? 20 : 56, overflow: "hidden", boxSizing: "border-box" }}>
+        <div style={{ width: "100%", maxWidth: 1920, margin: "0 auto", paddingLeft: isMobile ? 20 : 56, paddingRight: isMobile ? 20 : 56, overflow: "hidden", boxSizing: "border-box" }}>
             {/* TOP SECTION */}
             <div style={{ position: "relative", marginBottom: 40, width: "100%", border: "10px solid #FFFEF5", borderRadius: 16 }}>
                 <div style={{ 
@@ -288,9 +275,9 @@ export default function ContactUs() {
                 }}>
                     <h2 style={{ fontFamily: "var(--font-righteous)", fontSize: isMobile ? 40 : 64, color: "#FFFFFF", textTransform: "uppercase", marginBottom: isMobile ? 24 : 40, paddingLeft: isMobile ? (slots[0]?.x || 20) : 0 }}>Meet the team</h2>
                     
-                    <div style={{ position: "relative", height: isMobile ? 420 : 430, width: "100%", overflow: isMobile ? "hidden" : "visible" }}>
-                        {/* Render TEAM.length + 1 cards: 1 exiting, TEAM.length visible, 1 entering */}
-                        {[...Array(TEAM.length + 1)].map((_, i) => {
+                    <div style={{ position: "relative", height: isMobile ? 420 : (slots[0]?.h ? slots[0].h + 10 : 430), width: "100%", overflow: isMobile ? "hidden" : "visible" }}>
+                        {/* Render 7 cards: 1 exiting, 5 visible, 1 entering */}
+                        {[...Array(7)].map((_, i) => {
                             const cardIndex = offset + i - 1; 
                             const member = TEAM[((cardIndex % TEAM.length) + TEAM.length) % TEAM.length];
                             
