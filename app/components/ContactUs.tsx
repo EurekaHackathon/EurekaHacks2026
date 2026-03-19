@@ -231,8 +231,7 @@ export default function ContactUs() {
                 setEnterX(1500);
             } else {
                 // Desktop Slots - Scale up proportionally based on available width!
-                const containerW = Math.min(w, 1920);
-                const scale = Math.max(1, containerW / 1440);
+                const scale = Math.max(1, w / 1440);
                 
                 const desktopSlots = SLOTS.map(slot => ({
                     ...slot,
@@ -264,9 +263,9 @@ export default function ContactUs() {
 
 
     return (
-        <div style={{ width: "100%", maxWidth: 1920, margin: "0 auto", paddingLeft: isMobile ? 20 : 56, paddingRight: isMobile ? 20 : 56, overflow: "hidden", boxSizing: "border-box" }}>
+        <div style={{ width: "100%", margin: "0 auto", paddingLeft: isMobile ? 20 : 56, paddingRight: isMobile ? 20 : 56, overflow: "hidden", boxSizing: "border-box" }}>
             {/* TOP SECTION */}
-            <div style={{ position: "relative", marginBottom: 40, width: "100%", border: "10px solid #FFFEF5", borderRadius: 16 }}>
+            <div style={{ position: "relative", marginBottom: 40, width: "100%", border: "10px solid #FFFEF5", borderRadius: 0 }}>
                 <div style={{ 
                     position: "relative", 
                     zIndex: 1, 
@@ -311,7 +310,7 @@ export default function ContactUs() {
             </div>
 
             {/* BOTTOM SECTION - Separated by marginBottom on top box */}
-            <div style={{ position: "relative", border: "10px solid #FFFEF5", borderRadius: 16 }}>
+            <div style={{ position: "relative", border: "10px solid #FFFEF5", borderRadius: 0 }}>
                 <div style={{ 
                     position: "relative", 
                     zIndex: 1, 
