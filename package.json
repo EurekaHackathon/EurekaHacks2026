@@ -6,12 +6,14 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "email:dev": "email dev"
   },
   "dependencies": {
     "@iconify/react": "^6.0.2",
     "@neoconfetti/react": "^1.0.0",
     "@next/bundle-analyzer": "^16.0.10",
+    "@react-email/render": "^2.0.4",
     "@node-rs/argon2": "^2.0.2",
     "@nuintun/qrcode": "^5.0.3",
     "@oslojs/crypto": "^1.0.1",
@@ -32,7 +34,7 @@
     "lucide-react": "^0.561.0",
     "mongodb": "^6.20.0",
     "next": "^15.5.9",
-    "nodemailer": "^8.0.1",
+    "nodemailer": "^8.0.2",
     "postgres": "^3.4.8",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -44,6 +46,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@react-email/preview-server": "^5.2.9",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/nodemailer": "^7.0.11",
@@ -51,6 +54,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
+    "react-email": "^5.2.9",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
