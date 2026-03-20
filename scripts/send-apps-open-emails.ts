@@ -24,10 +24,11 @@ const transporter = NodeMailer.createTransport({
 async function loadEmails(filePath: string): Promise<string[]> {
   const file = await readFile(filePath, 'utf8');
 
-  return file
+  return [...new Set(file
     .split(/\r?\n/)
     .map((line) => line.trim())
-    .filter((line) => line.length > 0 && !line.startsWith('#'));
+    .filter((line) => line.length > 0 && !line.startsWith('#')))
+  ];
 }
 
 (async () => {
