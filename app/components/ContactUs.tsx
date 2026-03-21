@@ -266,9 +266,9 @@ export default function ContactUs() {
 
 
     return (
-        <div style={{ width: "100%", margin: "0 auto", paddingLeft: isMobile ? 20 : 56, paddingRight: isMobile ? 20 : 56, overflow: "hidden", boxSizing: "border-box" }}>
+        <div className="w-screen p-12 max-sm:p-4" style={{ overflow: "hidden", boxSizing: "border-box" }}>
             {/* TOP SECTION */}
-            <div style={{ position: "relative", marginBottom: 40, width: "100%", border: "10px solid #FFFEF5", borderRadius: 0 }}>
+            <div className="shadow-2xl" style={{ position: "relative", marginBottom: 40, width: "100%", border: "12px solid white", borderRadius: 0 }}>
                 <div style={{ 
                     position: "relative", 
                     zIndex: 1, 
@@ -313,7 +313,7 @@ export default function ContactUs() {
             </div>
 
             {/* BOTTOM SECTION - Separated by marginBottom on top box */}
-            <div style={{ position: "relative", border: "10px solid #FFFEF5", borderRadius: 0 }}>
+            <div className="shadow-2xl" style={{ position: "relative", border: "12px solid white", borderRadius: 0 }}>
                 <div style={{ 
                     position: "relative", 
                     zIndex: 1, 
