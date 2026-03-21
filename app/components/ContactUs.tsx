@@ -17,7 +17,7 @@ interface TeamMember {
 const TEAM: TeamMember[] = [
     { name: "Daniel Zhu", role: "Sponsorship", description: "When I was a kid, I used to stare at cars. Now, I sit in a car and stare at kids", image: "/team/DanielZhu.png", superpower: "Haha no G1", supercolor: "#FF5733" },
     { name: "Yohance Pawani", role: "President", description: "I like pink floyd", image: "/team/Yohance.png", superpower: "Quantum levitation", supercolor: "#33FF57" },
-    { name: "Anvi Nambiar", role: "Marketing", description: "I hate spiders", image: "/team/Anvi.png", superpower: "Spider whispering", supercolor: "#3357FF" },
+    { name: "Anvi Nambiar", role: "Marketing", description: "I hate spiders", image: "/team/Anvi.png", superpower: "Magic", supercolor: "#3357FF" },
     { name: "Alan Liu", role: "Backend Guru", description: "Thou of much hair must bow before thy of little hair", image: "/team/Alan.png", superpower: "5 cups of coffee a day", supercolor: "#F333FF" },
     { name: "Eason Huang", role: "President", description: "The best product manager anyone could ask for, except maybe for himself.", image: "/team/Eason.png", superpower: "PR commenting", supercolor: "#E5A212" },
     { name: "Jenny Jin", role: "Marketing Girl", description: "Just do that, no do this, you're doing it wrong...", image: "/team/Jenny.png", superpower: "Always hitting red lights 🫰", supercolor: "#33FFF3" },
@@ -25,7 +25,10 @@ const TEAM: TeamMember[] = [
     { name: "Victoria Yep", role: "Figma Warrior", description: "I think I was supposed to put a fun fact here", image: "/team/Victoria.png", superpower: "IDK :)", supercolor: "#938a10ff" },
     { name: "Peony Zuo", role: "Marketing Girl", description: "Yep! I'll talk to you face to face when I'm not faceplanting", image: "/team/Peony.png", superpower: "I can eat an entire bag of sour patch kids in 5 minutes", supercolor: "#2f00ffff" },
     { name: "Minsun Kim", role: "Everything", description: "I rlly want to play pokopia", image: "/team/Minsun.png", superpower: "Memory of a goldfish 🐠", supercolor: "#2f00ffff" },
-    { name: "Neel Shah", role: "Backend Guru", description: "Testing and console logs are for cowards, just force push.", image: "/team/Neel.png", superpower: "Crashing prod", supercolor: "#067e2aff" },
+    { name: "Neel Shah", role: "Backend Guru", description: "Slightly red-green colourblind", image: "/team/Neel.png", superpower: "Can center a div without chatgpt", supercolor: "#067e2aff" },
+    { name: "Margret Liu", role: "Sketchbook Goat", description: "🕷️ 🔫 🧍‍♀️", image: "/team/Margret.png", superpower: "Forcing people to kill spiders for me", supercolor: "#30dcffff" },
+    { name: "Deming Chen", role: "Senior Trend Chaser", description: "Testing and console logs are for cowards, just force push.", image: "/team/Deming.png", superpower: "Can sell water to a fish", supercolor: "#ef720cff" },
+    { name: "Daniel Xu", role: "I Got It Guy", description: "Testing and console logs are for cowards, just force push.", image: "/team/DanielXu.png", superpower: "Crashing prod", supercolor: "#61008eff" },
 ];
 
 /**
