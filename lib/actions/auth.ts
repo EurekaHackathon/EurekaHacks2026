@@ -287,7 +287,7 @@ const sendVerificationEmail = async ({emailVerificationToken, firstName, email}:
     const domain = headersList.get("host");
     const emailHTML = await render(VerifyEmailTemplate({
         verificationLink: `${process.env.NODE_ENV === "development" ? "http" : "https"}://${domain}/verify-email?token=${emailVerificationToken}`,
-        userFirstname: firstName,
+        firstName: firstName,
     }));
 
     const emailText = `
@@ -359,7 +359,7 @@ export const requestPasswordReset = async (prevState: any, formData: FormData) =
         const domain = headersList.get("host");
         const emailHTML = await render(ResetPasswordTemplate({
             resetLink: `${process.env.NODE_ENV === "development" ? "http" : "https"}://${domain}/reset-password?token=${resetToken}`,
-            userFirstname: user.firstName ?? "hacker",
+            firstName: user.firstName ?? "hacker",
         }));
 
         const emailText = `

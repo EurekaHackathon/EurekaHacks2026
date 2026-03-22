@@ -179,7 +179,7 @@ export const apply = async (_prevState: any, formData: FormData) => {
                 `;
 
     const emailHTML = await render(ApplicationSubmittedTemplate({
-        userFirstname: user.firstName ?? "Hacker",
+        firstName: user.firstName ?? "Hacker",
     }));
 
     const mailOptions = {
