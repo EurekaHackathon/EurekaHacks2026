@@ -29,6 +29,7 @@ const TEAM: TeamMember[] = [
     { name: "Margret Liu", role: "Sketchbook Goat", description: "🕷️ 🔫 🧍‍♀️", image: "/team/Margret.png", superpower: "Forcing people to kill spiders for me", supercolor: "#30dcffff" },
     { name: "Deming Chen", role: "Senior Trend Chaser", description: "Testing and console logs are for cowards, just force push.", image: "/team/Deming.png", superpower: "Can sell water to a fish", supercolor: "#ef720cff" },
     { name: "Daniel Xu", role: "I Got It Guy", description: "Testing and console logs are for cowards, just force push.", image: "/team/DanielXu.png", superpower: "Crashing prod", supercolor: "#61008eff" },
+    { name: "Tiger Sun", role: "Sponsorship", description: "Wait, what was I supposed to put here? Oh look, a bird!", image: "/team/Tiger.png", superpower: "Attention span of a goldfish 💀", supercolor: "#8e0000ff" }
 ];
 
 /**
