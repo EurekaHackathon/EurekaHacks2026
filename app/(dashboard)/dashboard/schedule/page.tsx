@@ -1,19 +1,11 @@
 import { Icon } from "@iconify/react";
+import scheduleData from "@/lib/schedule.json";
 
 const PX_PER_HOUR = 80;
 const PX_PER_MINUTE = PX_PER_HOUR / 60;
 
-type Day = "fri" | "sat";
-
-function at(day: Day, hour: number, minute = 0): Date {
-    const year = 2025;
-    const month = 0; // January
-    const date = day === "fri" ? 3 : 4; // Fri Jan 3, Sat Jan 4
-    return new Date(year, month, date, hour, minute, 0, 0);
-}
-
-const SCHEDULE_START = at("fri", 16, 0);
-const SCHEDULE_END = at("sat", 22, 0);
+const SCHEDULE_START = new Date("2025-01-03T16:00:00");
+const SCHEDULE_END = new Date("2025-01-04T22:00:00");
 const TOTAL_MINUTES = (SCHEDULE_END.getTime() - SCHEDULE_START.getTime()) / 60000;
 const TOTAL_HEIGHT = TOTAL_MINUTES * PX_PER_MINUTE;
 
@@ -26,6 +18,15 @@ interface ScheduleItem {
     location: string;
     start: Date;
     end: Date;
+}
+
+interface ScheduleJsonItem {
+    id: number;
+    column: ColumnId;
+    title: string;
+    location: string;
+    start: string;
+    end: string;
 }
 
 const columns: Array<{ id: ColumnId; label: string; eventClasses: string; headerClasses: string }> = [
@@ -49,28 +50,15 @@ const columns: Array<{ id: ColumnId; label: string; eventClasses: string; header
     },
 ];
 
-const scheduleItems: ScheduleItem[] = [
-    // Food
-    { id: 1, column: "food", title: "Dinner", location: "Main Hall", start: at("fri", 17, 30), end: at("fri", 19, 0) },
-    { id: 2, column: "food", title: "Midnight Snacks", location: "Main Hall", start: at("fri", 23, 45), end: at("sat", 1, 15) },
-    { id: 3, column: "food", title: "Breakfast", location: "Main Hall", start: at("sat", 8, 30), end: at("sat", 10, 0) },
-    { id: 4, column: "food", title: "Lunch", location: "Main Hall", start: at("sat", 13, 0), end: at("sat", 14, 0) },
-    { id: 5, column: "food", title: "Dinner", location: "Main Hall", start: at("sat", 18, 30), end: at("sat", 20, 0) },
+function parseScheduleItems(data: ScheduleJsonItem[]): ScheduleItem[] {
+    return data.map((item) => ({
+        ...item,
+        start: new Date(item.start),
+        end: new Date(item.end),
+    }));
+}
 
-    // Workshops
-    { id: 6, column: "workshops", title: "Intro to Hardware", location: "Room A", start: at("fri", 19, 15), end: at("fri", 20, 45) },
-    { id: 7, column: "workshops", title: "React Sprint", location: "Room B", start: at("sat", 10, 30), end: at("sat", 12, 15) },
-    { id: 8, column: "workshops", title: "Figma Jam", location: "Room C", start: at("sat", 11, 5), end: at("sat", 11, 50) },
-    { id: 9, column: "workshops", title: "AI Lab", location: "Lab 1", start: at("sat", 14, 5), end: at("sat", 15, 35) },
-
-    // Events
-    { id: 10, column: "events", title: "Opening Ceremony", location: "Auditorium", start: at("fri", 17, 0), end: at("fri", 18, 0) },
-    { id: 11, column: "events", title: "Team Formation", location: "Main Hall", start: at("fri", 18, 10), end: at("fri", 19, 0) },
-    { id: 12, column: "events", title: "Mini Games", location: "Courtyard", start: at("fri", 21, 0), end: at("fri", 22, 0) },
-    { id: 13, column: "events", title: "Midnight Challenge", location: "Main Hall", start: at("sat", 0, 20), end: at("sat", 1, 30) },
-    { id: 14, column: "events", title: "Project Expo", location: "Exhibition Hall", start: at("sat", 19, 30), end: at("sat", 21, 0) },
-    { id: 15, column: "events", title: "Closing Ceremony", location: "Auditorium", start: at("sat", 21, 15), end: at("sat", 22, 0) },
-];
+const scheduleItems: ScheduleItem[] = parseScheduleItems(scheduleData as ScheduleJsonItem[]);
 
 function addMinutes(date: Date, minutes: number): Date {
     return new Date(date.getTime() + minutes * 60000);
