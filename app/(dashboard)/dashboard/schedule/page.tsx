@@ -3,7 +3,9 @@ import { Icon } from "@iconify/react";
 const PX_PER_HOUR = 80;
 const PX_PER_MINUTE = PX_PER_HOUR / 60;
 
-function at(day, hour, minute = 0) {
+type Day = "fri" | "sat";
+
+function at(day: Day, hour: number, minute = 0): Date {
     const year = 2025;
     const month = 0; // January
     const date = day === "fri" ? 3 : 4; // Fri Jan 3, Sat Jan 4
@@ -15,7 +17,18 @@ const SCHEDULE_END = at("sat", 22, 0);
 const TOTAL_MINUTES = (SCHEDULE_END.getTime() - SCHEDULE_START.getTime()) / 60000;
 const TOTAL_HEIGHT = TOTAL_MINUTES * PX_PER_MINUTE;
 
-const columns = [
+type ColumnId = "food" | "workshops" | "events";
+
+interface ScheduleItem {
+    id: number;
+    column: ColumnId;
+    title: string;
+    location: string;
+    start: Date;
+    end: Date;
+}
+
+const columns: Array<{ id: ColumnId; label: string; eventClasses: string; headerClasses: string }> = [
     {
         id: "food",
         label: "Food",
@@ -36,7 +49,7 @@ const columns = [
     },
 ];
 
-const scheduleItems = [
+const scheduleItems: ScheduleItem[] = [
     // Food
     { id: 1, column: "food", title: "Dinner", location: "Main Hall", start: at("fri", 17, 30), end: at("fri", 19, 0) },
     { id: 2, column: "food", title: "Midnight Snacks", location: "Main Hall", start: at("fri", 23, 45), end: at("sat", 1, 15) },
@@ -59,22 +72,22 @@ const scheduleItems = [
     { id: 15, column: "events", title: "Closing Ceremony", location: "Auditorium", start: at("sat", 21, 15), end: at("sat", 22, 0) },
 ];
 
-function addMinutes(date, minutes) {
+function addMinutes(date: Date, minutes: number): Date {
     return new Date(date.getTime() + minutes * 60000);
 }
 
-function minutesBetween(start, end) {
+function minutesBetween(start: Date, end: Date): number {
     return (end.getTime() - start.getTime()) / 60000;
 }
 
-function formatTime(date) {
+function formatTime(date: Date): string {
     return date.toLocaleTimeString([], {
         hour: "numeric",
         minute: "2-digit",
     });
 }
 
-function formatTimelineLabel(date, includeDay = false) {
+function formatTimelineLabel(date: Date, includeDay = false): string {
     if (!includeDay) return formatTime(date);
 
     return date.toLocaleString([], {
@@ -84,18 +97,23 @@ function formatTimelineLabel(date, includeDay = false) {
     });
 }
 
-// Simple overlap layout within a single column
-function layoutColumnEvents(items) {
-    const sorted = [...items].sort((a, b) => a.start - b.start);
-    const positioned = [];
+interface PositionedItem extends ScheduleItem {
+    lane: number;
+    laneCount: number;
+}
 
-    let cluster = [];
+// Simple overlap layout within a single column
+function layoutColumnEvents(items: ScheduleItem[]): PositionedItem[] {
+    const sorted = [...items].sort((a, b) => a.start.getTime() - b.start.getTime());
+    const positioned: PositionedItem[] = [];
+
+    let cluster: ScheduleItem[] = [];
     let clusterEnd = -Infinity;
 
     function flushCluster() {
         if (!cluster.length) return;
 
-        const laneEndTimes = [];
+        const laneEndTimes: number[] = [];
         const withLanes = cluster.map((item) => {
             const startTime = item.start.getTime();
 
