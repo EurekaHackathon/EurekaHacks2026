@@ -4,8 +4,8 @@ import scheduleData from "@/lib/schedule.json";
 const PX_PER_HOUR = 80;
 const PX_PER_MINUTE = PX_PER_HOUR / 60;
 
-const SCHEDULE_START = new Date("2025-01-03T16:00:00");
-const SCHEDULE_END = new Date("2025-01-04T22:00:00");
+const SCHEDULE_START = new Date("2026-05-01T16:00:00");
+const SCHEDULE_END = new Date("2026-05-02T22:00:00");
 const TOTAL_MINUTES = (SCHEDULE_END.getTime() - SCHEDULE_START.getTime()) / 60000;
 const TOTAL_HEIGHT = TOTAL_MINUTES * PX_PER_MINUTE;
 
