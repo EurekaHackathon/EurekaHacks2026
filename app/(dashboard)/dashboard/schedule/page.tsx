@@ -267,16 +267,25 @@ export default function SchedulePage() {
                                                     width: `calc(${widthPct}% - 8px)`,
                                                 }}
                                             >
-                                                <div className="text-sm font-semibold leading-tight">
-                                                    {item.title}
+                                                <div
+                                                    className={`flex ${height >= 80
+                                                            ? "flex-col items-start"
+                                                            : "items-center justify-between"
+                                                        } gap-1 text-xs opacity-80`}
+                                                >
+                                                    <div className="text-sm font-semibold leading-tight">
+                                                        {item.title}
+                                                    </div>
+
+                                                    <div className="flex items-center gap-1 text-xs leading-none opacity-60">
+                                                        <Icon icon="fluent:clock-16-filled" className="h-3 w-3 shrink-0" />
+                                                        <span>{formatTime(item.start)} – {formatTime(item.end)}</span>
+                                                    </div>
                                                 </div>
-                                                <div className="mt-1 flex items-center gap-1 text-xs opacity-80">
-                                                    <Icon icon="fluent:location-16-filled" className="w-3 h-3" />
-                                                    {item.location}
-                                                </div>
-                                                <div className="mt-0.5 flex items-center gap-1 text-xs opacity-60">
-                                                    <Icon icon="fluent:clock-16-filled" className="w-3 h-3" />
-                                                    {formatTime(item.start)} – {formatTime(item.end)}
+
+                                                <div className="mt-1.5 flex items-center gap-1 text-xs leading-none opacity-80">
+                                                    <Icon icon="fluent:location-16-filled" className="h-3 w-3 shrink-0" />
+                                                    <span>{item.location}</span>
                                                 </div>
                                             </div>
                                         );
