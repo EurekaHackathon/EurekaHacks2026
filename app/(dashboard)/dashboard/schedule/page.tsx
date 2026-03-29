@@ -271,12 +271,12 @@ export default function SchedulePage() {
                                                     {item.title}
                                                 </div>
                                                 <div className="mt-1 flex items-center gap-1 text-xs opacity-80">
-                                                    <Icon icon="fluent:clock-16-filled" className="w-3 h-3" />
-                                                    {formatTime(item.start)} – {formatTime(item.end)}
-                                                </div>
-                                                <div className="mt-0.5 flex items-center gap-1 text-xs opacity-60">
                                                     <Icon icon="fluent:location-16-filled" className="w-3 h-3" />
                                                     {item.location}
+                                                </div>
+                                                <div className="mt-0.5 flex items-center gap-1 text-xs opacity-60">
+                                                    <Icon icon="fluent:clock-16-filled" className="w-3 h-3" />
+                                                    {formatTime(item.start)} – {formatTime(item.end)}
                                                 </div>
                                             </div>
                                         );
