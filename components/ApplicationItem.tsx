@@ -9,7 +9,7 @@ export default function ApplicationItem({ label, value, icon }: { label: string,
                 </div>
                 {label}
             </div>
-            <p className="ml-8 text-gray-500">
+            <p className="ml-8 text-gray-400">
                 {value}
             </p>
         </div>
