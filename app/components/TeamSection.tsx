@@ -19,7 +19,7 @@ const TEAM: TeamMember[] = [
     name: "Daniel Zhu",
     role: "Sponsorship",
     description:
-      "When I was a kid, I used to stare at cars. Now, I sit in a car and stare at kids",
+      "This is my one good picture, please take good care of it.",
     image: "/team/DanielZhu.png",
     superpower: "Haha no G1",
     supercolor: "#FF5733",
