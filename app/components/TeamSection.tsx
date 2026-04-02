@@ -193,7 +193,7 @@ function TeamCard({
     );
 }
 
-export default function ContactUs() {
+export default function TeamSection() {
     const [offset, setOffset] = useState(0);
     const [slots, setSlots] = useState(SLOTS);
     const [exitX, setExitX] = useState(EXIT_X);
@@ -267,9 +267,8 @@ export default function ContactUs() {
 
 
     return (
-        <div className="w-screen p-12 max-sm:p-4" style={{ overflow: "hidden", boxSizing: "border-box" }}>
-            {/* TOP SECTION */}
-            <div className="shadow-2xl" style={{ position: "relative", marginBottom: 40, width: "100%", border: "12px solid white", borderRadius: 0 }}>
+        <div className="w-screen" style={{ overflow: "hidden", boxSizing: "border-box", padding: isMobile ? "16px" : "48px" }}>
+            <div className="shadow-2xl" style={{ position: "relative", border: "12px solid white", borderRadius: 0 }}>
                 <div style={{ 
                     position: "relative", 
                     zIndex: 1, 
@@ -309,26 +308,6 @@ export default function ContactUs() {
                                 />
                             );
                         })}
-                    </div>
-                </div>
-            </div>
-
-            {/* BOTTOM SECTION - Separated by marginBottom on top box */}
-            <div className="shadow-2xl" style={{ position: "relative", border: "12px solid white", borderRadius: 0 }}>
-                <div style={{ 
-                    position: "relative", 
-                    zIndex: 1, 
-                    padding: isMobile ? "32px 20px" : "64px 48px", 
-                    display: "flex", 
-                    flexDirection: isMobile ? "column" : "row", 
-                    justifyContent: "space-between", 
-                    alignItems: isMobile ? "flex-start" : "center",
-                    gap: isMobile ? 24 : 0
-                }}>
-                    <h2 style={{ fontFamily: "var(--font-righteous)", fontSize: isMobile ? 48 : "clamp(48px, 7vw, 96px)", lineHeight: 1.0, color: "#FFFFFF", textTransform: "uppercase", margin: 0 }}>Contact<br />Us</h2>
-                    <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 12 : 24, alignItems: isMobile ? "flex-start" : "flex-end" }}>
-                        <a href="mailto:hello@eurekahacks.ca" style={{ color: "white", textDecoration: "underline", fontSize: isMobile ? 20 : 24, fontFamily: "var(--font-righteous)" }}>hello@eurekahacks.ca</a>
-                        <a href="https://instagram.com/eureka_hacks" style={{ color: "white", textDecoration: "underline", fontSize: isMobile ? 20 : 24, fontFamily: "var(--font-righteous)" }}>@eureka_hacks</a>
                     </div>
                 </div>
             </div>
