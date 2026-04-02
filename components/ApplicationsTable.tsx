@@ -44,7 +44,7 @@ export default async function ApplicationsTable({searchParams,}: {
             </div>
             <table className="w-full border">
                 <thead>
-                <tr className="text-sm 2xl:text-base text-gray-500 hover:bg-gray-100 duration-75">
+                <tr className="text-sm 2xl:text-base text-gray-400 hover:bg-white/5 duration-75">
                     <th className="text-start border-b py-4 pl-4 mr-12">First Name</th>
                     <th className="text-start border-b mr-12">Last Name</th>
                     <th className="text-start border-b mr-12">School</th>
@@ -55,7 +55,7 @@ export default async function ApplicationsTable({searchParams,}: {
                 </thead>
                 <tbody>
                 {applications.map((application, index) => (
-                    <tr className="text-gray-700 2xl:text-lg font-semibold hover:bg-gray-100 duration-75"
+                    <tr className="text-secondary-50 2xl:text-lg font-semibold hover:bg-white/5 duration-75"
                         key={application.id}>
                         <td className={`pr-4 text-start py-6 pl-4 ${index !== applications.length - 1 ? "border-b" : ""}`}>
                             <div className="w-24 text-nowrap overflow-x-auto">
@@ -84,7 +84,7 @@ export default async function ApplicationsTable({searchParams,}: {
                         </td>
                         <td className={`pr-4 text-start ${index !== applications.length - 1 ? "border-b" : ""}`}>
                             <div className="w-16">
-                                <Link className="border py-1 px-2 rounded-lg bg-white hover:bg-gray-200 duration-75"
+                                <Link className="border border-gray-600 py-1 px-2 rounded-lg bg-white/5 hover:bg-white/10 text-secondary-50 duration-75"
                                       href={`/dashboard/admin/applications/${application.id}?from=${page}`}>View</Link>
                             </div>
                         </td>

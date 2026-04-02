@@ -180,7 +180,7 @@ export async function getNumberOfApplicationsFiltered(sql: Sql, args: GetNumberO
 }
 
 export const getApplicationByIdQuery = `-- name: GetApplicationById :one
-select ha.id, ha.user_id, ha.status, ha.first_name, ha.last_name, ha.email, ha.age, ha.school, ha.year_of_graduation, ha.city, ha.dietary_restrictions, ha.number_of_hackathons_attended, ha.github_link, ha.linkedin_link, ha.portfolio_link, ha.resume_link, ha.emergency_contact_full_name, ha.emergency_contact_phone_number, ha.short_answer_response, ha.created_at, ha.updated_at,
+select ha.id, ha.user_id, ha.status, ha.first_name, ha.last_name, ha.email, ha.age, ha.school, ha.year_of_graduation, ha.city, ha.dietary_restrictions, ha.number_of_hackathons_attended, ha.github_link, ha.linkedin_link, ha.portfolio_link, ha.resume_link, ha.emergency_contact_full_name, ha.emergency_contact_phone_number, ha.short_answer_response, ha.tshirt_size, ha.created_at, ha.updated_at,
        exists(
            select 1
            from public.rsvps r
@@ -214,6 +214,7 @@ export interface GetApplicationByIdRow {
     emergencyContactFullName: string;
     emergencyContactPhoneNumber: string;
     shortAnswerResponse: string;
+    tshirtSize: string;
     createdAt: Date;
     updatedAt: Date;
     rsvped: boolean;
@@ -245,9 +246,10 @@ export async function getApplicationById(sql: Sql, args: GetApplicationByIdArgs)
         emergencyContactFullName: row[16],
         emergencyContactPhoneNumber: row[17],
         shortAnswerResponse: row[18],
-        createdAt: row[19],
-        updatedAt: row[20],
-        rsvped: row[21]
+        tshirtSize: row[19],
+        createdAt: row[20],
+        updatedAt: row[21],
+        rsvped: row[22]
     };
 }
 

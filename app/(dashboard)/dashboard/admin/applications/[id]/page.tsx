@@ -81,17 +81,17 @@ export default async function Application({
     return (
         <div className="mt-8">
             <BackButton
-                className="border flex items-center justify-center gap-2 font-semibold text-gray-700 rounded-lg w-64 h-10 duration-75 hover:bg-gray-50">
+                className="border border-gray-600 flex items-center justify-center gap-2 font-semibold text-secondary-50 rounded-lg w-80 h-10 duration-75 hover:bg-white/5">
                 <Icon icon="fluent:arrow-left-24-filled" className="text-2xl"/>
                 {from === "scan" ? "Back to QR code scanner" : "Back to applications list"}
             </BackButton>
             <div
-                className="bg-secondary-50 bg-opacity-50 border-secondary-200 border rounded-xl mt-8 p-6 text-gray-700 font-semibold">
+                className="bg-[#151c2b] border-gray-300 border rounded-xl mt-8 p-6 text-secondary-50 font-semibold">
                 <div className="flex items-center gap-8">
                     <h1 className="text-2xl font-semibold">{application.firstName} {application.lastName}</h1>
                     <StatusBadge className="font-semibold" status={applicationStatus}/>
                 </div>
-                <div className="mt-2 text-gray-500">
+                <div className="mt-2 text-gray-400">
                     <h1>
                         Submitted: {application.createdAt.toLocaleDateString("en-CA")} at {new Intl.DateTimeFormat("en-CA", {
                         hour: "2-digit",
@@ -117,8 +117,10 @@ export default async function Application({
                                      value={application.yearOfGraduation.toString()}/>
                     <ApplicationItem label="Dietary restrictions" icon="fluent:food-24-regular"
                                      value={formatDietaryRestrictions(application.dietaryRestrictions)}/>
+                    <ApplicationItem label="T-shirt size" icon="fluent:person-tag-24-regular"
+                                     value={application.tshirtSize}/>
                 </div>
-                <hr className="mt-8 border-secondary-200"/>
+                <hr className="mt-8 border-gray-700"/>
                 <div className="mt-8">
                     <h1 className="text-xl font-semibold">Emergency Contact</h1>
                     <div className="grid md:grid-cols-2 gap-4 mt-4">
@@ -128,7 +130,7 @@ export default async function Application({
                                          value={application.emergencyContactPhoneNumber}/>
                     </div>
                 </div>
-                <hr className="mt-8 border-secondary-200"/>
+                <hr className="mt-8 border-gray-700"/>
                 <div className="mt-8">
                     <h1 className="text-xl font-semibold">Links</h1>
                     <div className="grid md:grid-cols-2 gap-4 mt-4">
@@ -141,7 +143,7 @@ export default async function Application({
                                             link={application.resumeLink ?? "None"}/>
                     </div>
                 </div>
-                <hr className="mt-8 border-secondary-200"/>
+                <hr className="mt-8 border-gray-700"/>
                 <ApplicationActionsForm id={application.id}/>
             </div>
         </div>
