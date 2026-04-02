@@ -44,7 +44,7 @@ const TEAM: TeamMember[] = [
     name: "Alan Liu",
     role: "Backend Guru",
     description: "Thou of much hair must bow before thy of little hair",
-    image: "/team/Alan.png",
+    image: "/team/Alan.webp",
     superpower: "5 cups of coffee a day",
     supercolor: "#F333FF",
   },
