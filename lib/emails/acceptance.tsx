@@ -1,41 +1,38 @@
-//TODO This email is NOT production ready; content needs to be updated first
-
 import * as React from "react";
-import { Email, LinkButton, Paragraph, PersonalizedEmailProps } from "./components";
+import { Email, LinkButton, Paragraph, HighlightSection, PersonalizedEmailProps } from "./components";
 
 export const AcceptanceEmailTemplate = ({firstName}: PersonalizedEmailProps) => (
-    <Email previewText="Congratulations 🎉, See You At EurekaHACKS 2025!">
+    <Email previewText="Congratulations 🎉, See You At EurekaHACKS 2026!">
         <Paragraph>Hey {firstName}!</Paragraph>
         <Paragraph>
-            We’re excited to have you as a hacker for EurekaHACKS 2025, our third hackathon iteration! (You are
-            one step closer to the Bambu). Join us from 8:00 AM to 9:30 PM on April 5th 2025 at 1455 Glen
-            Abbey Gate, Oakville to take part in a memorable day filled with fun workshops, exciting activities
+            We’re excited to have you as a hacker for EurekaHACKS 2026, our fourth hackathon iteration! Join us from May 1st-2nd at the Waterloo Accelerator Center to take part in a memorable day filled with fun workshops, exciting activities
             and free food!
         </Paragraph>
         <Paragraph>
             Here’s a sneak peek into this years event:
-            <br/>
-            🌟 $11,000+ prize pool including 4 Bambu Lab A1 minis
+        </Paragraph>
+        <HighlightSection>
+            🌟 $XX,XXX+ prize pool including ________
             <br/>
             🍎 Free lunch and dinner for all hackers!
             <br/>
-            🛠 Take part in fun workshops!
-            <br/>
-            <br/>
-            Date: Saturday April 5th
-            <br/>
-            Time: 8:00 AM - 9:30 PM
-            <br/>
-            Venue address: 1455 Glen Abbey Gate, Oakville
+            🛠 Take part in fun workshops and activities!
+        </HighlightSection>
+        <Paragraph>
+            And a reminder about the logistics:
         </Paragraph>
+        <HighlightSection>
+            📍 Waterloo Accelerator Center (295 Hagey Blvd, Waterloo)<br/>
+            📅 5pm May 1st - 10pm May 2nd<br/>
+        </HighlightSection>
         <Paragraph>
             <strong>
-                Please RSVP to confirm your spot at EurekaHACKS 2025 if you have not already! We’ll be sending
+                Please RSVP to confirm your spot at EurekaHACKS 2026 if you have not already! We’ll be sending
                 you more details about the event
                 in the following days, so stay tuned!
             </strong>
         </Paragraph>
-        <LinkButton url="https://eurekahacks.ca/dashboard/"/>
+        <LinkButton url="https://eurekahacks.ca/dashboard/" text="RSVP Now"/>
         <Paragraph>
             Can&apos;t wait to see what you&apos;ll create!
             <br/>
