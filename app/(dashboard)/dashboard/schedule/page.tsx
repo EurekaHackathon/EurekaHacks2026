@@ -190,7 +190,7 @@ export default function SchedulePage() {
                             {hourLines.map((time, index) => {
                                 const top = index * PX_PER_HOUR;
                                 const showDay = false;
-                                const isFirst = index === 0;
+                                const isTerminal = index === 0 || index === hourLines.length - 1;
 
                                 return (
                                     <div
@@ -199,7 +199,7 @@ export default function SchedulePage() {
                                         style={{ top }}
                                     >
                                         <div
-                                            className={`pr-3 text-right text-xs text-secondary-400 whitespace-nowrap -translate-y-1/2 ${isFirst ? "hidden" : ""}`}
+                                            className={`pr-3 text-right text-xs text-secondary-400 whitespace-nowrap -translate-y-1/2 ${isTerminal ? "hidden" : ""}`}
                                         >
                                             {formatTimelineLabel(time, showDay)}
                                         </div>
