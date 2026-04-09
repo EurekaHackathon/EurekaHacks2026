@@ -1,10 +1,10 @@
 import { MongoClient, Db } from 'mongodb';
 
-if (!process.env.MONGO_URI) {
+if (!process.env.MONGO_URI && process.env.MOCK_MODE !== 'true') {
   throw new Error('Please add your MongoDB URI to .env.local as MONGO_URI');
 }
 
-const uri = process.env.MONGO_URI;
+const uri = process.env.MONGO_URI || 'mongodb://localhost:27017/mock';
 const options = {};
 
 let client: MongoClient;

@@ -14,9 +14,17 @@ import { CitySelect } from "@/components/CitySelect";
 import { dietaryRestrictionsList } from "@/app/(dashboard)/dashboard/application/data";
 import { Checkbox } from "@/components/Checkbox";
 import { Icon } from "@iconify/react";
-import React, { useActionState, useEffect, useState } from "react";
+import React, { useActionState, useEffect, useRef, useState } from "react";
 import { apply } from "@/lib/actions/application";
 import { toast } from "@/hooks/use-toast";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+  DialogClose,
+} from "@/components/Dialog";
 
 const initialState = {
   error: "",
@@ -25,6 +33,8 @@ const initialState = {
 
 export default function ApplicationForm() {
   const [state, formAction, pending] = useActionState(apply, initialState);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [showConfirm, setShowConfirm] = useState(false);
   const defaultYears = ["2026", "2027", "2028", "2029", "other"];
   const [graduationYear, setGraduationYear] = useState(
     defaultYears.includes(
@@ -66,7 +76,7 @@ export default function ApplicationForm() {
   }, [state]);
 
   return (
-    <form className="mt-8" action={formAction}>
+    <form className="mt-8" action={formAction} ref={formRef}>
       <div className="mb-6">
         <h2 className="text-3xl font-semibold mt-8 text-[var(--neon-yellow)]">
           Personal information
@@ -319,8 +329,9 @@ export default function ApplicationForm() {
 
       <button
         className="bg-secondary-50 text-secondary-900 font-medium py-2 px-4 rounded-lg mt-8 hover:bg-secondary-200 duration-200 relative"
-        type="submit"
+        type="button"
         disabled={pending}
+        onClick={() => setShowConfirm(true)}
       >
         <span className={pending ? "text-transparent" : ""}>Submit</span>
         {pending && (
@@ -330,6 +341,29 @@ export default function ApplicationForm() {
           />
         )}
       </button>
+
+      <Dialog open={showConfirm} onOpenChange={setShowConfirm}>
+        <DialogContent className="bg-[#0d1117] border-gray-700 text-secondary-50 max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-secondary-50">Ready to submit?</DialogTitle>
+          </DialogHeader>
+          <p className="text-gray-400 text-sm">Double-check everything looks right — you won&apos;t be able to edit your application after this.</p>
+          <DialogFooter className="gap-2 mt-2">
+            <DialogClose asChild>
+              <button className="px-4 py-2 rounded-lg border border-gray-600 text-secondary-50 hover:bg-white/5 duration-150">
+                Go back
+              </button>
+            </DialogClose>
+            <button
+              type="button"
+              onClick={() => { setShowConfirm(false); formRef.current?.requestSubmit(); }}
+              className="px-4 py-2 rounded-lg font-semibold bg-secondary-50 text-secondary-900 hover:bg-secondary-200 duration-150"
+            >
+              Submit application
+            </button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </form>
   );
 }

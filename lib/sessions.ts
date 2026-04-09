@@ -10,6 +10,7 @@ import {
 import { db } from "@/lib/database";
 import { sha256 } from "@oslojs/crypto/sha2";
 import { redirect } from "next/navigation";
+import { isMockMode, MOCK_USER } from "@/lib/mock-data";
 
 const MILLI_TO_DAYS = 1000 * 60 * 60 * 24;
 
@@ -82,6 +83,10 @@ export async function createSession(token: string, userId: number): Promise<Sess
 }
 
 export async function authorizeSession(sessionToken: string | undefined) {
+    if (isMockMode()) {
+        return { ...MOCK_USER, isAdmin: true };
+    }
+
     if (!sessionToken) {
         redirect("/login");
     }
