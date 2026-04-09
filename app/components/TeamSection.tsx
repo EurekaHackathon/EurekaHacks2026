@@ -52,7 +52,7 @@ const TEAM: TeamMember[] = [
     name: "Eason Huang",
     role: "President",
     description:
-      "The best product manager anyone could ask for, except maybe for himself.",
+      "lowkey a chud 🥀",
     image: "/team/Eason.png",
     superpower: "PR commenting",
     supercolor: "#E5A212",
