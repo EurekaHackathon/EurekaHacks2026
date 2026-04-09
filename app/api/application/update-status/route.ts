@@ -31,11 +31,6 @@ export async function POST(request: Request) {
         return new Response("Invalid status", { status: 400 });
     }
 
-    const allowedStatuses = ["accepted", "rejected", "waitlisted", "submitted"];
-    if (!allowedStatuses.includes(status)) {
-        return new Response("Invalid status", { status: 400 });
-    }
-
     try {
         const application = await getApplicationById(db, { id: parseInt(applicationId) });
 
@@ -77,7 +72,7 @@ export async function POST(request: Request) {
 
             await sendMailAsync(transporter, {
                 to: application.email,
-                from: `"EurekaHACKS" <hello@eurekahacks.ca>`,
+                from: `"EurekaHACKS" hello@eurekahacks.ca`,
                 subject,
                 html,
             });
