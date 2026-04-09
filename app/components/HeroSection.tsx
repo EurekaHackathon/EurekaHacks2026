@@ -106,7 +106,7 @@ export default function HeroSection() {
               CONTACT
             </Link>
             <Link href="/dashboard" className="nav-link nav-link-signup">
-              APPLY
+              DASHBOARD
             </Link>
           </div>
         </div>
