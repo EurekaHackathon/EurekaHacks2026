@@ -12,9 +12,9 @@ export const AcceptanceEmailTemplate = ({firstName}: PersonalizedEmailProps) => 
             Here’s a sneak peek into this years event:
         </Paragraph>
         <HighlightSection>
-            🌟 $XX,XXX+ prize pool including ________
+            🌟 $2,500+ prize pool including 2 A1 Mini 3D printers, E-scooters and a samsung gaming monitor
             <br/>
-            🍎 Free lunch and dinner for all hackers!
+            🍎 Free breakfast, lunch and dinner for all hackers!
             <br/>
             🛠 Take part in fun workshops and activities!
         </HighlightSection>
