@@ -1,4 +1,5 @@
 import { Sql } from "postgres";
+import { isMockMode, MOCK_STATS, MOCK_APPLICATIONS, MOCK_APPLICATIONS_PAGINATED, MOCK_APP_COUNT_PER_DAY } from "@/lib/mock-data";
 
 export const getNumberOfRegisteredUsersQuery = `-- name: GetNumberOfRegisteredUsers :one
 select count(*) as count from public.app_users`;
@@ -8,6 +9,7 @@ export interface GetNumberOfRegisteredUsersRow {
 }
 
 export async function getNumberOfRegisteredUsers(sql: Sql): Promise<GetNumberOfRegisteredUsersRow | null> {
+    if (isMockMode()) return { count: MOCK_STATS.registeredUsers };
     const rows = await sql.unsafe(getNumberOfRegisteredUsersQuery, []).values();
     if (rows.length !== 1) {
         return null;
@@ -26,6 +28,7 @@ export interface GetNumberOfHackerApplicationsRow {
 }
 
 export async function getNumberOfHackerApplications(sql: Sql): Promise<GetNumberOfHackerApplicationsRow | null> {
+    if (isMockMode()) return { count: MOCK_STATS.applications };
     const rows = await sql.unsafe(getNumberOfHackerApplicationsQuery, []).values();
     if (rows.length !== 1) {
         return null;
@@ -44,6 +47,7 @@ export interface GetNumberOfAcceptedHackerApplicationsRow {
 }
 
 export async function getNumberOfAcceptedHackerApplications(sql: Sql): Promise<GetNumberOfAcceptedHackerApplicationsRow | null> {
+    if (isMockMode()) return { count: MOCK_STATS.accepted };
     const rows = await sql.unsafe(getNumberOfAcceptedHackerApplicationsQuery, []).values();
     if (rows.length !== 1) {
         return null;
@@ -62,6 +66,7 @@ export interface GetNumberOfRejectedHackerApplicationsRow {
 }
 
 export async function getNumberOfRejectedHackerApplications(sql: Sql): Promise<GetNumberOfRejectedHackerApplicationsRow | null> {
+    if (isMockMode()) return { count: MOCK_STATS.rejected };
     const rows = await sql.unsafe(getNumberOfRejectedHackerApplicationsQuery, []).values();
     if (rows.length !== 1) {
         return null;
@@ -80,6 +85,7 @@ export interface GetNumberOfPendingHackerApplicationsRow {
 }
 
 export async function getNumberOfPendingHackerApplications(sql: Sql): Promise<GetNumberOfPendingHackerApplicationsRow | null> {
+    if (isMockMode()) return { count: MOCK_STATS.pending };
     const rows = await sql.unsafe(getNumberOfPendingHackerApplicationsQuery, []).values();
     if (rows.length !== 1) {
         return null;
@@ -134,6 +140,16 @@ export interface GetApplicationsPaginatedRow {
 }
 
 export async function getApplicationsPaginated(sql: Sql, args: GetApplicationsPaginatedArgs): Promise<GetApplicationsPaginatedRow[]> {
+    if (isMockMode()) {
+        const q = (args.searchQuery || "").toLowerCase();
+        let results = MOCK_APPLICATIONS_PAGINATED.filter(a =>
+            !q || a.firstName.toLowerCase().includes(q) || a.lastName.toLowerCase().includes(q)
+        );
+        if (args.onlyWithRsvp) results = results.filter(a => a.rsvped);
+        const offset = parseInt(args.offset);
+        const limit = parseInt(args.limit);
+        return results.slice(offset, offset + limit);
+    }
     return (await sql.unsafe(getApplicationsPaginatedQuery, [args.limit, args.offset, args.searchQuery, args.onlyWithRsvp]).values()).map(row => ({
         id: row[0],
         firstName: row[1],
@@ -169,6 +185,14 @@ export interface GetNumberOfApplicationsFilteredRow {
 }
 
 export async function getNumberOfApplicationsFiltered(sql: Sql, args: GetNumberOfApplicationsFilteredArgs): Promise<GetNumberOfApplicationsFilteredRow | null> {
+    if (isMockMode()) {
+        const q = (args.searchQuery || "").toLowerCase();
+        let results = MOCK_APPLICATIONS_PAGINATED.filter(a =>
+            !q || a.firstName.toLowerCase().includes(q) || a.lastName.toLowerCase().includes(q)
+        );
+        if (args.onlyWithRsvp) results = results.filter(a => a.rsvped);
+        return { count: results.length.toString() };
+    }
     const rows = await sql.unsafe(getNumberOfApplicationsFilteredQuery, [args.searchQuery, args.onlyWithRsvp]).values();
     if (rows.length !== 1) {
         return null;
@@ -180,7 +204,7 @@ export async function getNumberOfApplicationsFiltered(sql: Sql, args: GetNumberO
 }
 
 export const getApplicationByIdQuery = `-- name: GetApplicationById :one
-select ha.id, ha.user_id, ha.status, ha.first_name, ha.last_name, ha.email, ha.age, ha.school, ha.year_of_graduation, ha.city, ha.dietary_restrictions, ha.number_of_hackathons_attended, ha.github_link, ha.linkedin_link, ha.portfolio_link, ha.resume_link, ha.emergency_contact_full_name, ha.emergency_contact_phone_number, ha.short_answer_response, ha.created_at, ha.updated_at,
+select ha.id, ha.user_id, ha.status, ha.first_name, ha.last_name, ha.email, ha.age, ha.school, ha.year_of_graduation, ha.city, ha.dietary_restrictions, ha.number_of_hackathons_attended, ha.github_link, ha.linkedin_link, ha.portfolio_link, ha.resume_link, ha.emergency_contact_full_name, ha.emergency_contact_phone_number, ha.short_answer_response, ha.tshirt_size, ha.created_at, ha.updated_at,
        exists(
            select 1
            from public.rsvps r
@@ -214,12 +238,14 @@ export interface GetApplicationByIdRow {
     emergencyContactFullName: string;
     emergencyContactPhoneNumber: string;
     shortAnswerResponse: string;
+    tshirtSize: string;
     createdAt: Date;
     updatedAt: Date;
     rsvped: boolean;
 }
 
 export async function getApplicationById(sql: Sql, args: GetApplicationByIdArgs): Promise<GetApplicationByIdRow | null> {
+    if (isMockMode()) return MOCK_APPLICATIONS.find(a => a.id === args.id) ?? null;
     const rows = await sql.unsafe(getApplicationByIdQuery, [args.id]).values();
     if (rows.length !== 1) {
         return null;
@@ -245,9 +271,10 @@ export async function getApplicationById(sql: Sql, args: GetApplicationByIdArgs)
         emergencyContactFullName: row[16],
         emergencyContactPhoneNumber: row[17],
         shortAnswerResponse: row[18],
-        createdAt: row[19],
-        updatedAt: row[20],
-        rsvped: row[21]
+        tshirtSize: row[19],
+        createdAt: row[20],
+        updatedAt: row[21],
+        rsvped: row[22]
     };
 }
 
@@ -263,6 +290,7 @@ export interface GetApplicationCountPerDayRow {
 }
 
 export async function getApplicationCountPerDay(sql: Sql): Promise<GetApplicationCountPerDayRow[]> {
+    if (isMockMode()) return MOCK_APP_COUNT_PER_DAY;
     return (await sql.unsafe(getApplicationCountPerDayQuery, []).values()).map(row => ({
         date: row[0],
         count: row[1]
@@ -325,6 +353,37 @@ export async function getBasicUserInfoByUserId(sql: Sql, args: GetBasicUserInfoB
         firstName: row[1],
         lastName: row[2],
         email: row[3]
+    };
+}
+
+export const getAdjacentApplicationIdsQuery = `-- name: GetAdjacentApplicationIds :one
+select
+    (select id from public.hackathon_applications where id < $1 order by id desc limit 1) as prev_id,
+    (select id from public.hackathon_applications where id > $1 order by id asc limit 1) as next_id`;
+
+export interface GetAdjacentApplicationIdsArgs {
+    id: number;
+}
+
+export interface GetAdjacentApplicationIdsRow {
+    prevId: number | null;
+    nextId: number | null;
+}
+
+export async function getAdjacentApplicationIds(sql: Sql, args: GetAdjacentApplicationIdsArgs): Promise<GetAdjacentApplicationIdsRow> {
+    if (isMockMode()) {
+        const ids = MOCK_APPLICATIONS.map(a => a.id).sort((a, b) => a - b);
+        const idx = ids.indexOf(args.id);
+        return {
+            prevId: idx > 0 ? ids[idx - 1] : null,
+            nextId: idx < ids.length - 1 ? ids[idx + 1] : null,
+        };
+    }
+    const rows = await sql.unsafe(getAdjacentApplicationIdsQuery, [args.id]).values();
+    const row = rows[0];
+    return {
+        prevId: row[0] ?? null,
+        nextId: row[1] ?? null,
     };
 }
 

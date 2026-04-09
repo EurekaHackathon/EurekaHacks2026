@@ -99,13 +99,6 @@ export const apply = async (_prevState: any, formData: FormData) => {
     }
     const user = await authorizeSession(sessionToken.value);
 
-    if (!user) {
-        return {
-            error: "You are not logged in.",
-            payload: formData,
-        };
-    }
-
     const userDietaryRestrictions: string[] = [];
     if (validationResult.data.lactoseIntolerant) {
         userDietaryRestrictions.push("lactose intolerant");
