@@ -56,7 +56,7 @@ export default function SponsorsSection() {
             {/* Gold sponsors: 2 per row capacity, centered */}
             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
               <SponsorCard
-                name="Waterloo Accelerator Center"
+                name="Waterloo Accelerator Centre"
                 image="https://www.acceleratorcentre.com/wp-content/uploads/2025/09/logo-fc.svg"
                 tier="gold"
               />
