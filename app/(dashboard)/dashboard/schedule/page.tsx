@@ -3,17 +3,39 @@ import scheduleData from "@/lib/schedule.json";
 
 const PX_PER_HOUR = 80;
 const PX_PER_MINUTE = PX_PER_HOUR / 60;
-
 const SCHEDULE_START = new Date("2026-05-01T16:00:00");
 const SCHEDULE_END = new Date("2026-05-02T23:00:00");
 const TOTAL_MINUTES = (SCHEDULE_END.getTime() - SCHEDULE_START.getTime()) / 60000;
 const TOTAL_HEIGHT = TOTAL_MINUTES * PX_PER_MINUTE;
 
-type ColumnId = "food" | "workshops" | "events";
+const columns = [
+    { id: "main-room", label: "Main Room" },
+    { id: "conference-rm1", label: "Room 1" },
+    { id: "conference-rm2", label: "Room 2" },
+] as const;
+
+const eventTypeStyles = {
+    food: {
+        eventClasses: "bg-emerald-500/15 border-emerald-400/40 text-emerald-100",
+        headerClasses: "text-emerald-300",
+    },
+    workshop: {
+        eventClasses: "bg-sky-500/15 border-sky-400/40 text-sky-100",
+        headerClasses: "text-sky-300",
+    },
+    event: {
+        eventClasses: "bg-violet-500/15 border-violet-400/40 text-violet-100",
+        headerClasses: "text-violet-300",
+    },
+} as const;
+
+type ColumnId = (typeof columns)[number]["id"];
+type EventType = keyof typeof eventTypeStyles;
 
 interface ScheduleItem {
     id: number;
     column: ColumnId;
+    type: EventType;
     title: string;
     location: string;
     start: Date;
@@ -23,32 +45,17 @@ interface ScheduleItem {
 interface ScheduleJsonItem {
     id: number;
     column: ColumnId;
+    type: EventType;
     title: string;
     location: string;
     start: string;
     end: string;
 }
 
-const columns: Array<{ id: ColumnId; label: string; eventClasses: string; headerClasses: string }> = [
-    {
-        id: "food",
-        label: "Food",
-        eventClasses: "bg-emerald-500/15 border-emerald-400/40 text-emerald-100",
-        headerClasses: "text-emerald-300",
-    },
-    {
-        id: "workshops",
-        label: "Workshops",
-        eventClasses: "bg-sky-500/15 border-sky-400/40 text-sky-100",
-        headerClasses: "text-sky-300",
-    },
-    {
-        id: "events",
-        label: "Events",
-        eventClasses: "bg-violet-500/15 border-violet-400/40 text-violet-100",
-        headerClasses: "text-violet-300",
-    },
-];
+interface PositionedItem extends ScheduleItem {
+    lane: number;
+    laneCount: number;
+}
 
 function parseScheduleItems(data: ScheduleJsonItem[]): ScheduleItem[] {
     return data.map((item) => ({
@@ -77,7 +84,6 @@ function formatTime(date: Date): string {
 
 function formatTimelineLabel(date: Date, includeDay = false): string {
     if (!includeDay) return formatTime(date);
-
     return date.toLocaleString([], {
         weekday: "short",
         hour: "numeric",
@@ -85,16 +91,10 @@ function formatTimelineLabel(date: Date, includeDay = false): string {
     });
 }
 
-interface PositionedItem extends ScheduleItem {
-    lane: number;
-    laneCount: number;
-}
-
-// Simple overlap layout within a single column
+// Simple overlap layout within a single room column
 function layoutColumnEvents(items: ScheduleItem[]): PositionedItem[] {
     const sorted = [...items].sort((a, b) => a.start.getTime() - b.start.getTime());
     const positioned: PositionedItem[] = [];
-
     let cluster: ScheduleItem[] = [];
     let clusterEnd = -Infinity;
 
@@ -102,10 +102,11 @@ function layoutColumnEvents(items: ScheduleItem[]): PositionedItem[] {
         if (!cluster.length) return;
 
         const laneEndTimes: number[] = [];
+
         const withLanes = cluster.map((item) => {
             const startTime = item.start.getTime();
-
             let lane = laneEndTimes.findIndex((endTime) => startTime >= endTime);
+
             if (lane === -1) {
                 lane = laneEndTimes.length;
                 laneEndTimes.push(item.end.getTime());
@@ -162,29 +163,37 @@ export default function SchedulePage() {
         addMinutes(SCHEDULE_START, i * 30)
     );
 
+    const gridTemplateColumns = `88px repeat(${columns.length}, minmax(0, 1fr))`;
+
     return (
         <div className="p-6 pt-16 lg:pt-6">
-            <h1 className="text-3xl font-bold text-secondary-50 mb-2">Schedule</h1>
-            <p className="text-secondary-300 mb-6">Friday 5:00 PM - Saturday 10:00 PM</p>
+            <h1 className="mb-2 text-3xl font-bold text-secondary-50">Schedule</h1>
+            <p className="mb-6 text-secondary-300">Friday 5:00 PM - Saturday 10:00 PM</p>
 
             <div className="overflow-x-auto">
-                <div className="min-w-[950px]">
-                    <div className="grid grid-cols-[88px_repeat(3,minmax(0,1fr))] mb-2">
+                <div className="min-w-[1100px]">
+                    <div
+                        className="mb-2 grid"
+                        style={{ gridTemplateColumns }}
+                    >
                         <div />
                         {columns.map((column) => (
                             <div
                                 key={column.id}
-                                className={`px-4 py-2 text-sm font-semibold uppercase tracking-wide ${column.headerClasses}`}
+                                className="px-4 py-2 text-sm font-semibold uppercase tracking-wide text-secondary-200"
                             >
                                 {column.label}
                             </div>
                         ))}
                     </div>
 
-                    <div className="grid px-2 grid-cols-[88px_repeat(3,minmax(0,1fr))] border border-secondary-800 rounded-xl overflow-hidden bg-secondary-950/70">
+                    <div
+                        className="grid rounded-xl border border-secondary-800 bg-secondary-950/70 px-2 overflow-hidden"
+                        style={{ gridTemplateColumns }}
+                    >
                         {/* Time labels */}
                         <div
-                            className="relative bg-secondary-950/80 border-r border-secondary-800"
+                            className="relative border-r border-secondary-800 bg-secondary-950/80"
                             style={{ height: TOTAL_HEIGHT }}
                         >
                             {hourLines.map((time, index) => {
@@ -199,7 +208,8 @@ export default function SchedulePage() {
                                         style={{ top }}
                                     >
                                         <div
-                                            className={`pr-3 text-right text-xs text-secondary-400 whitespace-nowrap -translate-y-1/2 ${isTerminal ? "hidden" : ""}`}
+                                            className={`-translate-y-1/2 whitespace-nowrap pr-3 text-right text-xs text-secondary-400 ${isTerminal ? "hidden" : ""
+                                                }`}
                                         >
                                             {formatTimelineLabel(time, showDay)}
                                         </div>
@@ -208,8 +218,8 @@ export default function SchedulePage() {
                             })}
                         </div>
 
-                        {/* Schedule columns */}
-                        {columns.map((column) => {
+                        {/* Room columns */}
+                        {columns.map((column, columnIndex) => {
                             const items = layoutColumnEvents(
                                 scheduleItems.filter((item) => item.column === column.id)
                             );
@@ -217,7 +227,8 @@ export default function SchedulePage() {
                             return (
                                 <div
                                     key={column.id}
-                                    className="relative border-r last:border-r-0 border-secondary-800"
+                                    className={`relative border-secondary-800 ${columnIndex < columns.length - 1 ? "border-r" : ""
+                                        }`}
                                     style={{ height: TOTAL_HEIGHT }}
                                 >
                                     {/* Grid lines */}
@@ -252,14 +263,14 @@ export default function SchedulePage() {
                                             minutesBetween(SCHEDULE_START, item.end) * PX_PER_MINUTE
                                         );
                                         const height = Math.max(1, bottom - top);
-
                                         const widthPct = 100 / item.laneCount;
                                         const leftPct = item.lane * widthPct;
+                                        const typeStyle = eventTypeStyles[item.type];
 
                                         return (
                                             <div
                                                 key={item.id}
-                                                className={`absolute rounded-lg border px-3 py-2 shadow-sm overflow-hidden ${column.eventClasses}`}
+                                                className={`absolute overflow-hidden rounded-lg border px-3 py-2 shadow-sm ${typeStyle.eventClasses}`}
                                                 style={{
                                                     top,
                                                     height,
@@ -268,24 +279,24 @@ export default function SchedulePage() {
                                                 }}
                                             >
                                                 <div
-                                                    className={`flex ${height >= 80
-                                                            ? "flex-col items-start"
-                                                            : "items-center justify-between"
-                                                        } gap-1 text-xs opacity-80`}
+                                                    className={`flex gap-1 ${height >= 80
+                                                        ? "flex-col items-start"
+                                                        : "items-center justify-between"
+                                                        } text-xs opacity-80`}
                                                 >
                                                     <div className="text-sm font-semibold leading-tight">
                                                         {item.title}
                                                     </div>
 
-                                                    <div className="flex items-center gap-1 text-xs leading-none opacity-60">
-                                                        <Icon icon="fluent:clock-16-filled" className="h-3 w-3 shrink-0" />
-                                                        <span>{formatTime(item.start)} – {formatTime(item.end)}</span>
+                                                    <div className="mt-1.5 flex items-center gap-1 text-xs leading-none opacity-80">
+                                                        <Icon
+                                                            icon="fluent:clock-16-filled"
+                                                            className="h-3 w-3 shrink-0"
+                                                        />
+                                                        <span>
+                                                            {formatTime(item.start)} – {formatTime(item.end)}
+                                                        </span>
                                                     </div>
-                                                </div>
-
-                                                <div className="mt-1.5 flex items-center gap-1 text-xs leading-none opacity-80">
-                                                    <Icon icon="fluent:location-16-filled" className="h-3 w-3 shrink-0" />
-                                                    <span>{item.location}</span>
                                                 </div>
                                             </div>
                                         );
