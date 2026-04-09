@@ -12,7 +12,7 @@ export const AcceptanceEmailTemplate = ({firstName}: PersonalizedEmailProps) => 
             Here’s a sneak peek into this years event:
         </Paragraph>
         <HighlightSection>
-            🌟 $2,500+ prize pool including 2 A1 Mini 3D printers, E-scooters and a samsung gaming monitor
+            🌟 $2,500+ prize pool including 2 A1 Mini 3D printers, gaming monitors and reusable notebooks!
             <br/>
             🍎 Free breakfast, lunch and dinner for all hackers!
             <br/>
