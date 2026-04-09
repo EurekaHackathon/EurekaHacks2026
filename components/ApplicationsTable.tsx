@@ -15,12 +15,12 @@ const clamp = (value: number, min: number, max: number) => {
 export default async function ApplicationsTable({searchParams,}: {
     searchParams: Promise<{ [key: string]: string | undefined }>
 }) {
+    const params = await searchParams;
     const numberOfApplications = await getNumberOfApplicationsFiltered(db, {
-        searchQuery: (await searchParams).q?.toString().trim() ?? "",
-        onlyWithRsvp: (await searchParams).rsvp === "true",
+        searchQuery: params.q?.toString().trim() ?? "",
+        onlyWithRsvp: params.rsvp === "true",
     });
 
-    const params = await searchParams;
     let page = params.page ? clamp(parseInt(params.page), 1, Math.max(Math.ceil(parseInt(numberOfApplications?.count ?? "1") / 10), 1)) : 1;
     if (isNaN(page)) {
         page = 1;
@@ -38,7 +38,7 @@ export default async function ApplicationsTable({searchParams,}: {
     };
 
     return (
-        <div className="overflow-x-auto grid">
+        <div className="overflow-x-auto">
             <div className="pb-12">
                 <ApplicationsSearch page={page} query={params.q?.toString().trim() ?? ""}/>
             </div>
@@ -58,32 +58,32 @@ export default async function ApplicationsTable({searchParams,}: {
                     <tr className="text-secondary-50 2xl:text-lg font-semibold hover:bg-white/5 duration-75"
                         key={application.id}>
                         <td className={`pr-4 text-start py-6 pl-4 ${index !== applications.length - 1 ? "border-b" : ""}`}>
-                            <div className="w-24 text-nowrap overflow-x-auto">
+                            <div className="min-w-0">
                                 {application.firstName}
                             </div>
                         </td>
                         <td className={`pr-4 text-start ${index !== applications.length - 1 ? "border-b" : ""}`}>
-                            <div className="w-24 text-nowrap overflow-x-auto">
+                            <div className="min-w-0">
                                 {application.lastName}
                             </div>
                         </td>
                         <td className={`pr-4 text-start ${index !== applications.length - 1 ? "border-b" : ""}`}>
-                            <div className="w-96 text-nowrap overflow-x-auto">
+                            <div className="max-w-[200px] truncate" title={application.school}>
                                 {application.school}
                             </div>
                         </td>
                         <td className={`pr-4 text-start capitalize ${index !== applications.length - 1 ? "border-b" : ""}`}>
-                            <div className="w-32">
+                            <div>
                                 <StatusBadge status={application.rsvped ? "rsvped" : application.status}/>
                             </div>
                         </td>
-                        <td className={`text-start ${index !== applications.length - 1 ? "border-b" : ""}`}>
-                            <div className="w-32">
+                        <td className={`text-start text-nowrap ${index !== applications.length - 1 ? "border-b" : ""}`}>
+                            <div>
                                 {formatDate(application.createdAt)}
                             </div>
                         </td>
                         <td className={`pr-4 text-start ${index !== applications.length - 1 ? "border-b" : ""}`}>
-                            <div className="w-16">
+                            <div>
                                 <Link className="border border-gray-600 py-1 px-2 rounded-lg bg-white/5 hover:bg-white/10 text-secondary-50 duration-75"
                                       href={`/dashboard/admin/applications/${application.id}?from=${page}`}>View</Link>
                             </div>

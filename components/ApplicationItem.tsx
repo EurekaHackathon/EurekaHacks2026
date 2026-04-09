@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react";
 
-export default function ApplicationItem({ label, value, icon }: { label: string, value: string, icon: string }) {
+export default function ApplicationItem({ label, value, icon }: { label: string, value: string | null | undefined, icon: string }) {
+    const display = value !== null && value !== undefined && value.trim() !== "" ? value : null;
     return (
         <div>
             <div className="flex items-center">
@@ -10,7 +11,7 @@ export default function ApplicationItem({ label, value, icon }: { label: string,
                 {label}
             </div>
             <p className="ml-8 text-gray-400">
-                {value}
+                {display ?? <span className="text-gray-600 italic">Not provided</span>}
             </p>
         </div>
     );
