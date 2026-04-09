@@ -73,7 +73,7 @@ export default function StatsSection() {
       <div className="stats-box-wrapper stats-box-1">
         <img src="/stats/text-box.png" alt="" className="stats-box-bg" />
         <div className="stats-text">
-          <h3>500+</h3>
+          <h3>100+</h3>
           <p>HACKERS</p>
         </div>
       </div>
