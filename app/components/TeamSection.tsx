@@ -18,15 +18,14 @@ const TEAM: TeamMember[] = [
   {
     name: "Daniel Zhu",
     role: "Sponsorship",
-    description:
-      "This is my one good picture, please take good care of it.",
+    description: "This is my one good picture, please take good care of it.",
     image: "/team/DanielZhu.png",
     superpower: "Haha no G1",
     supercolor: "#FF5733",
   },
   {
-    name: "Yohance Pawani",
-    role: "President",
+    name: "Yohance Pawania",
+    role: "Sponsorship",
     description: "I like pink floyd",
     image: "/team/Yohance.png",
     superpower: "Quantum levitation",
@@ -50,7 +49,7 @@ const TEAM: TeamMember[] = [
   },
   {
     name: "Eason Huang",
-    role: "President",
+    role: "Logistics",
     description:
       "The best product manager anyone could ask for, except maybe for himself.",
     image: "/team/Eason.png",
@@ -135,6 +134,14 @@ const TEAM: TeamMember[] = [
     description: "Wait, what was I supposed to put here? Oh look, a bird!",
     image: "/team/Tiger.webp",
     superpower: "Attention span of a goldfish 💀",
+    supercolor: "#8e0000ff",
+  },
+  {
+    name: "Jacob Blais",
+    role: "Sponsorship",
+    description: "Boba drinker 1000",
+    image: "/team/jacob.png",
+    superpower: "Speaking 🗣️🗣️",
     supercolor: "#8e0000ff",
   },
 ];
