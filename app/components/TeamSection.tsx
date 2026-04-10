@@ -58,7 +58,7 @@ const TEAM: TeamMember[] = [
   },
   {
     name: "Jenny Jin",
-    role: "Marketing Girl",
+    role: "Co-president",
     description: "Just do that, no do this, you're doing it wrong...",
     image: "/team/Jenny.png",
     superpower: "Always hitting red lights 🫰",
