@@ -34,6 +34,7 @@ const initialState = {
 export default function ApplicationForm() {
   const [state, formAction, pending] = useActionState(apply, initialState);
   const formRef = useRef<HTMLFormElement>(null);
+  const submitBtnRef = useRef<HTMLButtonElement>(null);
   const [showConfirm, setShowConfirm] = useState(false);
   const defaultYears = ["2026", "2027", "2028", "2029", "other"];
   const [graduationYear, setGraduationYear] = useState(
@@ -342,6 +343,8 @@ export default function ApplicationForm() {
         )}
       </button>
 
+      <button ref={submitBtnRef} type="submit" className="hidden" aria-hidden />
+
       <Dialog open={showConfirm} onOpenChange={setShowConfirm}>
         <DialogContent className="bg-[#0d1117] border-gray-700 text-secondary-50 max-w-md">
           <DialogHeader>
@@ -356,7 +359,7 @@ export default function ApplicationForm() {
             </DialogClose>
             <button
               type="button"
-              onClick={() => { setShowConfirm(false); formRef.current?.requestSubmit(); }}
+              onClick={() => { submitBtnRef.current?.click(); setShowConfirm(false); }}
               className="px-4 py-2 rounded-lg font-semibold bg-secondary-50 text-secondary-900 hover:bg-secondary-200 duration-150"
             >
               Submit application
