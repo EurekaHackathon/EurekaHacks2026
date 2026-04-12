@@ -11,8 +11,7 @@ import {
     createPasswordResetToken,
     deleteAllEmailVerificationTokensByUserID, deleteAllPasswordResetTokensByUserID,
     getPasswordResetTokenByToken,
-    getUserByEmail,
-    verifyUserEmail
+    getUserByEmail
 } from "@/lib/sqlc/auth_sql";
 import { db } from "@/lib/database";
 import NodeMailer from "nodemailer";
@@ -171,48 +170,30 @@ export const signUpWithEmail = async (prevState: any, formData: FormData) => {
             return {error: "Internal server error, please try again later", payload: formData};
         }
 
-        if (process.env.NO_EMAIL_MODE === "true") {
-            await verifyUserEmail(db, { id: user.id });
-            const sessionToken = await generateSessionToken();
-            await createSession(sessionToken, user.id);
-            const cookieStore = await cookies();
-            cookieStore.set("session", sessionToken, {
-                httpOnly: true,
-                sameSite: "lax",
-                secure: process.env.NODE_ENV === "production",
-                path: "/",
-                expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
-            });
-        } else {
-            const emailVerificationToken = await generateToken();
-            const tokenExpiry = new Date(Date.now() + 15 * 60 * 1000);
+        const emailVerificationToken = await generateToken();
+        const tokenExpiry = new Date(Date.now() + 15 * 60 * 1000);
 
-            emailVerificationTokenRecord = await createEmailVerificationToken(db, {
-                token: emailVerificationToken,
-                userId: user.id,
-                expiresAt: tokenExpiry,
-            });
+        emailVerificationTokenRecord = await createEmailVerificationToken(db, {
+            token: emailVerificationToken,
+            userId: user.id,
+            expiresAt: tokenExpiry,
+        });
 
-            if (!emailVerificationTokenRecord) {
-                return {error: "Internal server error, please try again later", payload: formData};
-            }
+        if (!emailVerificationTokenRecord) {
+            return {error: "Internal server error, please try again later", payload: formData};
+        }
 
-            await sendVerificationEmail({
+        await sendVerificationEmail({
                 emailVerificationToken: emailVerificationToken,
                 firstName: firstName,
                 email: email,
             });
-        }
 
     } catch (error) {
         console.error(error);
         return {error: "Internal server error, please try again later", payload: formData};
     }
-
-    if (process.env.NO_EMAIL_MODE === "true") {
-        redirect("/dashboard");
-    }
-    redirect(`/verify-email-prompt?id=${emailVerificationTokenRecord!.id}`);
+    redirect(`/verify-email-prompt?id=${emailVerificationTokenRecord.id}`);
 };
 
 export const resendEmailVerificationLink = async (prevState: any, formData: FormData): Promise<{ error: string; success: boolean }> => {
@@ -271,10 +252,6 @@ export const resendEmailVerificationLink = async (prevState: any, formData: Form
 };
 
 export const sendMailAsync = async (transporter: NodeMailer.Transporter, mailOptions: NodeMailer.SendMailOptions) => {
-    if (process.env.NO_EMAIL_MODE === "true") {
-        console.log(`[NO_EMAIL_MODE] Skipping email to ${mailOptions.to} — subject: "${mailOptions.subject}"`);
-        return;
-    }
     return new Promise((resolve, reject) => {
         transporter.sendMail(mailOptions, (err: Error | null, info: NodeMailer.SentMessageInfo) => {
             if (err) {

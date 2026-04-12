@@ -82,7 +82,7 @@ export const apply = async (_prevState: any, formData: FormData) => {
 
     if (!validationResult.success) {
         const errorMessages = validationResult.error.issues.map((error: { message: string }) => error.message);
-        console.error("[apply] Validation failed:", validationResult.error.issues);
+
         return {
             error: errorMessages.join("\n"),
             payload: formData,
