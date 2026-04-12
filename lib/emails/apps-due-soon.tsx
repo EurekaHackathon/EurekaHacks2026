@@ -1,5 +1,3 @@
-//TODO This email is NOT production ready; content needs to be updated first
-
 import * as React from "react";
 import { Email, LinkButton, Paragraph, PersonalizedEmailProps } from "./components";
 
