@@ -127,3 +127,14 @@ create table if not exists password_reset_tokens (
     created_at timestamptz not null default now(),
     updated_at timestamptz not null default now()
 );
+
+CREATE TABLE IF NOT EXISTS public.application_scores (
+    id SERIAL PRIMARY KEY,
+    application_id INTEGER NOT NULL REFERENCES public.hackathon_applications(id) ON DELETE CASCADE,
+    user_id INTEGER NOT NULL REFERENCES public.app_users(id) ON DELETE CASCADE,
+    score INTEGER NOT NULL CHECK (score >= 1 AND score <= 7),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+    UNIQUE (application_id, user_id)
+);
+
