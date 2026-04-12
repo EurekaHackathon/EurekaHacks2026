@@ -62,12 +62,21 @@ export default async function RootLayout({
     const { session } = await validateSessionToken(sessionCookie.value);
     pinkTheme = !!session;
   }
+  const isMockMode = process.env.MOCK_MODE === "true";
+  if (isMockMode) {
+    console.warn("\x1b[33m⚠️  MOCK_MODE is ON — no real database is being used. Set MOCK_MODE=false in .env.local before deploying.\x1b[0m");
+  }
   return (
     <html lang="en" className={pinkTheme ? "pink-theme" : ""}>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${freeman.variable} ${righteous.variable} ${inter.variable} ${roboto.variable} antialiased flex flex-col min-h-screen`}
       >
+        {isMockMode && (
+          <div className="fixed bottom-4 right-4 z-[9999] bg-yellow-400 text-black text-sm font-bold px-4 py-2 rounded-lg shadow-lg flex items-center gap-2">
+            ⚠️ MOCK MODE — turn off before deploying
+          </div>
+        )}
         <div className="flex-1 flex flex-col">{children}</div>
         <GlobalFooter />
         <Analytics />
