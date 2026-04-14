@@ -67,7 +67,7 @@ const TEAM: TeamMember[] = [
   {
     name: "Naman Sonawane",
     role: "Frontend Labourer",
-    description: "I'm just here for the free food",
+    description: "\"Hey Neel can you help me center this div\"",
     image: "/team/Naman.png",
     superpower: "Can code in his sleep",
     supercolor: "#FF0000",
@@ -135,6 +135,14 @@ const TEAM: TeamMember[] = [
     image: "/team/Tiger.webp",
     superpower: "Attention span of a goldfish 💀",
     supercolor: "#8e0000ff",
+  },
+  {
+    name: "Arnnav Kudale",
+    role: "Hardware Dude",
+    description: "robot go brr",
+    image: "/team/Arnnav.png",
+    superpower: "Can fix it (don’t ask how)",
+    supercolor: "#ffc906ff",
   },
   {
     name: "Jacob Blais",
