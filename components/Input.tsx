@@ -1,4 +1,4 @@
-export function Input({ label, ...props }: any) {
+export function Input({ label, error, ...props }: any) {
     return (
         <div className="flex-1">
             <label className="block text-lg font-medium text-gray-100">
@@ -8,8 +8,9 @@ export function Input({ label, ...props }: any) {
                 {...props}
                 style={props.type === "number" ? { MozAppearance: "textfield" } : undefined}
                 onWheel={props.type === "number" ? (e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur() : props.onWheel}
-                className={`border-secondary-700 border hover:border-secondary-500 focus:outline-none rounded-lg w-full py-2 px-4 mt-2 bg-[#030712] text-gray-100 placeholder-gray-500 ${props.type === "number" ? "[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" : ""} ${props.className ?? ""}`}
+                className={`border hover:border-secondary-500 focus:outline-none rounded-lg w-full py-2 px-4 mt-2 bg-[#030712] text-gray-100 placeholder-gray-500 ${error ? "border-error-600" : "border-secondary-700"} ${props.type === "number" ? "[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" : ""} ${props.className ?? ""}`}
             />
+            {error && <p className="text-error-400 text-sm mt-1">{error}</p>}
         </div>
     );
 }

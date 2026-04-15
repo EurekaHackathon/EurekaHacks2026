@@ -35,7 +35,7 @@ const filterFunction = (value: string, search: string, keywords: string[] | unde
     return 0;
 };
 
-export function CitySelect({ payload }: { payload?: FormData | undefined }) {
+export function CitySelect({ payload, error }: { payload?: FormData | undefined; error?: string }) {
     const [open, setOpen] = React.useState(false);
     const [value, setValue] = React.useState(payload?.get("city") ?? "");
 
@@ -85,6 +85,7 @@ export function CitySelect({ payload }: { payload?: FormData | undefined }) {
                 </PopoverContent>
             </Popover>
             <input type="hidden" name="city" value={value as string}/>
+            {error && <p className="text-error-400 text-sm mt-1">{error}</p>}
             {value === "Other" &&
                 <div className="mt-4">
                   <Input defaultValue={payload?.get("city-other")} label="City (other)" required type="text" name="city-other"/>

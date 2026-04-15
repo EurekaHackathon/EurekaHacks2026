@@ -137,6 +137,14 @@ const TEAM: TeamMember[] = [
     supercolor: "#8e0000ff",
   },
   {
+    name: "Arnnav Kudale",
+    role: "Hardware Dude",
+    description: "robot go brr",
+    image: "/team/Arnnav.png",
+    superpower: "Can fix it (don't ask how)",
+    supercolor: "#ffc906ff",
+  },
+  {
     name: "Jacob Blais",
     role: "Sponsorship",
     description: "Boba drinker 1000",
