@@ -79,9 +79,9 @@ export default function SponsorsSection() {
             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
               <SponsorCard
                 name="Vallo"
-                image="https://www.vallo.dev/logos/vallo/ValloLogo.png"
-                tier="gold"
-                href="https://vallo.dev"
+                image="https://blog.vallo.ai/wp-content/uploads/2024/12/cropped-vallo.png"
+                tier="gold" 
+                href="https://vallo.ai"
               />
               <SponsorCard
                 name="Convictional"
