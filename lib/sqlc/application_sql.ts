@@ -1,4 +1,5 @@
 import { Sql } from "postgres";
+import { isMockMode, MOCK_STATS } from "@/lib/mock-data";
 
 export const createApplicationQuery = `-- name: CreateApplication :exec
 insert into hackathon_applications (
@@ -158,6 +159,7 @@ export interface GetRsvpCountRow {
 }
 
 export async function getRsvpCount(sql: Sql): Promise<GetRsvpCountRow | null> {
+    if (isMockMode()) return { count: MOCK_STATS.rsvpCount };
     const rows = await sql.unsafe(getRsvpCountQuery, []).values();
     if (rows.length !== 1) {
         return null;

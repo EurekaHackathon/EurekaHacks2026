@@ -194,7 +194,7 @@ export default function DashboardHome() {
           <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
             Applications will remain open until the day of the hackathon.
             <br />
-            They are due on April 24th, 2026 at 11:59 PM EST.
+            They are due on April 20th, 2026 at 11:59 PM EST.
           </p>
         </div>
         <div className="border border-gray-300 rounded-lg bg-[#151c2b] py-8 px-12 flex-1 overflow-hidden">
@@ -318,4 +318,3 @@ export default function DashboardHome() {
     </div>
   );
 }
-

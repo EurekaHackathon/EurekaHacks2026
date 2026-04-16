@@ -106,7 +106,7 @@ export default function HeroSection() {
               CONTACT
             </Link>
             <Link href="/dashboard" className="nav-link nav-link-signup">
-              APPLY
+              DASHBOARD
             </Link>
           </div>
         </div>
@@ -118,7 +118,7 @@ export default function HeroSection() {
         </h1>
 
         <p className="font-freeman text-2xl font-normal text-white mt-4 tracking-[0.1em]">
-          May 1st-2nd, Waterloo Accelerator Center
+          May 1st-2nd, Waterloo Accelerator Centre
         </p>
 
         <Link href="/dashboard" className="cursor-pointer">

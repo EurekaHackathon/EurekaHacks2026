@@ -45,6 +45,36 @@ export const AcceptanceEmailTemplate = ({firstName}: PersonalizedEmailProps) => 
 
 AcceptanceEmailTemplate.PreviewProps = {
     firstName: "John",
-} as PersonalizedEmailProps;
+} as AcceptanceEmailTemplateProps;
 
 export default AcceptanceEmailTemplate;
+
+const main = {
+    backgroundColor: "#ffffff",
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+};
+
+const container = {
+    margin: "0 auto",
+    padding: "20px 0 48px",
+    maxWidth: "560px",
+};
+
+const logo = {
+    margin: "0 auto",
+};
+
+const paragraph = {
+    fontSize: "16px",
+    lineHeight: "26px",
+};
+
+const hr = {
+    borderColor: "#cccccc",
+    margin: "20px 0",
+};
+
+const footer = {
+    color: "#8898aa",
+    fontSize: "12px",
+};
