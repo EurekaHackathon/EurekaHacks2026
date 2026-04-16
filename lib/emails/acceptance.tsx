@@ -1,89 +1,59 @@
-import {
-    Body,
-    Container,
-    Head,
-    Hr,
-    Html,
-    Img,
-    Preview,
-    Text,
-} from "@react-email/components";
 import * as React from "react";
+import {
+  Email,
+  LinkButton,
+  Paragraph,
+  HighlightSection,
+  PersonalizedEmailProps,
+} from "./components";
 
-interface AcceptanceEmailTemplateProps {
-    firstName: string;
-}
-
-export const AcceptanceEmailTemplate = ({ firstName }: AcceptanceEmailTemplateProps) => (
-    <Html>
-        <Head />
-        <Preview>Congratulations 🎉 — You're in at EurekaHACKS 2026!</Preview>
-        <Body style={main}>
-            <Container style={container}>
-                <Img
-                    src={`https://eurekahacks.ca/logo/bigComic.webp`}
-                    width="50"
-                    height="50"
-                    alt="EurekaHACKS logo"
-                    style={logo}
-                />
-                <Text style={paragraph}>Hey {firstName}!</Text>
-                <Text style={paragraph}>
-                    Congratulations — you've been accepted to EurekaHACKS 2026! We were blown away by the
-                    applications we received this year, and we're excited to have you join us.
-                </Text>
-                <Text style={paragraph}>
-                    <strong>Please RSVP to confirm your spot through your dashboard. Spots are limited, so make
-                    sure to lock in your place as soon as possible!</strong>
-                </Text>
-                <Text style={paragraph}>
-                    We'll be sending you more details about the event in the coming days — stay tuned. In the
-                    meantime, if you have any questions feel free to reach out at{" "}
-                    <a href="mailto:hello@eurekahacks.ca">hello@eurekahacks.ca</a>.
-                </Text>
-                <Text style={paragraph}>
-                    Can't wait to see what you'll build!<br />
-                    The EurekaHACKS Team
-                </Text>
-                <Hr style={hr} />
-                <Text style={footer}>Copyright © EurekaHACKS 2026, All rights reserved.</Text>
-            </Container>
-        </Body>
-    </Html>
+export const AcceptanceEmailTemplate = ({
+  firstName,
+}: PersonalizedEmailProps) => (
+  <Email previewText="Congratulations 🎉, See You At EurekaHACKS 2026!">
+    <Paragraph>Hey {firstName}!</Paragraph>
+    <Paragraph>
+      We’re excited to have you as a hacker for EurekaHACKS 2026, our fourth
+      hackathon iteration! Join us from May 1st-2nd at the Waterloo Accelerator
+      Center to take part in a memorable day filled with fun workshops, exciting
+      activities and free food!
+    </Paragraph>
+    <Paragraph>Here’s a sneak peek into this years event:</Paragraph>
+    <HighlightSection>
+      🌟 $2,500+ prize pool including: A1 Mini 3D printer, gaming monitor,
+      escooter, electric guitar (w/ amp) and reusable notebooks!
+      <br />
+      🍎 Free breakfast, lunch and dinner for all hackers!
+      <br />
+      🛠 Take part in fun workshops and activities!
+    </HighlightSection>
+    <Paragraph>And a reminder about the logistics:</Paragraph>
+    <HighlightSection>
+      📍 Waterloo Accelerator Center (295 Hagey Blvd, Waterloo)
+      <br />
+      📅 5pm May 1st - 10pm May 2nd
+      <br />
+    </HighlightSection>
+    <Paragraph>
+      <strong>
+        Please RSVP to confirm your spot at EurekaHACKS 2026 if you have not
+        already! We’ll be sending you more details about the event in the
+        following days, so stay tuned!
+      </strong>
+    </Paragraph>
+    <LinkButton url="https://eurekahacks.ca/dashboard/" text="RSVP Now" />
+    <Paragraph>
+      Can&apos;t wait to see what you&apos;ll create!
+      <br />
+      Best,
+      <br />
+      The EurekaHACKS Team
+    </Paragraph>
+  </Email>
 );
 
 AcceptanceEmailTemplate.PreviewProps = {
-    firstName: "John",
-} as AcceptanceEmailTemplateProps;
+  firstName: "John",
+} as PersonalizedEmailProps;
 
 export default AcceptanceEmailTemplate;
-
-const main = {
-    backgroundColor: "#ffffff",
-    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-};
-
-const container = {
-    margin: "0 auto",
-    padding: "20px 0 48px",
-    maxWidth: "560px",
-};
-
-const logo = {
-    margin: "0 auto",
-};
-
-const paragraph = {
-    fontSize: "16px",
-    lineHeight: "26px",
-};
-
-const hr = {
-    borderColor: "#cccccc",
-    margin: "20px 0",
-};
-
-const footer = {
-    color: "#8898aa",
-    fontSize: "12px",
-};
