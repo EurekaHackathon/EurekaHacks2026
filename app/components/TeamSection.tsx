@@ -67,7 +67,7 @@ const TEAM: TeamMember[] = [
   {
     name: "Naman Sonawane",
     role: "Frontend Labourer",
-    description: "I'm just here for the free food",
+    description: "\"Hey Neel can you help me center this div\"",
     image: "/team/Naman.png",
     superpower: "Can code in his sleep",
     supercolor: "#FF0000",
