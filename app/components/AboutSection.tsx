@@ -14,6 +14,12 @@ export default function AboutSection() {
             was founded on passion, catering to all levels and encourages
             participates to break expectations!
           </p>
+          <p className="font-inter text-md">
+            At EurekaHacks we are passionate about creating an inclusive 
+            environment for all minorities, especially women, within the 
+            STEM industry. We aim to be a women-centered event to ensure
+            equality within the software community.
+          </p>
         </div>
         <div className="grow z-2 flex items-center justify-center m-4">
           <Image

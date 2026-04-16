@@ -141,7 +141,7 @@ const TEAM: TeamMember[] = [
     role: "Hardware Dude",
     description: "robot go brr",
     image: "/team/Arnnav.png",
-    superpower: "Can fix it (don’t ask how)",
+    superpower: "Can fix it (don't ask how)",
     supercolor: "#ffc906ff",
   },
   {
