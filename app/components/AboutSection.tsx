@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function AboutSection() {
   return (
-    <div className="w-screen p-12 max-sm:p-4" id="about">
+    <div className="w-screen max-w-7xl mx-auto p-12 max-sm:p-4" id="about">
       <div className="flex flex-col sm:flex-row border-12 border-white w-full relative bg-[#0a1c29] md:pr-8">
         <div className="flex flex-col gap-4 p-20 max-sm:p-8 z-2 text-xl sm:w-[50%]">
           <h1 className="font-righteous text-5xl max-sm:text-3xl">Who are we?</h1>

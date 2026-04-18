@@ -47,8 +47,8 @@
   flex: 1;
   min-width: 300px;
   max-width: 450px;
-  border: 8px solid #ffffff;
-  padding: 40px 48px;
+  border: 6px solid #ffffff;
+  padding: 20px 24px;
   position: relative;
   overflow: hidden;
 }

@@ -16,7 +16,7 @@ export default function Contact() {
     }, []);
 
     return (
-        <div className="w-screen" style={{ overflow: "hidden", boxSizing: "border-box", padding: isMobile ? "16px" : "48px" }}>
+        <div className="w-screen max-w-7xl mx-auto" style={{ overflow: "hidden", boxSizing: "border-box", padding: isMobile ? "16px" : "48px" }}>
             <div className="shadow-2xl" style={{ position: "relative", border: "12px solid white", borderRadius: 0 }}>
                 <div style={{ 
                     position: "relative", 

@@ -518,7 +518,7 @@ export default function TeamSection() {
             w: 120,
             h: 150,
             x: 900,
-            opacity: 0.1,
+            opacity: 0.0,
             roleSize: 14,
             nameSize: 14,
             avatarSize: 45,
@@ -526,7 +526,7 @@ export default function TeamSection() {
           },
         ]);
         setExitX(-400);
-        setEnterX(1500);
+        setEnterX(100);
       } else {
         // Desktop Slots - Scale up proportionally based on available width!
         const scale = Math.max(1, w / 1440);
@@ -561,7 +561,7 @@ export default function TeamSection() {
 
   return (
     <div
-      className="w-screen"
+      className="w-screen max-w-7xl mx-auto"
       style={{
         overflow: "hidden",
         boxSizing: "border-box",

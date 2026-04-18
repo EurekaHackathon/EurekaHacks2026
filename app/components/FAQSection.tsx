@@ -100,11 +100,7 @@ export default function FAQSection() {
   };
 
   const handleNext = () => {
-    const step =
-      typeof window !== "undefined" &&
-      window.matchMedia("(max-width: 640px)").matches
-        ? 3
-        : 1;
+    const step = 3 // Step 3 cards to not waste user's time
     setCurrentIndex((prev) => (prev + step) % faqData.length);
   };
 
@@ -115,7 +111,7 @@ export default function FAQSection() {
   }
 
   return (
-    <div className="w-screen p-12 max-sm:p-4">
+    <div className="w-screen max-w-7xl mx-auto p-12 max-sm:p-4">
       <div id="faq" className="border-12 border-white shadow-2xl w-full p-6 bg-[#0a1c29]">
           <h2 className="faq-title">FAQ</h2>
 

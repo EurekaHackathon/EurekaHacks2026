@@ -112,7 +112,7 @@ export default function HeroSection() {
         </div>
       </nav>
 
-      <div className="absolute z-60 top-[22%] sm:top-[42%] left-12 -translate-y-1/2 max-w-350 pointer-events-auto">
+      <div className="absolute z-60 top-[22%] sm:top-[42%] left-12 lg:left-50 -translate-y-1/2 max-w-350 pointer-events-auto">
         <h1 className="text-wrap font-righteous text-5xl sm:text-[6rem] font-normal text-[#fff081] m-0 leading-none [text-shadow:3px_3px_0px_rgba(0,0,0,0.8),6px_6px_0px_rgba(0,0,0,0.5),0_0_20px_rgba(228,255,26,0.3)] tracking-[0.02em] relative">
           EUREKA{"\u200B"}HACKS
         </h1>
@@ -122,7 +122,7 @@ export default function HeroSection() {
         </p>
 
         <Link href="/dashboard" className="cursor-pointer">
-          <button className="mt-8 px-8 py-3 bg-[#fff081] text-secondary-950 rounded-xl font-freeman text-xl tracking-wider transition-all duration-300 hover:scale-105 hover:bg-[#f5ffad] hover:shadow-[0_0_20px_rgba(255,240,129,0.4)] active:scale-95 cursor-pointer">
+          <button className="mt-8 px-8 py-4 bg-[#fff081] text-secondary-950 rounded-xl font-freeman text-2xl tracking-wider transition-all duration-300 hover:scale-105 hover:bg-[#f5ffad] hover:shadow-[0_0_20px_rgba(255,240,129,0.4)] active:scale-95 cursor-pointer">
             APPLY NOW
           </button>
         </Link>
