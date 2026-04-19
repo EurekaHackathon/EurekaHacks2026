@@ -1,5 +1,6 @@
 import * as React from "react";
 import {
+  A,
   Email,
   LinkButton,
   Paragraph,
@@ -20,7 +21,7 @@ export const AcceptanceEmailTemplate = ({
     </Paragraph>
     <Paragraph>Here’s a sneak peek into this years event:</Paragraph>
     <HighlightSection>
-      🌟 $2,500+ prize pool including: A1 Mini 3D printer, gaming monitor,
+      🌟 $8,000+ prize pool including: A1 Mini 3D printer, gaming monitor,
       escooter, electric guitar (w/ amp) and reusable notebooks!
       <br />
       🍎 Free breakfast, lunch and dinner for all hackers!
@@ -42,6 +43,11 @@ export const AcceptanceEmailTemplate = ({
       </strong>
     </Paragraph>
     <LinkButton url="https://eurekahacks.ca/dashboard/" text="RSVP Now" />
+    <Paragraph>
+        <strong>
+            Also, make sure to <A href="https://discord.gg/j5gU4TAzee">join our discord</A> for updates before and during the event
+        </strong>
+    </Paragraph>
     <Paragraph>
       Can&apos;t wait to see what you&apos;ll create!
       <br />
