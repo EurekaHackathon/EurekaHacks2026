@@ -1,6 +1,30 @@
 "use client";
 import Link from "next/link";
+import { Icon } from "@iconify/react";
 import { useState, useRef, useEffect } from "react";
+
+const navSocialLinks = [
+  {
+    href: "mailto:hello@eurekahacks.ca",
+    label: "Email",
+    icon: <img src="/socials/email.svg" alt="" className="nav-social-icon-image" />,
+  },
+  {
+    href: "https://discord.gg/GCheXYbSeY",
+    label: "Discord",
+    icon: <Icon icon="ic:baseline-discord" className="nav-social-icon-glyph" />,
+  },
+  {
+    href: "https://github.com/EurekaHackathon/EurekaHacks2026",
+    label: "GitHub",
+    icon: <img src="/socials/github.svg" alt="" className="nav-social-icon-image" />,
+  },
+  {
+    href: "https://instagram.com/eureka_hacks",
+    label: "Instagram",
+    icon: <img src="/socials/insta.svg" alt="" className="nav-social-icon-image" />,
+  },
+] as const;
 
 export default function HeroSection() {
   const [email, setEmail] = useState("");
@@ -86,28 +110,41 @@ export default function HeroSection() {
     <>
       <nav className="top-bar">
         <div className="top-bar-content">
-          <Link href="/" className="logo">
-            <img src="/logo/small.webp" alt="Logo" className="logo-icon" />
-          </Link>
-          <div className="nav-links">
-            <Link href="#about" className="nav-link">
-              ABOUT
+          <div className="nav-main">
+            <Link href="/" className="logo">
+              <img src="/logo/small.webp" alt="Logo" className="logo-icon" />
             </Link>
-            <Link href="#faq" className="nav-link">
-              FAQ
-            </Link>
-            {/* <Link href="#sponsors" className="nav-link">
-              SPONSORS
-            </Link> */}
-            <a href="https://2025.eurekahacks.ca/" className="nav-link">
-              LAST YEAR
-            </a>
-            <Link href="mailto:hello@eurekahacks.ca" className="nav-link">
-              CONTACT
-            </Link>
-            <Link href="/dashboard" className="nav-link nav-link-signup">
-              DASHBOARD
-            </Link>
+            <div className="nav-links">
+              <Link href="#about" className="nav-link">
+                ABOUT
+              </Link>
+              <Link href="#faq" className="nav-link">
+                FAQ
+              </Link>
+              {/* <Link href="#sponsors" className="nav-link">
+                SPONSORS
+              </Link> */}
+              <a href="https://2025.eurekahacks.ca/" className="nav-link">
+                LAST YEAR
+              </a>
+              <Link href="/dashboard" className="nav-link nav-link-signup">
+                DASHBOARD
+              </Link>
+            </div>
+          </div>
+          <div className="nav-socials" aria-label="Social links">
+            {navSocialLinks.map((socialLink) => (
+              <a
+                key={socialLink.label}
+                href={socialLink.href}
+                className="nav-social-link"
+                aria-label={socialLink.label}
+                target={socialLink.href.startsWith("http") ? "_blank" : undefined}
+                rel={socialLink.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              >
+                {socialLink.icon}
+              </a>
+            ))}
           </div>
         </div>
       </nav>

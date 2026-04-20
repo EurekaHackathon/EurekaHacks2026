@@ -257,10 +257,16 @@ body {
 
 .top-bar-content {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   gap: 48px;
   margin-left: 0;
+}
+
+.nav-main {
+  display: flex;
+  align-items: center;
+  gap: 48px;
 }
 
 .logo {
@@ -291,6 +297,53 @@ body {
   display: flex;
   gap: 2.5rem;
   align-items: center;
+}
+
+.nav-socials {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.9rem;
+  margin-left: auto;
+}
+
+.nav-social-link {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.nav-social-link:hover {
+  transform: translateY(-2px);
+  color: var(--neon-yellow);
+  border-color: rgba(228, 255, 26, 0.55);
+  background: rgba(228, 255, 26, 0.08);
+  box-shadow: 0 0 18px rgba(228, 255, 26, 0.2);
+}
+
+.nav-social-icon-image {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.nav-social-link:hover .nav-social-icon-image {
+  filter: brightness(0) saturate(100%) invert(92%) sepia(41%) saturate(1340%) hue-rotate(11deg) brightness(105%) contrast(104%);
+}
+
+.nav-social-icon-glyph {
+  width: 20px;
+  height: 20px;
 }
 
 .nav-link {
