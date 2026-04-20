@@ -5,13 +5,14 @@ import { db } from "@/lib/database";
 import { redirect } from "next/navigation";
 import StatusBadge from "@/components/StatusBadge";
 import ApplicationItem from "@/components/ApplicationItem";
-import ApplicationLinkBox from "@/components/ApplicationLinkBox";
 import { ApplicationActionsForm } from "@/components/ApplicationActionsForm";
 import BackButton from "@/components/BackButton";
 import ScoringForm from "@/components/ScoringForm";
 import { getScoreByUser, getAverageScore } from "@/lib/sqlc/scores_sql";
 import { cookies } from "next/headers";
 import { authorizeSession } from "@/lib/sessions";
+import OpenApplicationLinksButton from "@/components/OpenApplicationLinksButton";
+import ApplicationKeyboardShortcuts from "@/components/ApplicationKeyboardShortcuts";
 
 const formatTimeAgo = (date: Date) => {
     const now = new Date();
@@ -90,9 +91,16 @@ export default async function Application({
     };
 
     const applicationStatus = application.rsvped ? "rsvped" : application.status;
+    const availableLinks = [
+        application.githubLink ? "GitHub" : null,
+        application.linkedinLink ? "LinkedIn" : null,
+        application.portfolioLink ? "Website" : null,
+        application.resumeLink ? "Resume" : null,
+    ].filter((value): value is string => value !== null);
 
     return (
-        <div className="mt-8">
+        <div className="mt-6 lg:mt-4">
+            <ApplicationKeyboardShortcuts/>
             <div className="flex flex-wrap items-center gap-3">
                 <BackButton
                     className="border border-gray-600 flex items-center gap-2 font-semibold text-secondary-50 rounded-lg px-4 h-10 duration-75 hover:bg-white/5">
@@ -101,14 +109,14 @@ export default async function Application({
                 </BackButton>
                 <div className="flex items-center gap-2 ml-auto">
                     {adjacentIds.prevId !== null && (
-                        <Link href={`/dashboard/admin/applications/${adjacentIds.prevId}`}
+                        <Link id="application-prev" href={`/dashboard/admin/applications/${adjacentIds.prevId}`}
                               className="border border-gray-600 flex items-center gap-1.5 font-semibold text-secondary-50 rounded-lg px-4 h-10 duration-75 hover:bg-white/5">
                             <Icon icon="fluent:arrow-left-24-filled" className="text-xl"/>
                             Prev
                         </Link>
                     )}
                     {adjacentIds.nextId !== null && (
-                        <Link href={`/dashboard/admin/applications/${adjacentIds.nextId}`}
+                        <Link id="application-next" href={`/dashboard/admin/applications/${adjacentIds.nextId}`}
                               className="border border-gray-600 flex items-center gap-1.5 font-semibold text-secondary-50 rounded-lg px-4 h-10 duration-75 hover:bg-white/5">
                             Next
                             <Icon icon="fluent:arrow-right-24-filled" className="text-xl"/>
@@ -117,104 +125,150 @@ export default async function Application({
                 </div>
             </div>
             <div
-                className="bg-[#151c2b] border-gray-300 border rounded-xl mt-8 p-6 text-secondary-50 font-semibold">
-                <div className="flex items-center gap-8">
-                    <h1 className="text-2xl font-semibold">{application.firstName} {application.lastName}</h1>
-                    <StatusBadge className="font-semibold" status={applicationStatus}/>
-                </div>
-                <div className="mt-2 text-gray-400">
-                    <h1>
-                        Submitted: {application.createdAt.toLocaleDateString("en-CA")} at {new Intl.DateTimeFormat("en-CA", {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                        second: "2-digit",
-                        hour12: false,
-                        timeZone: "America/Toronto",
-                    }).format(application.createdAt)} ({formatTimeAgo(application.createdAt)} ago)
-                    </h1>
-                </div>
-                <div className="grid md:grid-cols-2 xl:grid-cols-3 mt-8 gap-4">
-                    <ApplicationItem label="Full name" icon="icon-park-outline:edit-name"
-                                     value={application.firstName + " " + application.lastName}/>
-                    <ApplicationItem label="Email" icon="fluent:mail-24-regular" value={application.email}/>
-                    <ApplicationItem label="Age" icon="fluent:person-24-regular"
-                                     value={application.age.toString()}/>
-                    <ApplicationItem label="Hackathons attended" icon="fluent:code-block-16-regular"
-                                     value={application.numberOfHackathonsAttended.toString()}/>
-                    <ApplicationItem label="City" icon="fluent:location-24-regular" value={application.city}/>
-                    <ApplicationItem label="School" icon="fluent:hat-graduation-12-regular"
-                                     value={application.school}/>
-                    <ApplicationItem label="Year of graduation" icon="fluent:calendar-12-regular"
-                                     value={application.yearOfGraduation.toString()}/>
-                    <ApplicationItem label="Dietary restrictions" icon="fluent:food-24-regular"
-                                     value={formatDietaryRestrictions(application.dietaryRestrictions)}/>
-                    <ApplicationItem label="T-shirt size" icon="fluent:person-tag-24-regular"
-                                     value={application.tshirtSize}/>
-                </div>
-                <hr className="mt-8 border-gray-700"/>
-                <div className="mt-8">
-                    <h1 className="text-xl font-semibold">Emergency Contact</h1>
-                    <div className="grid md:grid-cols-2 gap-4 mt-4">
-                        <ApplicationItem label="Full name" icon="icon-park-outline:edit-name"
-                                         value={application.emergencyContactFullName}/>
-                        <ApplicationItem label="Phone number" icon="fluent:phone-24-regular"
-                                         value={application.emergencyContactPhoneNumber}/>
+                className="bg-[#151c2b] border-gray-300 border rounded-xl mt-6 p-4 lg:p-5 text-secondary-50 font-semibold lg:h-[calc(100vh-9.5rem)] lg:overflow-hidden">
+                <div className="flex flex-col gap-4 h-full">
+                    <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-4">
+                        <div>
+                            <div className="flex flex-wrap items-center gap-3">
+                                <h1 className="text-2xl font-semibold">{application.firstName} {application.lastName}</h1>
+                                <StatusBadge className="font-semibold" status={applicationStatus}/>
+                            </div>
+                            <div className="mt-2 text-sm text-gray-400">
+                                Submitted: {application.createdAt.toLocaleDateString("en-CA")} at {new Intl.DateTimeFormat("en-CA", {
+                                hour: "2-digit",
+                                minute: "2-digit",
+                                second: "2-digit",
+                                hour12: false,
+                                timeZone: "America/Toronto",
+                            }).format(application.createdAt)} ({formatTimeAgo(application.createdAt)} ago)
+                            </div>
+                        </div>
+                        <div className="flex flex-wrap gap-2 text-xs text-gray-400">
+                            <span className="rounded-full border border-gray-700 px-3 py-1">Open links: <span className="text-secondary-50">O</span></span>
+                            <span className="rounded-full border border-gray-700 px-3 py-1">Score: <span className="text-secondary-50">1-7</span></span>
+                            <span className="rounded-full border border-gray-700 px-3 py-1">Accept: <span className="text-secondary-50">A</span></span>
+                            <span className="rounded-full border border-gray-700 px-3 py-1">Reject: <span className="text-secondary-50">R</span></span>
+                            <span className="rounded-full border border-gray-700 px-3 py-1">Navigate: <span className="text-secondary-50">← →</span></span>
+                        </div>
+                    </div>
+                    <div className="grid gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(23rem,0.95fr)] lg:min-h-0 lg:flex-1">
+                        <div className="grid gap-4 lg:grid-rows-[auto_minmax(0,1fr)_auto] lg:min-h-0">
+                            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                                <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                                    <p className="text-xs uppercase tracking-[0.18em] text-gray-400">Name</p>
+                                    <p className="mt-2 text-lg text-secondary-50">{application.firstName} {application.lastName}</p>
+                                </div>
+                                <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                                    <p className="text-xs uppercase tracking-[0.18em] text-gray-400">Age</p>
+                                    <p className="mt-2 text-lg text-secondary-50">{application.age}</p>
+                                </div>
+                                <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                                    <p className="text-xs uppercase tracking-[0.18em] text-gray-400">Graduation Year</p>
+                                    <p className="mt-2 text-lg text-secondary-50">{application.yearOfGraduation}</p>
+                                </div>
+                                <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                                    <p className="text-xs uppercase tracking-[0.18em] text-gray-400">School</p>
+                                    <p className="mt-2 text-sm leading-6 text-secondary-50">{application.school}</p>
+                                </div>
+                                <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                                    <p className="text-xs uppercase tracking-[0.18em] text-gray-400">City</p>
+                                    <p className="mt-2 text-lg text-secondary-50">{application.city}</p>
+                                </div>
+                                <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                                    <p className="text-xs uppercase tracking-[0.18em] text-gray-400">Email</p>
+                                    <p className="mt-2 break-all text-sm leading-6 text-secondary-50">{application.email}</p>
+                                </div>
+                            </div>
+
+                            <div className="rounded-xl border border-gray-700 bg-white/5 p-4 lg:min-h-0 lg:overflow-auto">
+                                <h2 className="text-xl font-semibold">Short Answer</h2>
+                                <p className="mt-2 text-sm text-gray-400 italic">If aliens landed tomorrow and asked you to show them one piece of human culture, what would you show them?</p>
+                                <p className="mt-4 whitespace-pre-wrap text-sm leading-7 text-secondary-50">
+                                    {application.shortAnswerResponse || <span className="text-gray-500">No response provided.</span>}
+                                </p>
+                            </div>
+
+                            <div className="grid gap-3 md:grid-cols-2">
+                                <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                                    <h2 className="text-base font-semibold">Application Details</h2>
+                                    <div className="mt-3 space-y-3 text-sm font-normal">
+                                        <ApplicationItem label="Hackathons attended" icon="fluent:code-block-16-regular"
+                                                         value={application.numberOfHackathonsAttended.toString()}/>
+                                        <ApplicationItem label="Dietary restrictions" icon="fluent:food-24-regular"
+                                                         value={formatDietaryRestrictions(application.dietaryRestrictions)}/>
+                                        <ApplicationItem label="T-shirt size" icon="fluent:person-tag-24-regular"
+                                                         value={application.tshirtSize}/>
+                                    </div>
+                                </div>
+                                <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                                    <h2 className="text-base font-semibold">Emergency Contact</h2>
+                                    <div className="mt-3 space-y-3 text-sm font-normal">
+                                        <ApplicationItem label="Full name" icon="icon-park-outline:edit-name"
+                                                         value={application.emergencyContactFullName}/>
+                                        <ApplicationItem label="Phone number" icon="fluent:phone-24-regular"
+                                                         value={application.emergencyContactPhoneNumber}/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="grid gap-4 content-start lg:min-h-0 lg:overflow-auto pr-1">
+                            <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                                <div className="flex items-center justify-between gap-3">
+                                    <div>
+                                        <h2 className="text-lg font-semibold">Review Tools</h2>
+                                        <p className="mt-1 text-sm font-normal text-gray-400">
+                                            {availableLinks.length > 0 ? `Available: ${availableLinks.join(", ")}` : "No external links submitted."}
+                                        </p>
+                                    </div>
+                                    <OpenApplicationLinksButton
+                                        id="application-open-links"
+                                        githubLink={application.githubLink}
+                                        linkedinLink={application.linkedinLink}
+                                        portfolioLink={application.portfolioLink}
+                                        resumeLink={application.resumeLink}
+                                        label="Open all links"
+                                        className="px-3 py-2 font-semibold"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                                <ScoringForm
+                                    applicationId={application.id}
+                                    initialScore={myScore}
+                                    className="mt-0"
+                                    title="Your Rating"
+                                />
+                            </div>
+
+                            <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                                <h2 className="text-lg font-semibold">Average Score</h2>
+                                {scoreCount === 0 ? (
+                                    <p className="mt-3 text-sm font-normal text-gray-400">No scores yet.</p>
+                                ) : (
+                                    <div className="mt-3">
+                                        <p className="text-4xl font-bold text-[var(--neon-yellow)]">
+                                            {avgScore?.toFixed(2)}<span className="text-xl text-gray-400 font-normal">/7</span>
+                                        </p>
+                                        <p className="mt-2 text-sm font-normal text-gray-400">
+                                            Based on {scoreCount} score{scoreCount !== 1 ? "s" : ""}.
+                                        </p>
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                                <ApplicationActionsForm
+                                    id={application.id}
+                                    className="mt-0"
+                                    title="Decision"
+                                    gridClassName="grid-cols-2 xl:grid-cols-2 gap-3"
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <hr className="mt-8 border-gray-700"/>
-                <div className="mt-8">
-                    <h1 className="text-xl font-semibold">Links</h1>
-                    <div className="grid md:grid-cols-2 gap-4 mt-4">
-                        <ApplicationLinkBox icon="mdi:github" label="GitHub" link={application.githubLink}/>
-                        <ApplicationLinkBox icon="basil:linkedin-outline" label="LinkedIn" link={application.linkedinLink}/>
-                        <ApplicationLinkBox label="Portfolio website" link={application.portfolioLink} icon="fluent:globe-12-regular"/>
-                        <ApplicationLinkBox icon="fluent:document-one-page-16-regular" label="Resume" link={application.resumeLink}/>
-                    </div>
-                </div>
-                <hr className="mt-8 border-gray-700"/>
-                <div className="mt-8">
-                    <h1 className="text-xl font-semibold mb-3">Short Answer</h1>
-                    <p className="text-gray-400 text-sm mb-3 italic">If aliens landed tomorrow and asked you to show them one piece of human culture, what would you show them?</p>
-                    <p className="text-secondary-50 whitespace-pre-wrap leading-relaxed">{application.shortAnswerResponse || <span className="text-gray-500">No response provided.</span>}</p>
-                </div>
-                <hr className="mt-8 border-gray-700"/>
-                <ScoringForm applicationId={application.id} initialScore={myScore}/>
-                <hr className="mt-8 border-gray-700"/>
-                <div className="mt-8">
-                    <h1 className="text-xl font-semibold mb-4">Average Score</h1>
-                    {scoreCount === 0 ? (
-                        <p className="text-gray-400">No scores yet.</p>
-                    ) : (
-                        <details className="cursor-pointer">
-                            <summary className="text-gray-400 select-none hover:text-secondary-50 duration-150">
-                                Reveal average ({scoreCount} score{scoreCount !== 1 ? "s" : ""})
-                            </summary>
-                            <p className="mt-3 text-4xl font-bold text-[var(--neon-yellow)]">
-                                {avgScore?.toFixed(2)}<span className="text-xl text-gray-400 font-normal">/7</span>
-                            </p>
-                        </details>
-                    )}
-                </div>
-                <hr className="mt-8 border-gray-700"/>
-                <ApplicationActionsForm id={application.id}/>
-                {(adjacentIds.prevId !== null || adjacentIds.nextId !== null) && (
-                    <div className="flex items-center justify-between gap-3 mt-8 pt-8 border-t border-gray-700">
-                        {adjacentIds.prevId !== null ? (
-                            <Link href={`/dashboard/admin/applications/${adjacentIds.prevId}`}
-                                  className="border border-gray-600 flex items-center gap-1.5 font-semibold text-secondary-50 rounded-lg px-4 h-10 duration-75 hover:bg-white/5">
-                                <Icon icon="fluent:arrow-left-24-filled" className="text-xl"/>
-                                Prev
-                            </Link>
-                        ) : <div/>}
-                        {adjacentIds.nextId !== null ? (
-                            <Link href={`/dashboard/admin/applications/${adjacentIds.nextId}`}
-                                  className="border border-gray-600 flex items-center gap-1.5 font-semibold text-secondary-50 rounded-lg px-4 h-10 duration-75 hover:bg-white/5">
-                                Next
-                                <Icon icon="fluent:arrow-right-24-filled" className="text-xl"/>
-                            </Link>
-                        ) : <div/>}
-                    </div>
-                )}
             </div>
         </div>
     );

@@ -12,6 +12,7 @@ import {
   DialogFooter,
   DialogClose,
 } from "@/components/Dialog";
+import { cn } from "@/lib/utils";
 
 const ACTION_CONFIG: Record<
   string,
@@ -62,7 +63,19 @@ const ACTION_CONFIG: Record<
   },
 };
 
-export function ApplicationActionsForm({ id }: { id: number }) {
+export function ApplicationActionsForm({
+  id,
+  className,
+  title = "Actions",
+  buttonIdPrefix = "application-action",
+  gridClassName,
+}: {
+  id: number;
+  className?: string;
+  title?: string;
+  buttonIdPrefix?: string;
+  gridClassName?: string;
+}) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<string | null>(null);
   const [pendingAction, setPendingAction] = useState<string | null>(null);
@@ -101,12 +114,13 @@ export function ApplicationActionsForm({ id }: { id: number }) {
   const config = pendingAction ? ACTION_CONFIG[pendingAction] : null;
 
   return (
-    <div className="mt-8">
+    <div className={cn("mt-8", className)}>
       <Icon icon="eos-icons:loading" className="hidden" />
-      <h1 className="text-xl font-semibold">Actions</h1>
-      <div className="grid xl:grid-cols-4 gap-4 mt-4">
+      <h1 className="text-xl font-semibold">{title}</h1>
+      <div className={cn("grid xl:grid-cols-4 gap-4 mt-4", gridClassName)}>
         {Object.entries(ACTION_CONFIG).map(([status, cfg]) => (
           <button
+            id={`${buttonIdPrefix}-${status}`}
             key={status}
             onClick={() => setPendingAction(status)}
             disabled={isLoading !== null}

@@ -1,5 +1,7 @@
 "use client";
 
+import { cn } from "@/lib/utils";
+
 const isPresentLink = (link: string | null | undefined) => {
     return !!link && link.trim() !== "" && link !== "None";
 };
@@ -9,11 +11,17 @@ export default function OpenApplicationLinksButton({
     linkedinLink,
     portfolioLink,
     resumeLink,
+    label = "Open links",
+    className,
+    id,
 }: {
     githubLink: string | null;
     linkedinLink: string | null;
     portfolioLink: string | null;
     resumeLink: string | null;
+    label?: string;
+    className?: string;
+    id?: string;
 }) {
     const links = [githubLink, linkedinLink, portfolioLink, resumeLink].filter(isPresentLink);
 
@@ -25,12 +33,16 @@ export default function OpenApplicationLinksButton({
 
     return (
         <button
+            id={id}
             type="button"
             onClick={openLinks}
             disabled={links.length === 0}
-            className="border border-gray-600 py-1 px-2 rounded-lg bg-white/5 hover:bg-white/10 text-secondary-50 duration-75 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white/5"
+            className={cn(
+                "border border-gray-600 py-1 px-2 rounded-lg bg-white/5 hover:bg-white/10 text-secondary-50 duration-75 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white/5",
+                className,
+            )}
         >
-            Open links
+            {label}
         </button>
     );
 }
