@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 
-const isPresentLink = (link: string | null | undefined) => {
+const isPresentLink = (link: string | null | undefined): link is string => {
     return !!link && link.trim() !== "" && link !== "None";
 };
 
