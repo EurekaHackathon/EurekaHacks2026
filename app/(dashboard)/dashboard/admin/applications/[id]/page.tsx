@@ -143,13 +143,6 @@ export default async function Application({
                             }).format(application.createdAt)} ({formatTimeAgo(application.createdAt)} ago)
                             </div>
                         </div>
-                        <div className="flex flex-wrap gap-1.5 text-[11px] text-gray-400">
-                            <span className="rounded-full border border-gray-700 px-2.5 py-1">Open links: <span className="text-secondary-50">O</span></span>
-                            <span className="rounded-full border border-gray-700 px-2.5 py-1">Score: <span className="text-secondary-50">1-7</span></span>
-                            <span className="rounded-full border border-gray-700 px-2.5 py-1">Accept: <span className="text-secondary-50">A</span></span>
-                            <span className="rounded-full border border-gray-700 px-2.5 py-1">Reject: <span className="text-secondary-50">R</span></span>
-                            <span className="rounded-full border border-gray-700 px-2.5 py-1">Navigate: <span className="text-secondary-50">← →</span></span>
-                        </div>
                     </div>
                     <div className="grid gap-4 lg:grid-cols-[minmax(0,1.38fr)_minmax(21rem,0.92fr)] lg:min-h-0 lg:flex-1">
                         <div className="grid gap-3 lg:grid-rows-[auto_minmax(21rem,1fr)_auto] lg:min-h-0">
@@ -265,6 +258,28 @@ export default async function Application({
                                     title="Decision"
                                     gridClassName="grid-cols-2 xl:grid-cols-2 gap-3"
                                 />
+                            </div>
+
+                            <div className="rounded-xl border border-gray-700 bg-white/5 p-3">
+                                <h2 className="text-lg font-semibold">Keyboard Shortcuts</h2>
+                                <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                                    <div className="rounded-lg border border-gray-700 bg-[#0d1320] px-3 py-2">
+                                        <p className="text-xs uppercase tracking-[0.18em] text-gray-400">Open Links</p>
+                                        <p className="mt-1 text-sm text-secondary-50"><span className="font-bold">O</span> opens all submitted links</p>
+                                    </div>
+                                    <div className="rounded-lg border border-gray-700 bg-[#0d1320] px-3 py-2">
+                                        <p className="text-xs uppercase tracking-[0.18em] text-gray-400">Score</p>
+                                        <p className="mt-1 text-sm text-secondary-50"><span className="font-bold">1-7</span> assigns your rating</p>
+                                    </div>
+                                    <div className="rounded-lg border border-gray-700 bg-[#0d1320] px-3 py-2">
+                                        <p className="text-xs uppercase tracking-[0.18em] text-gray-400">Decision</p>
+                                        <p className="mt-1 text-sm text-secondary-50"><span className="font-bold">A</span> accepts, <span className="font-bold">R</span> rejects</p>
+                                    </div>
+                                    <div className="rounded-lg border border-gray-700 bg-[#0d1320] px-3 py-2">
+                                        <p className="text-xs uppercase tracking-[0.18em] text-gray-400">Navigation</p>
+                                        <p className="mt-1 text-sm text-secondary-50"><span className="font-bold">← / →</span> moves between applications</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
