@@ -27,7 +27,14 @@ export default function OpenApplicationLinksButton({
 
     const openLinks = () => {
         links.forEach((link) => {
-            window.open(link, "_blank", "noopener,noreferrer");
+            const anchor = document.createElement("a");
+            anchor.href = link;
+            anchor.target = "_blank";
+            anchor.rel = "noopener noreferrer";
+            anchor.style.display = "none";
+            document.body.appendChild(anchor);
+            anchor.click();
+            anchor.remove();
         });
     };
 

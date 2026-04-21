@@ -99,7 +99,7 @@ export default async function Application({
     ].filter((value): value is string => value !== null);
 
     return (
-        <div className="mt-6 lg:mt-4">
+        <div className="mt-3 lg:mt-2">
             <ApplicationKeyboardShortcuts/>
             <div className="flex flex-wrap items-center gap-3">
                 <BackButton
@@ -125,15 +125,15 @@ export default async function Application({
                 </div>
             </div>
             <div
-                className="bg-[#151c2b] border-gray-300 border rounded-xl mt-6 p-4 lg:p-5 text-secondary-50 font-semibold lg:h-[calc(100vh-9.5rem)] lg:overflow-hidden">
-                <div className="flex flex-col gap-4 h-full">
-                    <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-4">
+                className="bg-[#151c2b] border-gray-300 border rounded-xl mt-3 p-3 lg:p-4 text-secondary-50 font-semibold lg:h-[calc(100vh-7rem)] lg:overflow-hidden">
+                <div className="flex flex-col gap-3 h-full">
+                    <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-3">
                         <div>
                             <div className="flex flex-wrap items-center gap-3">
                                 <h1 className="text-2xl font-semibold">{application.firstName} {application.lastName}</h1>
                                 <StatusBadge className="font-semibold" status={applicationStatus}/>
                             </div>
-                            <div className="mt-2 text-sm text-gray-400">
+                            <div className="mt-1.5 text-sm text-gray-400">
                                 Submitted: {application.createdAt.toLocaleDateString("en-CA")} at {new Intl.DateTimeFormat("en-CA", {
                                 hour: "2-digit",
                                 minute: "2-digit",
@@ -143,66 +143,66 @@ export default async function Application({
                             }).format(application.createdAt)} ({formatTimeAgo(application.createdAt)} ago)
                             </div>
                         </div>
-                        <div className="flex flex-wrap gap-2 text-xs text-gray-400">
-                            <span className="rounded-full border border-gray-700 px-3 py-1">Open links: <span className="text-secondary-50">O</span></span>
-                            <span className="rounded-full border border-gray-700 px-3 py-1">Score: <span className="text-secondary-50">1-7</span></span>
-                            <span className="rounded-full border border-gray-700 px-3 py-1">Accept: <span className="text-secondary-50">A</span></span>
-                            <span className="rounded-full border border-gray-700 px-3 py-1">Reject: <span className="text-secondary-50">R</span></span>
-                            <span className="rounded-full border border-gray-700 px-3 py-1">Navigate: <span className="text-secondary-50">← →</span></span>
+                        <div className="flex flex-wrap gap-1.5 text-[11px] text-gray-400">
+                            <span className="rounded-full border border-gray-700 px-2.5 py-1">Open links: <span className="text-secondary-50">O</span></span>
+                            <span className="rounded-full border border-gray-700 px-2.5 py-1">Score: <span className="text-secondary-50">1-7</span></span>
+                            <span className="rounded-full border border-gray-700 px-2.5 py-1">Accept: <span className="text-secondary-50">A</span></span>
+                            <span className="rounded-full border border-gray-700 px-2.5 py-1">Reject: <span className="text-secondary-50">R</span></span>
+                            <span className="rounded-full border border-gray-700 px-2.5 py-1">Navigate: <span className="text-secondary-50">← →</span></span>
                         </div>
                     </div>
-                    <div className="grid gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(23rem,0.95fr)] lg:min-h-0 lg:flex-1">
-                        <div className="grid gap-4 lg:grid-rows-[auto_minmax(0,1fr)_auto] lg:min-h-0">
-                            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-                                <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                    <div className="grid gap-4 lg:grid-cols-[minmax(0,1.38fr)_minmax(21rem,0.92fr)] lg:min-h-0 lg:flex-1">
+                        <div className="grid gap-3 lg:grid-rows-[auto_minmax(21rem,1fr)_auto] lg:min-h-0">
+                            <div className="grid gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
+                                <div className="rounded-xl border border-gray-700 bg-white/5 p-3">
                                     <p className="text-xs uppercase tracking-[0.18em] text-gray-400">Name</p>
-                                    <p className="mt-2 text-lg text-secondary-50">{application.firstName} {application.lastName}</p>
+                                    <p className="mt-1.5 text-base text-secondary-50">{application.firstName} {application.lastName}</p>
                                 </div>
-                                <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                                <div className="rounded-xl border border-gray-700 bg-white/5 p-3">
                                     <p className="text-xs uppercase tracking-[0.18em] text-gray-400">Age</p>
-                                    <p className="mt-2 text-lg text-secondary-50">{application.age}</p>
+                                    <p className="mt-1.5 text-base text-secondary-50">{application.age}</p>
                                 </div>
-                                <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                                <div className="rounded-xl border border-gray-700 bg-white/5 p-3">
                                     <p className="text-xs uppercase tracking-[0.18em] text-gray-400">Graduation Year</p>
-                                    <p className="mt-2 text-lg text-secondary-50">{application.yearOfGraduation}</p>
+                                    <p className="mt-1.5 text-base text-secondary-50">{application.yearOfGraduation}</p>
                                 </div>
-                                <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                                <div className="rounded-xl border border-gray-700 bg-white/5 p-3">
                                     <p className="text-xs uppercase tracking-[0.18em] text-gray-400">School</p>
-                                    <p className="mt-2 text-sm leading-6 text-secondary-50">{application.school}</p>
+                                    <p className="mt-1.5 text-sm leading-5 text-secondary-50">{application.school}</p>
                                 </div>
-                                <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                                <div className="rounded-xl border border-gray-700 bg-white/5 p-3">
                                     <p className="text-xs uppercase tracking-[0.18em] text-gray-400">City</p>
-                                    <p className="mt-2 text-lg text-secondary-50">{application.city}</p>
+                                    <p className="mt-1.5 text-base text-secondary-50">{application.city}</p>
                                 </div>
-                                <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
-                                    <p className="text-xs uppercase tracking-[0.18em] text-gray-400">Email</p>
-                                    <p className="mt-2 break-all text-sm leading-6 text-secondary-50">{application.email}</p>
+                                <div className="rounded-xl border border-gray-700 bg-white/5 p-3">
+                                    <p className="text-xs uppercase tracking-[0.18em] text-gray-400">Hackathons Attended</p>
+                                    <p className="mt-1.5 text-base text-secondary-50">{application.numberOfHackathonsAttended}</p>
                                 </div>
                             </div>
 
-                            <div className="rounded-xl border border-gray-700 bg-white/5 p-4 lg:min-h-0 lg:overflow-auto">
+                            <div className="rounded-xl border border-gray-700 bg-white/5 p-4 lg:min-h-0">
                                 <h2 className="text-xl font-semibold">Short Answer</h2>
-                                <p className="mt-2 text-sm text-gray-400 italic">If aliens landed tomorrow and asked you to show them one piece of human culture, what would you show them?</p>
-                                <p className="mt-4 whitespace-pre-wrap text-sm leading-7 text-secondary-50">
+                                <p className="mt-1.5 text-sm text-gray-400 italic">If aliens landed tomorrow and asked you to show them one piece of human culture, what would you show them?</p>
+                                <p className="mt-3 whitespace-pre-wrap text-[15px] leading-7 text-secondary-50">
                                     {application.shortAnswerResponse || <span className="text-gray-500">No response provided.</span>}
                                 </p>
                             </div>
 
-                            <div className="grid gap-3 md:grid-cols-2">
-                                <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                            <div className="grid gap-2.5 md:grid-cols-2">
+                                <div className="rounded-xl border border-gray-700 bg-white/5 p-3">
                                     <h2 className="text-base font-semibold">Application Details</h2>
-                                    <div className="mt-3 space-y-3 text-sm font-normal">
-                                        <ApplicationItem label="Hackathons attended" icon="fluent:code-block-16-regular"
-                                                         value={application.numberOfHackathonsAttended.toString()}/>
+                                    <div className="mt-2.5 space-y-2.5 text-sm font-normal">
+                                        <ApplicationItem label="Email" icon="fluent:mail-24-regular"
+                                                         value={application.email}/>
                                         <ApplicationItem label="Dietary restrictions" icon="fluent:food-24-regular"
                                                          value={formatDietaryRestrictions(application.dietaryRestrictions)}/>
                                         <ApplicationItem label="T-shirt size" icon="fluent:person-tag-24-regular"
                                                          value={application.tshirtSize}/>
                                     </div>
                                 </div>
-                                <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                                <div className="rounded-xl border border-gray-700 bg-white/5 p-3">
                                     <h2 className="text-base font-semibold">Emergency Contact</h2>
-                                    <div className="mt-3 space-y-3 text-sm font-normal">
+                                    <div className="mt-2.5 space-y-2.5 text-sm font-normal">
                                         <ApplicationItem label="Full name" icon="icon-park-outline:edit-name"
                                                          value={application.emergencyContactFullName}/>
                                         <ApplicationItem label="Phone number" icon="fluent:phone-24-regular"
@@ -212,8 +212,8 @@ export default async function Application({
                             </div>
                         </div>
 
-                        <div className="grid gap-4 content-start lg:min-h-0 lg:overflow-auto pr-1">
-                            <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                        <div className="grid gap-3 content-start lg:min-h-0 lg:overflow-auto pr-1">
+                            <div className="rounded-xl border border-gray-700 bg-white/5 p-3">
                                 <div className="flex items-center justify-between gap-3">
                                     <div>
                                         <h2 className="text-lg font-semibold">Review Tools</h2>
@@ -228,12 +228,12 @@ export default async function Application({
                                         portfolioLink={application.portfolioLink}
                                         resumeLink={application.resumeLink}
                                         label="Open all links"
-                                        className="px-3 py-2 font-semibold"
+                                        className="px-3 py-2 font-semibold shrink-0"
                                     />
                                 </div>
                             </div>
 
-                            <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                            <div className="rounded-xl border border-gray-700 bg-white/5 p-3">
                                 <ScoringForm
                                     applicationId={application.id}
                                     initialScore={myScore}
@@ -242,7 +242,7 @@ export default async function Application({
                                 />
                             </div>
 
-                            <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                            <div className="rounded-xl border border-gray-700 bg-white/5 p-3">
                                 <h2 className="text-lg font-semibold">Average Score</h2>
                                 {scoreCount === 0 ? (
                                     <p className="mt-3 text-sm font-normal text-gray-400">No scores yet.</p>
@@ -258,7 +258,7 @@ export default async function Application({
                                 )}
                             </div>
 
-                            <div className="rounded-xl border border-gray-700 bg-white/5 p-4">
+                            <div className="rounded-xl border border-gray-700 bg-white/5 p-3">
                                 <ApplicationActionsForm
                                     id={application.id}
                                     className="mt-0"
