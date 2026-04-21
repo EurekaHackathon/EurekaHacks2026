@@ -7,6 +7,7 @@ import StatusBadge from "@/components/StatusBadge";
 import Link from "next/link";
 import Pagination from "@/components/Pagination";
 import ApplicationsSearch from "@/components/ApplicationsSearch";
+import OpenApplicationLinksButton from "@/components/OpenApplicationLinksButton";
 
 const clamp = (value: number, min: number, max: number) => {
     return Math.min(Math.max(value, min), max);
@@ -83,7 +84,13 @@ export default async function ApplicationsTable({searchParams,}: {
                             </div>
                         </td>
                         <td className={`pr-4 text-start ${index !== applications.length - 1 ? "border-b" : ""}`}>
-                            <div>
+                            <div className="flex items-center gap-2">
+                                <OpenApplicationLinksButton
+                                    githubLink={application.githubLink}
+                                    linkedinLink={application.linkedinLink}
+                                    portfolioLink={application.portfolioLink}
+                                    resumeLink={application.resumeLink}
+                                />
                                 <Link className="border border-gray-600 py-1 px-2 rounded-lg bg-white/5 hover:bg-white/10 text-secondary-50 duration-75"
                                       href={`/dashboard/admin/applications/${application.id}?from=${page}`}>View</Link>
                             </div>

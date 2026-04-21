@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "@/hooks/use-toast";
 import { Icon } from "@iconify/react";
+import { cn } from "@/lib/utils";
 
 const SCORE_LABELS: Record<number, string> = {
     1: "Strong No",
@@ -35,9 +36,12 @@ const SCORE_ACTIVE_COLORS: Record<number, string> = {
     7: "bg-emerald-500 border-emerald-500 text-white",
 };
 
-export default function ScoringForm({ applicationId, initialScore }: {
+export default function ScoringForm({ applicationId, initialScore, className, title = "Your Score", buttonIdPrefix = "application-score" }: {
     applicationId: number;
     initialScore: number | null;
+    className?: string;
+    title?: string;
+    buttonIdPrefix?: string;
 }) {
     const [selected, setSelected] = useState<number | null>(initialScore);
     useEffect(() => { setSelected(initialScore); }, [initialScore]);
@@ -70,9 +74,9 @@ export default function ScoringForm({ applicationId, initialScore }: {
     };
 
     return (
-        <div className="mt-8">
+        <div className={cn("mt-8", className)}>
             <div className="flex items-center gap-3 mb-4">
-                <h1 className="text-xl font-semibold">Your Score</h1>
+                <h1 className="text-xl font-semibold">{title}</h1>
                 {loading && <Icon icon="eos-icons:loading" className="text-xl animate-spin text-gray-400"/>}
                 {selected !== null && !loading && (
                     <span className="text-gray-400 font-normal text-base">
@@ -83,6 +87,7 @@ export default function ScoringForm({ applicationId, initialScore }: {
             <div className="grid grid-cols-7 gap-1.5 sm:gap-2">
                 {[1, 2, 3, 4, 5, 6, 7].map((score) => (
                     <button
+                        id={`${buttonIdPrefix}-${score}`}
                         key={score}
                         onClick={() => submitScore(score)}
                         disabled={loading}

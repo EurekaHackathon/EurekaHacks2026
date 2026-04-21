@@ -125,6 +125,10 @@ export const MOCK_APPLICATIONS_PAGINATED: GetApplicationsPaginatedRow[] = MOCK_A
     school: a.school,
     status: a.status,
     createdAt: a.createdAt,
+    githubLink: a.githubLink,
+    linkedinLink: a.linkedinLink,
+    portfolioLink: a.portfolioLink,
+    resumeLink: a.resumeLink,
     rsvped: a.rsvped,
 }));
 

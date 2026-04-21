@@ -103,6 +103,10 @@ select ha.id,
        ha.school,
        ha.status,
        ha.created_at,
+       ha.github_link,
+       ha.linkedin_link,
+       ha.portfolio_link,
+       ha.resume_link,
        exists (
            select 1
            from public.rsvps r
@@ -136,6 +140,10 @@ export interface GetApplicationsPaginatedRow {
     school: string;
     status: string;
     createdAt: Date;
+    githubLink: string | null;
+    linkedinLink: string | null;
+    portfolioLink: string | null;
+    resumeLink: string | null;
     rsvped: boolean;
 }
 
@@ -157,7 +165,11 @@ export async function getApplicationsPaginated(sql: Sql, args: GetApplicationsPa
         school: row[3],
         status: row[4],
         createdAt: row[5],
-        rsvped: row[6]
+        githubLink: row[6],
+        linkedinLink: row[7],
+        portfolioLink: row[8],
+        resumeLink: row[9],
+        rsvped: row[10]
     }));
 }
 
@@ -386,4 +398,3 @@ export async function getAdjacentApplicationIds(sql: Sql, args: GetAdjacentAppli
         nextId: row[1] ?? null,
     };
 }
-
