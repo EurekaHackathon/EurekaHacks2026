@@ -145,7 +145,7 @@ export default async function Application({
                         </div>
                     </div>
                     <div className="grid gap-4 lg:grid-cols-[minmax(0,1.38fr)_minmax(21rem,0.92fr)] lg:min-h-0 lg:flex-1">
-                        <div className="grid gap-3 lg:grid-rows-[auto_minmax(21rem,1fr)_auto] lg:min-h-0">
+                        <div className="grid gap-3 lg:grid-rows-[auto_minmax(0,1fr)_auto] lg:min-h-0">
                             <div className="grid gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
                                 <div className="rounded-xl border border-gray-700 bg-white/5 p-3">
                                     <p className="text-xs uppercase tracking-[0.18em] text-gray-400">Name</p>
@@ -173,10 +173,10 @@ export default async function Application({
                                 </div>
                             </div>
 
-                            <div className="rounded-xl border border-gray-700 bg-white/5 p-4 lg:min-h-0">
+                            <div className="rounded-xl border border-gray-700 bg-white/5 p-4 lg:min-h-0 lg:flex lg:flex-col lg:overflow-hidden">
                                 <h2 className="text-xl font-semibold">Short Answer</h2>
                                 <p className="mt-1.5 text-sm text-gray-400 italic">If aliens landed tomorrow and asked you to show them one piece of human culture, what would you show them?</p>
-                                <p className="mt-3 whitespace-pre-wrap text-[15px] leading-7 text-secondary-50">
+                                <p className="mt-3 whitespace-pre-wrap break-words text-[15px] leading-7 text-secondary-50 lg:min-h-0 lg:flex-1 lg:overflow-y-auto lg:pr-1">
                                     {application.shortAnswerResponse || <span className="text-gray-500">No response provided.</span>}
                                 </p>
                             </div>
