@@ -192,9 +192,9 @@ export default function DashboardHome() {
           </div>
           <DeadlineCountdown />
           <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
-            Applications will remain open until the day of the hackathon.
+            The application deadline has been extended.
             <br />
-            They are due on April 20th, 2026 at 11:59 PM EST.
+            Applications are now due by 11:59 PM on April 24, 2026.
           </p>
         </div>
         <div className="border border-gray-300 rounded-lg bg-[#151c2b] py-8 px-12 flex-1 overflow-hidden">
