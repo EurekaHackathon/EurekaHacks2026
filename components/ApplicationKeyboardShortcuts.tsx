@@ -45,8 +45,8 @@ export default function ApplicationKeyboardShortcuts() {
         o: "application-open-links",
         a: "application-action-accepted",
         r: "application-action-rejected",
-        ArrowLeft: "application-prev",
-        ArrowRight: "application-next",
+        h: "application-prev",
+        l: "application-next",
       };
 
       const targetId = actionMap[event.key];

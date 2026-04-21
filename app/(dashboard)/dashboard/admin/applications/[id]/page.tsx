@@ -277,7 +277,7 @@ export default async function Application({
                                     </div>
                                     <div className="rounded-lg border border-gray-700 bg-[#0d1320] px-3 py-2">
                                         <p className="text-xs uppercase tracking-[0.18em] text-gray-400">Navigation</p>
-                                        <p className="mt-1 text-sm text-secondary-50"><span className="font-bold">← / →</span> moves between applications</p>
+                                        <p className="mt-1 text-sm text-secondary-50"><span className="font-bold">H / L</span> moves between applications</p>
                                     </div>
                                 </div>
                             </div>
