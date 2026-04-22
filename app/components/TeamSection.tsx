@@ -58,6 +58,14 @@ const TEAM: TeamMember[] = [
     supercolor: "#E5A212",
   },
   {
+    name: "Fiona Gao",
+    role: "Sponsorship Director",
+    description: "DECA GOATTT 🐐",
+    image: "/team/Fiona.png",
+    superpower: "Linkedin Final Boss",
+    supercolor: "#5e02aeff",
+  },
+  {
     name: "Jenny Jin",
     role: "Marketing Girl",
     description: "Just do that, no do this, you're doing it wrong...",
