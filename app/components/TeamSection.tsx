@@ -18,15 +18,14 @@ const TEAM: TeamMember[] = [
   {
     name: "Daniel Zhu",
     role: "Sponsorship",
-    description:
-      "This is my one good picture, please take good care of it.",
+    description: "This is my one good picture, please take good care of it.",
     image: "/team/DanielZhu.png",
     superpower: "Haha no G1",
     supercolor: "#FF5733",
   },
   {
     name: "Yohance Pawania",
-    role: "President",
+    role: "Sponsorship",
     description: "I like pink floyd",
     image: "/team/Yohance.png",
     superpower: "Quantum levitation",
@@ -50,7 +49,7 @@ const TEAM: TeamMember[] = [
   },
   {
     name: "Eason Huang",
-    role: "President",
+    role: "Logistics",
     description:
       "The best product manager anyone could ask for, except maybe for himself.",
     image: "/team/Eason.png",
@@ -67,7 +66,7 @@ const TEAM: TeamMember[] = [
   },
   {
     name: "Jenny Jin",
-    role: "Marketing Girl",
+    role: "Co-president",
     description: "Just do that, no do this, you're doing it wrong...",
     image: "/team/Jenny.png",
     superpower: "Always hitting red lights 🫰",
@@ -76,7 +75,7 @@ const TEAM: TeamMember[] = [
   {
     name: "Naman Sonawane",
     role: "Frontend Labourer",
-    description: "I'm just here for the free food",
+    description: "\"Hey Neel can you help me center this div\"",
     image: "/team/Naman.png",
     superpower: "Can code in his sleep",
     supercolor: "#FF0000",
@@ -143,6 +142,22 @@ const TEAM: TeamMember[] = [
     description: "Wait, what was I supposed to put here? Oh look, a bird!",
     image: "/team/Tiger.webp",
     superpower: "Attention span of a goldfish 💀",
+    supercolor: "#8e0000ff",
+  },
+  {
+    name: "Arnnav Kudale",
+    role: "Hardware Dude",
+    description: "robot go brr",
+    image: "/team/Arnnav.png",
+    superpower: "Can fix it (don't ask how)",
+    supercolor: "#ffc906ff",
+  },
+  {
+    name: "Jacob Blais",
+    role: "Sponsorship",
+    description: "Boba drinker 1000",
+    image: "/team/jacob.png",
+    superpower: "Speaking 🗣️🗣️",
     supercolor: "#8e0000ff",
   },
 ];

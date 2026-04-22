@@ -81,10 +81,38 @@ export const apply = async (_prevState: any, formData: FormData) => {
     });
 
     if (!validationResult.success) {
+        const flatErrors = validationResult.error.flatten().fieldErrors;
+        const fieldMap: Record<string, string> = {
+            firstName: "first-name",
+            lastName: "last-name",
+            email: "email",
+            age: "age",
+            school: "school",
+            graduationYear: "graduation-year",
+            city: "city",
+            numberHackathonsAttended: "number-hackathons-attended",
+            shortAnswer: "short-answer",
+            github: "github",
+            linkedin: "linkedin",
+            portfolio: "portfolio",
+            resume: "resume",
+            emergencyContactFullName: "emergency-contact-full-name",
+            emergencyContactPhoneNumber: "emergency-contact-phone",
+            tshirtSize: "tshirt-size",
+            otherDietaryRestrictions: "other-dietary-restrictions",
+        };
+        const fieldErrors: Record<string, string> = {};
+        for (const [zodField, formField] of Object.entries(fieldMap)) {
+            const errs = flatErrors[zodField as keyof typeof flatErrors];
+            if (errs && errs.length > 0) {
+                fieldErrors[formField] = errs[0];
+            }
+        }
         const errorMessages = validationResult.error.issues.map((error: { message: string }) => error.message);
-
+        console.error("[apply] Validation failed:", validationResult.error.issues);
         return {
             error: errorMessages.join("\n"),
+            fieldErrors,
             payload: formData,
         };
     }
@@ -94,17 +122,11 @@ export const apply = async (_prevState: any, formData: FormData) => {
     if (!sessionToken) {
         return {
             error: "You are not logged in.",
+            fieldErrors: {},
             payload: formData,
         };
     }
     const user = await authorizeSession(sessionToken.value);
-
-    if (!user) {
-        return {
-            error: "You are not logged in.",
-            payload: formData,
-        };
-    }
 
     const userDietaryRestrictions: string[] = [];
     if (validationResult.data.lactoseIntolerant) {
@@ -152,6 +174,7 @@ export const apply = async (_prevState: any, formData: FormData) => {
         console.log(error);
         return {
             error: "An error occurred while submitting your application. Please try again later.",
+            fieldErrors: {},
             payload: formData,
         };
     }

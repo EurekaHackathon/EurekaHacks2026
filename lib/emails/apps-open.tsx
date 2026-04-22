@@ -12,11 +12,11 @@ export const ApplicationsOpenTemplate = ({
         <Paragraph>Hey!</Paragraph>
         <Paragraph>
             We're excited to announce that applications for EurekaHACKS 2026 are now open!
-            Join us from May 1st-2nd at the Waterloo Accelerator Center for two unforgettable days of
+            Join us from May 1st-2nd at the Waterloo Accelerator Centre for two unforgettable days of
             innovation, learning, and fun.
         </Paragraph>
         <HighlightSection>
-            📍 Location: Waterloo Accelerator Center (295 Hagey Blvd, Waterloo)<br/>
+            📍 Location: Waterloo Accelerator Centre (295 Hagey Blvd, Waterloo)<br/>
             📅 Date: May 1st 5pm - May 2nd 10pm<br/>
             💻 Open to all high school students<br/>
             ⏰ Applications Due: April 24, 2026

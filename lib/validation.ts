@@ -75,7 +75,7 @@ export const applicationSchema = z.object({
     github: z.string().url({message: "Invalid GitHub URL"}).or(z.string().length(0)),
     linkedin: z.string().url({message: "Invalid LinkedIn URL"}).or(z.string().length(0)),
     portfolio: z.string().url({message: "Invalid portfolio URL"}).or(z.string().length(0)),
-    resume: z.string().url({message: "Invalid resume URL"}).or(z.string().length(0)),
+    resume: z.string().max(2048, {message: "Link must be less than 2048 characters."}).or(z.string().length(0)),
     emergencyContactFullName: z.string()
         .min(1, {message: "Emergency contact full name is required."})
         .max(128, {message: "Emergency contact full name must be less than 128 characters."}),
