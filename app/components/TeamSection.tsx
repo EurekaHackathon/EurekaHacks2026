@@ -57,6 +57,14 @@ const TEAM: TeamMember[] = [
     supercolor: "#E5A212",
   },
   {
+    name: "Fiona Gao",
+    role: "Sponsorship Director",
+    description: "DECA GOATTT 🐐",
+    image: "/team/Fiona.png",
+    superpower: "Linkedin Final Boss",
+    supercolor: "#5e02aeff",
+  },
+  {
     name: "Jenny Jin",
     role: "Co-president",
     description: "Just do that, no do this, you're doing it wrong...",
@@ -261,10 +269,14 @@ function TeamCard({
   member,
   targetSpec,
   currentX,
+  onMouseEnter,
+  onMouseLeave,
 }: {
   member: TeamMember;
   targetSpec: CardSpec;
   currentX: number;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }) {
   const isMain = targetSpec.w > 200;
   const ref = useRef<HTMLDivElement>(null);
@@ -284,6 +296,8 @@ function TeamCard({
   return (
     <div
       ref={ref}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       style={{
         position: "absolute",
         left: currentX,
@@ -299,6 +313,7 @@ function TeamCard({
         padding: isMain ? "18px 20px" : "12px 14px",
         gap: 8,
         overflow: "hidden",
+        cursor: "default",
         // SIMULTANEOUS TRANSITION: Everything moves together
         transition:
           "width 0.8s ease, height 0.8s ease, opacity 0.8s ease, left 0.8s ease, padding 0.8s ease, filter 0.8s ease",
@@ -404,6 +419,7 @@ export default function TeamSection() {
   const [enterX, setEnterX] = useState(ENTER_X);
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
+  const isPaused = useRef(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -551,7 +567,9 @@ export default function TeamSection() {
     handleResize();
     window.addEventListener("resize", handleResize);
     const interval = setInterval(() => {
-      setOffset((o) => o + 1);
+      if (!isPaused.current) {
+        setOffset((o) => o + 1);
+      }
     }, 2000);
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -633,6 +651,8 @@ export default function TeamSection() {
                   member={member}
                   targetSpec={spec}
                   currentX={x}
+                  onMouseEnter={() => { isPaused.current = true; }}
+                  onMouseLeave={() => { isPaused.current = false; }}
                 />
               );
             })}
