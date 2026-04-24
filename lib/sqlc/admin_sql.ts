@@ -107,11 +107,17 @@ select ha.id,
        ha.linkedin_link,
        ha.portfolio_link,
        ha.resume_link,
+       ha.number_of_hackathons_attended,
        exists (
            select 1
            from public.rsvps r
            where r.user_id = ha.user_id
-       ) as rsvped
+       ) as rsvped,
+       exists (
+           select 1
+           from public.application_scores s
+           where s.application_id = ha.id and s.user_id = $5
+       ) as scored_by_current_user
 from public.hackathon_applications ha
 where (lower(ha.first_name) like lower('%' || $3 || '%')
     or lower(ha.last_name) like lower('%' || $3 || '%'))
@@ -123,6 +129,16 @@ where (lower(ha.first_name) like lower('%' || $3 || '%')
            where r.user_id = ha.user_id
        )
   )
+  and (
+        $6::text is null or $6 = ''
+        or (
+            $6 = '0' and ha.number_of_hackathons_attended = 0
+            or $6 = '1' and ha.number_of_hackathons_attended = 1
+            or $6 = '2' and ha.number_of_hackathons_attended = 2
+            or $6 = '3' and ha.number_of_hackathons_attended = 3
+            or $6 = '4plus' and ha.number_of_hackathons_attended >= 4
+        )
+  )
 order by ha.id desc
 limit $1 offset $2`;
 
@@ -131,6 +147,8 @@ export interface GetApplicationsPaginatedArgs {
     offset: string;
     searchQuery: string | null;
     onlyWithRsvp: boolean;
+    currentUserId: number;
+    hackathonsFilter: string | null;
 }
 
 export interface GetApplicationsPaginatedRow {
@@ -144,7 +162,9 @@ export interface GetApplicationsPaginatedRow {
     linkedinLink: string | null;
     portfolioLink: string | null;
     resumeLink: string | null;
+    numberOfHackathonsAttended: number;
     rsvped: boolean;
+    scoredByCurrentUser: boolean;
 }
 
 export async function getApplicationsPaginated(sql: Sql, args: GetApplicationsPaginatedArgs): Promise<GetApplicationsPaginatedRow[]> {
@@ -154,11 +174,25 @@ export async function getApplicationsPaginated(sql: Sql, args: GetApplicationsPa
             !q || a.firstName.toLowerCase().includes(q) || a.lastName.toLowerCase().includes(q)
         );
         if (args.onlyWithRsvp) results = results.filter(a => a.rsvped);
+        if (args.hackathonsFilter && args.hackathonsFilter !== "") {
+            results = results.filter(a => {
+                const h = a.numberOfHackathonsAttended;
+                if (args.hackathonsFilter === "0") return h === 0;
+                if (args.hackathonsFilter === "1") return h === 1;
+                if (args.hackathonsFilter === "2") return h === 2;
+                if (args.hackathonsFilter === "3") return h === 3;
+                if (args.hackathonsFilter === "4plus") return h >= 4;
+                return true;
+            });
+        }
         const offset = parseInt(args.offset);
         const limit = parseInt(args.limit);
-        return results.slice(offset, offset + limit);
+        return results.slice(offset, offset + limit).map(a => ({
+            ...a,
+            scoredByCurrentUser: false,
+        }));
     }
-    return (await sql.unsafe(getApplicationsPaginatedQuery, [args.limit, args.offset, args.searchQuery, args.onlyWithRsvp]).values()).map(row => ({
+    return (await sql.unsafe(getApplicationsPaginatedQuery, [args.limit, args.offset, args.searchQuery, args.onlyWithRsvp, args.currentUserId, args.hackathonsFilter ?? ""]).values()).map(row => ({
         id: row[0],
         firstName: row[1],
         lastName: row[2],
@@ -169,7 +203,9 @@ export async function getApplicationsPaginated(sql: Sql, args: GetApplicationsPa
         linkedinLink: row[7],
         portfolioLink: row[8],
         resumeLink: row[9],
-        rsvped: row[10]
+        numberOfHackathonsAttended: row[10],
+        rsvped: row[11],
+        scoredByCurrentUser: row[12],
     }));
 }
 
@@ -185,11 +221,22 @@ where (lower(ha.first_name) like lower('%' || $1 || '%')
             from public.rsvps r
             where r.user_id = ha.user_id
         )
+  )
+  and (
+        $3::text is null or $3 = ''
+        or (
+            $3 = '0' and ha.number_of_hackathons_attended = 0
+            or $3 = '1' and ha.number_of_hackathons_attended = 1
+            or $3 = '2' and ha.number_of_hackathons_attended = 2
+            or $3 = '3' and ha.number_of_hackathons_attended = 3
+            or $3 = '4plus' and ha.number_of_hackathons_attended >= 4
+        )
   )`;
 
 export interface GetNumberOfApplicationsFilteredArgs {
     searchQuery: string | null;
     onlyWithRsvp: boolean;
+    hackathonsFilter: string | null;
 }
 
 export interface GetNumberOfApplicationsFilteredRow {
@@ -203,9 +250,20 @@ export async function getNumberOfApplicationsFiltered(sql: Sql, args: GetNumberO
             !q || a.firstName.toLowerCase().includes(q) || a.lastName.toLowerCase().includes(q)
         );
         if (args.onlyWithRsvp) results = results.filter(a => a.rsvped);
+        if (args.hackathonsFilter && args.hackathonsFilter !== "") {
+            results = results.filter(a => {
+                const h = a.numberOfHackathonsAttended;
+                if (args.hackathonsFilter === "0") return h === 0;
+                if (args.hackathonsFilter === "1") return h === 1;
+                if (args.hackathonsFilter === "2") return h === 2;
+                if (args.hackathonsFilter === "3") return h === 3;
+                if (args.hackathonsFilter === "4plus") return h >= 4;
+                return true;
+            });
+        }
         return { count: results.length.toString() };
     }
-    const rows = await sql.unsafe(getNumberOfApplicationsFilteredQuery, [args.searchQuery, args.onlyWithRsvp]).values();
+    const rows = await sql.unsafe(getNumberOfApplicationsFilteredQuery, [args.searchQuery, args.onlyWithRsvp, args.hackathonsFilter ?? ""]).values();
     if (rows.length !== 1) {
         return null;
     }

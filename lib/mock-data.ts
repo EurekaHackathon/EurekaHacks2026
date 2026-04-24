@@ -129,7 +129,9 @@ export const MOCK_APPLICATIONS_PAGINATED: GetApplicationsPaginatedRow[] = MOCK_A
     linkedinLink: a.linkedinLink,
     portfolioLink: a.portfolioLink,
     resumeLink: a.resumeLink,
+    numberOfHackathonsAttended: a.numberOfHackathonsAttended,
     rsvped: a.rsvped,
+    scoredByCurrentUser: false,
 }));
 
 export const MOCK_STATS = {
