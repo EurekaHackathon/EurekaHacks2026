@@ -45,7 +45,7 @@ export const AcceptanceEmailTemplate = ({
     <LinkButton url="https://eurekahacks.ca/dashboard/" text="RSVP Now" />
     <Paragraph>
         <strong>
-            Also, make sure to <A href="https://discord.gg/j5gU4TAzee">join our discord</A> for updates before and during the event
+            Also, make sure to <A href="https://discord.gg/4g65EU5Dhd">join our discord</A> for updates before and during the event
         </strong>
     </Paragraph>
     <Paragraph>
