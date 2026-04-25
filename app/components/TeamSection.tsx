@@ -19,7 +19,7 @@ const TEAM: TeamMember[] = [
     name: "Daniel Zhu",
     role: "Sponsorship",
     description: "This is my one good picture, please take good care of it.",
-    image: "/team/DanielZhu.png",
+    image: "/team/DanielZhu.webp",
     superpower: "Haha no G1",
     supercolor: "#FF5733",
   },
@@ -35,7 +35,7 @@ const TEAM: TeamMember[] = [
     name: "Anvi Nambiar",
     role: "Marketing",
     description: "I hate spiders",
-    image: "/team/Anvi.png",
+    image: "/team/Anvi.webp",
     superpower: "Magic",
     supercolor: "#3357FF",
   },
@@ -68,7 +68,7 @@ const TEAM: TeamMember[] = [
     name: "Naman Sonawane",
     role: "Frontend Labourer",
     description: "\"Hey Neel can you help me center this div\"",
-    image: "/team/Naman.png",
+    image: "/team/Naman.webp",
     superpower: "Can code in his sleep",
     supercolor: "#FF0000",
   },
@@ -76,7 +76,7 @@ const TEAM: TeamMember[] = [
     name: "Victoria Yep",
     role: "Figma Warrior",
     description: "I think I was supposed to put a fun fact here",
-    image: "/team/Victoria.png",
+    image: "/team/Victoria.webp",
     superpower: "IDK :)",
     supercolor: "#938a10ff",
   },
@@ -92,7 +92,7 @@ const TEAM: TeamMember[] = [
     name: "Minsun Kim",
     role: "Everything",
     description: "I rlly want to play pokopia",
-    image: "/team/Minsun.png",
+    image: "/team/Minsun.webp",
     superpower: "Memory of a goldfish 🐠",
     supercolor: "#2f00ffff",
   },
@@ -100,7 +100,7 @@ const TEAM: TeamMember[] = [
     name: "Neel Shah",
     role: "Backend Guru",
     description: "Slightly red-green colourblind",
-    image: "/team/Neel.png",
+    image: "/team/Neel.webp",
     superpower: "Can center a div without chatgpt",
     supercolor: "#067e2aff",
   },
@@ -108,7 +108,7 @@ const TEAM: TeamMember[] = [
     name: "Margret Liu",
     role: "Sketchbook Goat",
     description: "🕷️ 🔫 🧍‍♀️",
-    image: "/team/Margret.png",
+    image: "/team/Margret.webp",
     superpower: "Forcing people to kill spiders for me",
     supercolor: "#30dcffff",
   },
@@ -116,7 +116,7 @@ const TEAM: TeamMember[] = [
     name: "Deming Chen",
     role: "Senior Trend Chaser",
     description: "Testing and console logs are for cowards, just force push.",
-    image: "/team/Deming.png",
+    image: "/team/Deming.webp",
     superpower: "Can sell water to a fish",
     supercolor: "#ef720cff",
   },
@@ -239,6 +239,8 @@ function Avatar({
         <img
           src={src}
           alt={name}
+          loading="lazy"
+          decoding="async"
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
       )}

@@ -23,6 +23,8 @@ function SponsorCard({
     <img
       src={image}
       alt={name}
+      loading="lazy"
+      decoding="async"
       className="object-contain max-h-full max-w-full opacity-90 hover:opacity-100 transition-opacity"
     />
   );
@@ -79,19 +81,19 @@ export default function SponsorsSection() {
             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
               <SponsorCard
                 name="Vallo"
-                image="https://www.vallo.dev/logos/vallo/ValloLogo.png"
+                image="/sponsors/vallo.webp"
                 tier="gold"
                 href="https://vallo.dev"
               />
               <SponsorCard
                 name="Convictional"
-                image="https://storage.googleapis.com/convictional-assets/convictional-wordmark.svg"
+                image="/sponsors/convictional.svg"
                 tier="gold"
                 href="https://convictional.com"
               />
               <SponsorCard
                 name="Waterloo Accelerator Centre"
-                image="https://www.acceleratorcentre.com/wp-content/uploads/2025/09/logo-fc.svg"
+                image="/sponsors/accelerator-centre.svg"
                 tier="gold"
                 href="https://acceleratorcentre.com"
               />
@@ -107,19 +109,19 @@ export default function SponsorsSection() {
               />
               <SponsorCard
                 name="Geotab"
-                image="https://tca.gov.au/wp-content/uploads/2024/01/geotab-logofull-colour-rgb-1.png"
+                image="/sponsors/geotab.png"
                 tier="silver"
                 href="https://geotab.com"
               />
               <SponsorCard
                 name="Dorahacks"
-                image="https://2025.eurekahacks.ca/sponsors/dorahacks.png"
+                image="/sponsors/dorahacks.png"
                 tier="silver"
                 href="https://dorahacks.io"
               />
               <SponsorCard
                 name="Bolt.new"
-                image="https://sfruby.com/sponsor_boltnew.png"
+                image="/sponsors/boltnew.png"
                 tier="silver"
                 href="https://bolt.new"
               />
@@ -135,25 +137,25 @@ export default function SponsorsSection() {
             <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8">
               <SponsorCard
                 name="Sobeys"
-                image="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Sobeys_logo.svg/3840px-Sobeys_logo.svg.png"
+                image="/sponsors/sobeys.svg"
                 tier="bronze"
                 href="https://sobeys.com"
               />
               <SponsorCard
                 name="Interview Cake"
-                image="https://2025.eurekahacks.ca/sponsors/interview-cake.png"
+                image="/sponsors/interview-cake.webp"
                 tier="bronze"
                 href="https://interviewcake.com"
               />
               <SponsorCard
                 name=".XYZ"
-                image="https://2025.eurekahacks.ca/sponsors/xyz.png"
+                image="/sponsors/xyz.webp"
                 tier="bronze"
                 href="https://gen.xyz"
               />
               <SponsorCard
                 name="Basecamp Climbing"
-                image="https://2025.eurekahacks.ca/sponsors/basecamp-climbing.png"
+                image="/sponsors/basecamp-climbing.webp"
                 tier="bronze"
                 href="https://basecampclimbing.ca"
               />
@@ -166,7 +168,7 @@ export default function SponsorsSection() {
               <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8">
                 <SponsorCard
                   name="Hack Club Bank"
-                  image="https://2025.eurekahacks.ca/partners/hcb.png"
+                  image="/partners/hcb.webp"
                   tier="partner"
                   href="https://bank.hackclub.com"
                 />
