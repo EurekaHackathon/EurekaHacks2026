@@ -269,7 +269,7 @@ export default function DashboardHome() {
           {applicationStatus?.status === "accepted" && (
             <Link
               className="bg-secondary-50 text-xl py-2 px-4 rounded-lg text-secondary-900 font-medium hover:bg-secondary-200 duration-200"
-              href="/hacker-package.pdf"
+              href="https://drive.google.com/file/d/1BfsrB-APEQk_5h_sXdJ4kTBtYTLaXblV/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
             >
