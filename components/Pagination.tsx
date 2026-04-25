@@ -7,7 +7,9 @@ export default function Pagination({
                                        numberOfTotalItems,
                                        className,
                                        query,
-                                       rsvp
+                                       rsvp,
+                                       sort,
+                                       hackathons,
                                    }: {
     currentPage: number;
     numberOfCurrentItems: number;
@@ -15,6 +17,8 @@ export default function Pagination({
     className?: string;
     query?: string;
     rsvp: boolean;
+    sort?: string;
+    hackathons?: string;
 }) {
     const lastPage = Math.ceil(numberOfTotalItems / 10);
     const pages = new Set<number>();
@@ -51,6 +55,17 @@ export default function Pagination({
 
     const sortedPages = [...pages].sort((a, b) => a - b);
 
+    const buildHref = (page: number) => {
+        const params = new URLSearchParams({
+            page: page.toString(),
+            q: query ?? "",
+            rsvp: rsvp.toString(),
+            sort: sort ?? "",
+            hackathons: hackathons ?? "",
+        });
+        return `/dashboard/admin/applications?${params.toString()}`;
+    };
+
     const renderPages = [];
     for (let i = 0; i < sortedPages.length; i++) {
         if (i > 0 && sortedPages[i] - sortedPages[i - 1] > 1) {
@@ -64,7 +79,7 @@ export default function Pagination({
         renderPages.push(
             <Link
                 key={sortedPages[i]}
-                href={`/dashboard/admin/applications?page=${sortedPages[i]}&q=${query}&rsvp=${rsvp}`}
+                href={buildHref(sortedPages[i])}
                 scroll={false}
                 className={`flex items-center justify-center h-8 w-8 min-h-9 min-w-9 px-2 py-2 rounded-md duration-75 ${
                     sortedPages[i] === currentPage
@@ -84,7 +99,7 @@ export default function Pagination({
             </p>
             <div className="flex gap-2">
                 <Link
-                    href={`/dashboard/admin/applications?page=${currentPage - 1}&q=${query}&rsvp=${rsvp}`}
+                    href={buildHref(currentPage - 1)}
                     scroll={false}
                     className={`flex items-center justify-center bg-secondary-50 h-8 w-8 border border-gray-300 text-gray-700 min-h-9 min-w-9 px-2 py-2 rounded-md hover:bg-secondary-200 duration-75
                     ${currentPage === 1 ? "opacity-50 pointer-events-none" : ""}`}
@@ -94,7 +109,7 @@ export default function Pagination({
                 </Link>
                 {renderPages.map((page) => page)}
                 <Link
-                    href={`/dashboard/admin/applications?page=${currentPage + 1}&q=${query}&rsvp=${rsvp}`}
+                    href={buildHref(currentPage + 1)}
                     scroll={false}
                     className={`flex items-center justify-center bg-secondary-50 h-8 w-8 border border-gray-300 text-gray-700 min-h-9 min-w-9 px-2 py-2 rounded-md hover:bg-secondary-200 duration-75
                     ${currentPage >= lastPage ? "opacity-50 pointer-events-none" : ""}`}
