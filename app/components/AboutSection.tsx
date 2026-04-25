@@ -1,6 +1,6 @@
 "use client";
-import Skyline from "@/public/landing/mid.png";
-import Page1 from "@/public/comics/page1.png";
+import Skyline from "@/public/landing/mid.webp";
+import Page1 from "@/public/comics/page1.webp";
 import Image from "next/image";
 
 export default function AboutSection() {
