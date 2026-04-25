@@ -11,6 +11,7 @@ import NodeMailer from "nodemailer";
 import { render } from "@react-email/components";
 import ApplicationSubmittedTemplate from "@/lib/emails/application-submitted";
 import { sendMailAsync } from "@/lib/actions/auth";
+import { APPLICATIONS_CLOSE_AT } from "@/lib/applications-deadline";
 
 const safeParseNumber = (value: FormDataEntryValue | null) => {
     if (value === null) {
@@ -21,6 +22,14 @@ const safeParseNumber = (value: FormDataEntryValue | null) => {
 };
 
 export const apply = async (_prevState: any, formData: FormData) => {
+    if (Date.now() > APPLICATIONS_CLOSE_AT.getTime()) {
+        return {
+            error: "Hacker applications for EurekaHACKS 2026 are now closed.",
+            fieldErrors: {},
+            payload: formData,
+        };
+    }
+
     const firstName = formData.get("first-name");
     const lastName = formData.get("last-name");
     const email = formData.get("email");

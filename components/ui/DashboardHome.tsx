@@ -5,6 +5,7 @@ import { Icon } from "@iconify/react";
 import { CountdownTimer } from "@/components/CountdownTimer";
 import { DeadlineCountdown } from "@/components/DeadlineCountdown";
 import { useDashboardCtx } from "@/lib/dashboard-ctx";
+import { applicationsClosed } from "@/lib/applications-deadline";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 import { Confetti } from "@neoconfetti/react";
@@ -17,6 +18,7 @@ export default function DashboardHome() {
   const [rsvpLoading, setRsvpLoading] = useState(false);
   const playConfetti = useSearchParams().get("play") !== "false";
   const router = useRouter();
+  const closed = applicationsClosed();
 
   const rsvp = async () => {
     setRsvpLoading(true);
@@ -90,23 +92,33 @@ export default function DashboardHome() {
           />
         </div>
         {(applicationStatus?.status === "unsubmitted" ||
-          !applicationStatus) && (
-          <>
-            <h1 className="text-[var(--neon-yellow)] font-bold text-4xl md:text-5xl pt-6">
-              Not submitted
-            </h1>
-            <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
-              You haven't started your application yet. Click the button below
-              to start your application.
-            </p>
-            <Link
-              href="/dashboard/application"
-              className="bg-secondary-50 text-xl py-2 px-4 rounded-lg text-secondary-900 font-medium hover:bg-secondary-200 duration-200"
-            >
-              Open application
-            </Link>
-          </>
-        )}
+          !applicationStatus) &&
+          (closed ? (
+            <>
+              <h1 className="text-[var(--neon-yellow)] font-bold text-4xl md:text-5xl pt-6">
+                Applications closed
+              </h1>
+              <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
+                Hacker applications for EurekaHACKS 2026 are now closed.
+              </p>
+            </>
+          ) : (
+            <>
+              <h1 className="text-[var(--neon-yellow)] font-bold text-4xl md:text-5xl pt-6">
+                Not submitted
+              </h1>
+              <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
+                You haven't started your application yet. Click the button
+                below to start your application.
+              </p>
+              <Link
+                href="/dashboard/application"
+                className="bg-secondary-50 text-xl py-2 px-4 rounded-lg text-secondary-900 font-medium hover:bg-secondary-200 duration-200"
+              >
+                Open application
+              </Link>
+            </>
+          ))}
         {applicationStatus?.status === "submitted" && (
           <>
             <h1 className="text-[var(--neon-yellow)] font-bold text-4xl md:text-5xl pt-6">
