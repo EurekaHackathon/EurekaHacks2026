@@ -6,9 +6,9 @@ import type { GetApplicationsPaginatedRow } from "@/lib/sqlc/admin_sql";
 
 export const MOCK_USER = {
     id: 1,
-    firstName: "Dev",
-    lastName: "User",
-    email: "dev@eurekahacks.ca",
+    firstName: "Test",
+    lastName: "Admin",
+    email: "test@gmail.com",
     isAdmin: true,
     isEmailVerified: true,
     createdAt: new Date("2026-01-01"),

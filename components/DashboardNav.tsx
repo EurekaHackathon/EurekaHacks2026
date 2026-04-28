@@ -62,8 +62,8 @@ export function DashboardNav() {
                     <DashboardNavItem icon="fluent:home-16-filled" text="Home" route="/dashboard"/>
                     <DashboardNavItem icon="fluent:form-multiple-48-filled" text="Application"
                                       route="/dashboard/application"/>
-                    <DashboardNavItem icon="fluent:qr-code-28-filled" text="QR Code"
-                                      route="/dashboard/qrcode"/>
+                    {user.isAdmin && <DashboardNavItem icon="fluent:nfc-28-filled" text="NFC Badge"
+                                      route="/dashboard/qrcode"/>}
                     {user.isAdmin &&
                         <DashboardNavItem icon="fluent:people-16-filled" text="Admin" route="/dashboard/admin"/>}
                 </div>

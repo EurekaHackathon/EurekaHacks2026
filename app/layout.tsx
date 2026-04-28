@@ -13,6 +13,7 @@ import { GlobalFooter } from "@/components/GlobalFooter";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { NFCDevMock } from "@/components/NFCDevMock";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -79,6 +80,7 @@ export default async function RootLayout({
         )}
         <div className="flex-1 flex flex-col">{children}</div>
         <GlobalFooter />
+        {process.env.NODE_ENV === "development" && <NFCDevMock />}
         <Analytics />
         <SpeedInsights />
       </body>

@@ -3,7 +3,6 @@ import { authorizeSession } from "@/lib/sessions";
 import { getApplicationStatus } from "@/lib/sqlc/application_sql";
 import { db } from "@/lib/database";
 import { createUserEvent, getUserEvent } from "@/lib/sqlc/events_sql";
-import { decryptAES } from "@/lib/encryption";
 import { getBasicUserInfoByUserId, GetBasicUserInfoByUserIdRow } from "@/lib/sqlc/admin_sql";
 
 export async function POST(request: Request) {
@@ -34,17 +33,20 @@ export async function POST(request: Request) {
     let userInfo: GetBasicUserInfoByUserIdRow | null;
 
     try {
-        const decryptedId = decryptAES(process.env.QR_CODE_SECRET_KEY ?? "", encryptedId);
+        const userId = parseInt(encryptedId);
+        if (isNaN(userId)) {
+            return new Response("Invalid ID", { status: 400 });
+        }
 
         const userApplicationStatus = await getApplicationStatus(db, {
-            userId: parseInt(decryptedId)
+            userId
         });
         if (userApplicationStatus?.status !== "accepted") {
             return new Response("User is not accepted", {status: 403});
         }
 
         const existingEvent = await getUserEvent(db, {
-            userId: parseInt(decryptedId),
+            userId,
             name: event
         });
 
@@ -52,20 +54,28 @@ export async function POST(request: Request) {
             return new Response("User already scanned into this event", {status: 409});
         }
 
-        await createUserEvent(db, {
-            userId: parseInt(decryptedId),
-            name: event
-        });
+        try {
+            await createUserEvent(db, {
+                userId,
+                name: event
+            });
+        } catch (insertError: unknown) {
+            const msg = insertError instanceof Error ? insertError.message : "";
+            if (msg.includes("unique") || msg.includes("duplicate") || msg.includes("23505")) {
+                return new Response("User already scanned into this event", {status: 409});
+            }
+            throw insertError;
+        }
 
         userInfo = await getBasicUserInfoByUserId(db, {
-            userId: parseInt(decryptedId)
+            userId
         });
-    } catch (error) {
-        return Response.json({
-            error: "Invalid encryptedId"
-        }, {
-            status: 400
-        });
+    } catch (error: unknown) {
+        const msg = error instanceof Error ? error.message : "";
+        if (msg.includes("unique") || msg.includes("duplicate") || msg.includes("23505")) {
+            return new Response("User already scanned into this event", {status: 409});
+        }
+        return Response.json({ error: "Invalid ID" }, { status: 400 });
     }
 
     return Response.json(userInfo, {

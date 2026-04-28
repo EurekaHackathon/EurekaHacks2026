@@ -24,6 +24,7 @@ import { verify } from "@node-rs/argon2";
 import { createSession, invalidateSession } from "@/lib/sessions";
 import { loginSchema, resetPasswordSchema, signUpSchema } from "../validation";
 import ResetPasswordTemplate from "@/lib/emails/reset-password";
+import { isMockMode } from "@/lib/mock-data";
 
 
 export const logout = async (prevState: any, formData: FormData) => {
@@ -45,6 +46,10 @@ export const logout = async (prevState: any, formData: FormData) => {
 
 
 export const loginWithEmail = async (prevState: any, formData: FormData) => {
+    if (isMockMode()) {
+        redirect("/dashboard");
+    }
+
     const email = formData.get("email");
     const password = formData.get("password");
 
