@@ -91,8 +91,7 @@ export default function DashboardHome() {
             className="text-secondary-50 text-4xl"
           />
         </div>
-        {(applicationStatus?.status === "unsubmitted" ||
-          !applicationStatus) &&
+        {(applicationStatus?.status === "unsubmitted" || !applicationStatus) &&
           (closed ? (
             <>
               <h1 className="text-[var(--neon-yellow)] font-bold text-4xl md:text-5xl pt-6">
@@ -108,8 +107,8 @@ export default function DashboardHome() {
                 Not submitted
               </h1>
               <p className="text-secondary-50 text-lg pt-2 pb-8 font-medium">
-                You haven't started your application yet. Click the button
-                below to start your application.
+                You haven't started your application yet. Click the button below
+                to start your application.
               </p>
               <Link
                 href="/dashboard/application"
@@ -281,7 +280,7 @@ export default function DashboardHome() {
           {applicationStatus?.status === "accepted" && (
             <Link
               className="bg-secondary-50 text-xl py-2 px-4 rounded-lg text-secondary-900 font-medium hover:bg-secondary-200 duration-200"
-              href="https://drive.google.com/file/d/1BfsrB-APEQk_5h_sXdJ4kTBtYTLaXblV/view?usp=sharing"
+              href="https://drive.google.com/file/d/1qJhYXFsqAITua0H2_Ptc0CRR-wAIMMnD/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
             >
