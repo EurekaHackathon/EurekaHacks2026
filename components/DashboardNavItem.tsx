@@ -12,9 +12,7 @@ interface props {
 
 export default function DashboardNavItem({ icon, text, route }: props) {
     const pathname = usePathname();
-    const isAdminRoute = pathname.startsWith("/dashboard/admin");
-
-    const isActive = route === pathname || (route === "/dashboard/admin" && isAdminRoute);
+    const isActive = pathname === route;
 
     return (
         <Link href={route} className={`flex gap-2 hover:bg-gray-600 hover:bg-opacity-10 duration-75 py-2 px-4 rounded-lg

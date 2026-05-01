@@ -5,6 +5,7 @@ import { db } from "@/lib/database";
 import { createUserEvent, getUserEvent } from "@/lib/sqlc/events_sql";
 import { decryptAES } from "@/lib/encryption";
 import { getBasicUserInfoByUserId, GetBasicUserInfoByUserIdRow } from "@/lib/sqlc/admin_sql";
+import { SCAN_EVENT_KEYS } from "@/lib/events";
 
 export async function POST(request: Request) {
     const cookieStore = await cookies();
@@ -27,7 +28,7 @@ export async function POST(request: Request) {
         return new Response("Invalid encryptedId", {status: 400});
     }
 
-    if (typeof (event) !== "string") {
+    if (typeof (event) !== "string" || !SCAN_EVENT_KEYS.has(event)) {
         return new Response("Invalid event", {status: 400});
     }
 

@@ -99,7 +99,8 @@ create table if not exists public.events (
     id serial primary key,
     user_id integer not null references public.app_users(id) on delete cascade,
     name text not null,
-    created_at timestamptz not null default now()
+    created_at timestamptz not null default now(),
+    unique (user_id, name)
 );
 
 create table if not exists public.rsvps (
@@ -127,6 +128,13 @@ create table if not exists password_reset_tokens (
     created_at timestamptz not null default now(),
     updated_at timestamptz not null default now()
 );
+
+create table if not exists public.nfc_chips (
+    id uuid primary key default uuid_generate_v4(),
+    user_id integer not null references public.app_users(id) on delete cascade,
+    created_at timestamptz not null default now()
+);
+create index if not exists idx_nfc_chips_user_id on public.nfc_chips(user_id);
 
 CREATE TABLE IF NOT EXISTS public.application_scores (
     id SERIAL PRIMARY KEY,

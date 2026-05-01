@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dialog";
 import { GetBasicUserInfoByUserIdRow } from "@/lib/sqlc/admin_sql";
 import { useRouter, useSearchParams } from "next/navigation";
+import { SCAN_EVENTS, SCAN_EVENT_KEYS } from "@/lib/events";
 
 const decodeQRCode = (dataURL: string): Promise<string | null> => {
     return new Promise((resolve, reject) => {
@@ -164,7 +165,7 @@ export default function AdminQRCodeScanner() {
                 <h2 className="text-gray-500">Choose the event to scan for</h2>
                 <form className="mt-4">
                     <Select
-                        defaultValue={["check-in", "lunch", "dinner"].includes(eventParam ?? "") ? eventParam! : undefined}
+                        defaultValue={SCAN_EVENT_KEYS.has(eventParam ?? "") ? eventParam! : undefined}
                         value={currentEvent as (string | undefined)}
                         onValueChange={val => {
                             setCurrentEvent(val);
@@ -176,9 +177,9 @@ export default function AdminQRCodeScanner() {
                             <SelectValue placeholder="Select an event"/>
                         </SelectTrigger>
                         <SelectContent>
-                            <SelectItem value="check-in">Hacker check-in</SelectItem>
-                            <SelectItem value="lunch">Lunch</SelectItem>
-                            <SelectItem value="dinner">Dinner</SelectItem>
+                            {SCAN_EVENTS.map(e => (
+                                <SelectItem key={e.key} value={e.key}>{e.label}</SelectItem>
+                            ))}
                         </SelectContent>
                     </Select>
                 </form>
