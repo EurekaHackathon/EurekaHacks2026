@@ -6,6 +6,7 @@ export default function AdminDashboardTabs() {
             <AdminDashboardTab text="Overview" path="/dashboard/admin"/>
             <AdminDashboardTab text="Applications" path="/dashboard/admin/applications"/>
             <AdminDashboardTab text="Scan QR Code" path="/dashboard/admin/scan"/>
+            <AdminDashboardTab text="Scan NFC Badge" path="/dashboard/admin/nfc"/>
         </div>
     );
 }

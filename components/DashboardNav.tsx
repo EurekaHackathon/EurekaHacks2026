@@ -67,8 +67,6 @@ export function DashboardNav() {
                                       route="/dashboard/qrcode"/>
                     {user.isAdmin &&
                         <DashboardNavItem icon="fluent:people-16-filled" text="Admin" route="/dashboard/admin"/>}
-                    {user.isAdmin &&
-                        <DashboardNavItem icon="fluent:nfc-28-filled" text="NFC Badge" route="/dashboard/admin/nfc"/>}
                 </div>
                 <div className="pb-12">
                     <div className="flex items-center text-secondary-50 gap-3 justify-center pt-32">
