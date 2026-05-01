@@ -10,6 +10,7 @@ import {
 import { cookies } from "next/headers";
 import { validateSessionToken } from "@/lib/sessions";
 import { GlobalFooter } from "@/components/GlobalFooter";
+import { NFCDevMock } from "@/components/NFCDevMock";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -78,6 +79,7 @@ export default async function RootLayout({
           </div>
         )}
         <div className="flex-1 flex flex-col">{children}</div>
+        {process.env.NODE_ENV === "development" && <NFCDevMock />}
         <GlobalFooter />
         <Analytics />
         <SpeedInsights />
